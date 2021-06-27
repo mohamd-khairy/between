@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'dashboard' => 'Dashboard',
     'main_navigation'               => 'MAIN NAVIGATION',
     'blog'                          => 'Blog',
     'pages'                         => 'Pages',

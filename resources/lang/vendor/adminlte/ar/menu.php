@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'dashboard' => 'الصفحه الرئيسيه',
     'main_navigation'               => 'MAIN NAVIGATION',
     'blog'                          => 'المقالات',
     'pages'                         => 'الصفحات',
