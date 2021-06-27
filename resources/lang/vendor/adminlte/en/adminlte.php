@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'home' => 'Home',
     'full_name'                   => 'Full name',
     'email'                       => 'Email',
     'password'                    => 'Password',
