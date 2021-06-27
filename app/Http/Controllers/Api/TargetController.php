@@ -1,20 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Traits\HelperTrait;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
 
-class Controller extends BaseController
+class TargetController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    use HelperTrait;
-
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +14,7 @@ class Controller extends BaseController
      */
     public function index()
     {
-        $data = $this->get($this->model , []);
-        return view('admin.'.$this->view.'.index' , compact('data'));
+        //
     }
 
     /**
@@ -33,7 +24,7 @@ class Controller extends BaseController
      */
     public function create()
     {
-        return view('admin.'.$this->view.'.create');
+        //
     }
 
     /**
@@ -44,8 +35,7 @@ class Controller extends BaseController
      */
     public function store(Request $request)
     {
-        $data = $this->add($this->model , $request->all());
-        return view('admin.'.$this->view.'.index' , compact('data'));  
+        //
     }
 
     /**
@@ -56,8 +46,7 @@ class Controller extends BaseController
      */
     public function show($id)
     {
-        $data = $this->find($this->model , ['id' => $id]);
-        return view('admin.'.$this->view.'.show' , compact('data'));        
+        //
     }
 
     /**
@@ -68,8 +57,7 @@ class Controller extends BaseController
      */
     public function edit($id)
     {
-        $data = $this->find($this->model , ['id' => $id]);
-        return view('admin.'.$this->view.'.edit' , compact('data')); 
+        //
     }
 
     /**
@@ -81,8 +69,7 @@ class Controller extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $data = $this->put($this->model , ['id' => $id], $request->all());
-        return view('admin.'.$this->view.'.edit' , compact('data'));  
+        //
     }
 
     /**
@@ -93,7 +80,6 @@ class Controller extends BaseController
      */
     public function destroy($id)
     {
-        $data = $this->delete($this->model , ['id' => $id]);
-        return view('admin.'.$this->view.'.index' , compact('data'));    
+        //
     }
 }
