@@ -49,8 +49,8 @@ class NewCrud extends Command
         Artisan::call('make:controller Admin/' . $upper_crud_name . 'Controller');
         Artisan::call('make:controller Api/' . $upper_crud_name . 'Controller');
 
-        Artisan::call('make:request Admin/' . $upper_crud_name . 'Request');
-        Artisan::call('make:request Api/' . $upper_crud_name . 'Request');
+        Artisan::call('make:request Api/' . $upper_crud_name . '/Store' . $upper_crud_name . 'Request');
+        Artisan::call('make:request Api/' . $upper_crud_name . '/Update' . $upper_crud_name . 'Request');
 
         Artisan::call('make:resource ' . $upper_crud_name . 'Resource');
 
