@@ -260,11 +260,16 @@ return [
             'icon' => 'fas fa-fw fa-home',
         ],
 
-        ['header' => 'main'],
+        ['header' => 'main_section'],
 
         [
-            'text' => 'Targets',
+            'text' => 'targets',
             'url'  => 'target',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'diets',
+            'url'  => 'diet',
             'icon' => 'fas fa-fw fa-home',
         ],
         /******************************************************************************************************** */

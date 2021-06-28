@@ -18,7 +18,8 @@ Auth::routes();
 
 Route::view('/', 'welcome');
 
-Route::group(['middleware' => 'auth', 'as' => 'admin.', 'namespace' => ''], function () {
+Route::group(['middleware' => 'auth', 'as' => 'admin.'], function () {
     Route::get('home', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
     Route::resource('target', \App\Http\Controllers\Admin\TargetController::class);
+    Route::resource('diet', \App\Http\Controllers\Admin\DietController::class);
 });

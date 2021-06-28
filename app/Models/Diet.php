@@ -27,4 +27,9 @@ class Diet extends Model implements TranslatableContract
     {
         return $this->translatedAttributes;
     }
+
+    public function target()
+    {
+        return $this->belongsTo(Target::class);
+    }
 }

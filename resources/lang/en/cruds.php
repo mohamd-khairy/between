@@ -31,4 +31,16 @@ return [
             'name' => 'Name',
         ]
     ],
+    'diet' => [
+        'title' => 'Diet',
+        'create' => 'Create Diet',
+        'update' => 'Update Diet',
+        'fields' => [
+            'id' => 'Number',
+            'name' => 'Name',
+            'protein' => 'Protein',
+            'carb' => 'Carbohydrate',
+            'target' => 'Target'
+        ]
+    ],
 ];

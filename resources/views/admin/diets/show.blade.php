@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('cruds.target.title'))
+@section('title', __('cruds.diet.title'))
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{__('cruds.target.title')}}</h1>
+<h1 class="m-0 text-dark">{{__('cruds.diet.title')}}</h1>
 @stop
 
 @section('content')
@@ -20,17 +20,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>{{__('cruds.target.fields.id')}}</th>
+                    <th>{{__('cruds.diet.fields.id')}}</th>
                     <td>{{$data->id ?? ''}}</td>
                 </tr>
 
                 <tr>
-                    <th>{{__('cruds.target.fields.name')}} En</th>
+                    <th>{{__('cruds.diet.fields.name')}} En</th>
                     <td>{{$data->translate('en')->name ?? ''}}</td>
                 </tr>
                 <tr>
-                    <th>{{__('cruds.target.fields.name')}} Ar</th>
+                    <th>{{__('cruds.diet.fields.name')}} Ar</th>
                     <td>{{$data->translate('ar')->name ?? ''}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('cruds.diet.fields.target')}}</th>
+                    <td>{{$data->target->name ?? ''}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('cruds.diet.fields.protein')}}</th>
+                    <td>{{$data->protein ?? ''}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('cruds.diet.fields.carb')}} Ar</th>
+                    <td>{{$data->carb ?? ''}}</td>
                 </tr>
 
             </tbody>
