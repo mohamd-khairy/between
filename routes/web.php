@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::view('/', 'welcome');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.', 'namespace' => '\App\Http\Controllers\Admin'], function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::resource('target', TargetController::class);
+Route::group(['middleware' => 'auth', 'as' => 'admin.', 'namespace' => ''], function () {
+    Route::get('home', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+    Route::resource('target', \App\Http\Controllers\Admin\TargetController::class);
 });

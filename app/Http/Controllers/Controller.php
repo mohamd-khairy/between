@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Validator;
 
 class Controller extends BaseController
 {
@@ -22,8 +23,8 @@ class Controller extends BaseController
      */
     public function index()
     {
-        $data = $this->get($this->model , []);
-        return view('admin.'.$this->view.'.index' , compact('data'));
+        $data = $this->get($this->model, []);
+        return view('admin.' . $this->view . '.index', compact('data'));
     }
 
     /**
@@ -33,7 +34,7 @@ class Controller extends BaseController
      */
     public function create()
     {
-        return view('admin.'.$this->view.'.create');
+        return view('admin.' . $this->view . '.create');
     }
 
     /**
@@ -44,8 +45,13 @@ class Controller extends BaseController
      */
     public function store(Request $request)
     {
-        $data = $this->add($this->model , $request->all());
-        return view('admin.'.$this->view.'.index' , compact('data'));  
+        $data = $request->all();
+        $request->validate($this->create_validation);
+        unset($data['_token']);
+        $data = translated_fields($this->model, $data);
+        $data = $this->add($this->model, $data);
+        session()->flash('success', __('cruds.created_success'));
+        return redirect()->route('admin.target.index');
     }
 
     /**
@@ -56,8 +62,8 @@ class Controller extends BaseController
      */
     public function show($id)
     {
-        $data = $this->find($this->model , ['id' => $id]);
-        return view('admin.'.$this->view.'.show' , compact('data'));        
+        $data = $this->find($this->model, ['id' => $id]);
+        return view('admin.' . $this->view . '.show', compact('data'));
     }
 
     /**
@@ -68,8 +74,8 @@ class Controller extends BaseController
      */
     public function edit($id)
     {
-        $data = $this->find($this->model , ['id' => $id]);
-        return view('admin.'.$this->view.'.edit' , compact('data')); 
+        $data = $this->find($this->model, ['id' => $id]);
+        return view('admin.' . $this->view . '.edit', compact('data'));
     }
 
     /**
@@ -81,8 +87,14 @@ class Controller extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $data = $this->put($this->model , ['id' => $id], $request->all());
-        return view('admin.'.$this->view.'.edit' , compact('data'));  
+        $data = $request->all();
+        $request->validate($this->edit_validation);
+        unset($data['_token']);
+        unset($data['_method']);
+        $data = translated_fields($this->model, $data);
+        $data = $this->put($this->model, ['id' => $id], $data);
+        session()->flash('success', __('cruds.updated_success'));
+        return redirect()->route('admin.target.index');
     }
 
     /**
@@ -93,7 +105,8 @@ class Controller extends BaseController
      */
     public function destroy($id)
     {
-        $data = $this->delete($this->model , ['id' => $id]);
-        return view('admin.'.$this->view.'.index' , compact('data'));    
+        $data = $this->delete($this->model, ['id' => $id]);
+        session()->flash('success', __('cruds.deleted_success'));
+        return redirect()->route('admin.target.index');
     }
 }

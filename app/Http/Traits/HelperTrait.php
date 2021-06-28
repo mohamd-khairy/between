@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\File;
 
 trait HelperTrait
 {
+    public function paginate($model, $with = [], $page_size = 10)
+    {
+        return $model::with($with)->paginate($page_size);
+    }
+
     public function get($model, $with = [])
     {
         return $model::with($with)->get();
@@ -33,7 +38,7 @@ trait HelperTrait
         $data = $input;
         try {
             DB::beginTransaction();
-            $item = $model::firstOrCreate($data);
+            $item = $model::create($data);
 
             if (isset($input['photo'])) {
                 if (is_array($input['photo'])) {
@@ -73,9 +78,7 @@ trait HelperTrait
         $data = $input;
         $item = $model::where($conditions)->first();
         try {
-
             DB::beginTransaction();
-
             if (isset($input['photo'])) {
                 if (is_array($input['photo'])) {
                     foreach ($input['photo'] as $k => $photo) {
@@ -88,12 +91,9 @@ trait HelperTrait
                     $photos['model'] = $model;
                     $photos['item_id'] = $item->id;
                 }
-
                 Image::insert($photos);
             }
-
             $item->update($data);
-
             DB::commit();
             return $item;
         } catch (\Throwable $th) {
