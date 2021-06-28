@@ -272,6 +272,11 @@ return [
             'url'  => 'diet',
             'icon' => 'fas fa-fw fa-home',
         ],
+        [
+            'text' => 'daynumbers',
+            'url'  => 'daynumber',
+            'icon' => 'fas fa-fw fa-home',
+        ],
         /******************************************************************************************************** */
         // ['header' => 'main'],
         // [

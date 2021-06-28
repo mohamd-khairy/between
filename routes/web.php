@@ -22,4 +22,5 @@ Route::group(['middleware' => 'auth', 'as' => 'admin.'], function () {
     Route::get('home', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
     Route::resource('target', \App\Http\Controllers\Admin\TargetController::class);
     Route::resource('diet', \App\Http\Controllers\Admin\DietController::class);
+    Route::resource('daynumber', \App\Http\Controllers\Admin\DayNumberController::class);
 });

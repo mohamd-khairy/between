@@ -43,4 +43,13 @@ return [
             'target' => 'Target'
         ]
     ],
+    'daynumber' => [
+        'title' => 'Subscription Day Numbers',
+        'create' => 'Create Subscription Day Numbers',
+        'update' => 'Update Subscription Day Numbers',
+        'fields' => [
+            'id' => 'Number',
+            'number' => 'Day Numbers',
+        ]
+    ],
 ];

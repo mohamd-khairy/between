@@ -49,9 +49,6 @@ class NewCrud extends Command
         Artisan::call('make:controller Admin/' . $upper_crud_name . 'Controller');
         Artisan::call('make:controller Api/' . $upper_crud_name . 'Controller');
 
-        // Artisan::call('make:request Api/' . $upper_crud_name . '/Store' . $upper_crud_name . 'Request');
-        // Artisan::call('make:request Api/' . $upper_crud_name . '/Update' . $upper_crud_name . 'Request');
-
         Artisan::call('make:resource ' . $upper_crud_name . 'Resource');
 
         File::makeDirectory(base_path('resources/views/admin/' . $plural_crud_name), 0777, true, true);
@@ -61,5 +58,7 @@ class NewCrud extends Command
         File::copy(base_path('resources/views/admin/crud/show.blade.php'), base_path('resources/views/admin/' . $plural_crud_name . '/show.blade.php'));
 
         $this->info($upper_crud_name . ' crud created successfully');
+        // Artisan::call('make:request Api/' . $upper_crud_name . '/Store' . $upper_crud_name . 'Request');
+        // Artisan::call('make:request Api/' . $upper_crud_name . '/Update' . $upper_crud_name . 'Request');
     }
 }

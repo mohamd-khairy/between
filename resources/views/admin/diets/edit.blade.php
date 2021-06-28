@@ -16,7 +16,7 @@
                 @csrf
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">{{__('cruds.diet.create')}}</h3>
+                        <h3 class="card-title">{{__('cruds.diet.update')}}</h3>
                     </div>
                     <div class="card-body">
 

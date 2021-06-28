@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\Target;
 use App\Models\User;
@@ -44,6 +45,8 @@ class DatabaseSeeder extends Seeder
         foreach ($targets as $target) {
             Target::create($target);
         }
+
+        /******************************************************** */
 
         $diets = [
             [
@@ -89,10 +92,27 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        foreach($diets as $diet){
+        foreach ($diets as $diet) {
             Diet::create($diet);
         }
 
+        /******************************************************** */
+
+        $days = [
+            [
+                'number' => 14
+            ],
+            [
+                'number' => 20
+            ],
+            [
+                'number' => 26
+            ],
+        ];
+
+        foreach ($days as $day) {
+            DayNumber::create($day);
+        }
         // $countItem = 10;
         // for ($i = 0; $i < $countItem; $i++) {
         // }
