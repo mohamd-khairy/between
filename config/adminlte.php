@@ -263,6 +263,11 @@ return [
         ['header' => 'main_section'],
 
         [
+            'text' => 'users',
+            'url'  => 'user',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
             'text' => 'targets',
             'url'  => 'target',
             'icon' => 'fas fa-fw fa-home',
@@ -275,6 +280,11 @@ return [
         [
             'text' => 'daynumbers',
             'url'  => 'daynumber',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'states',
+            'url'  => 'state',
             'icon' => 'fas fa-fw fa-home',
         ],
         /******************************************************************************************************** */

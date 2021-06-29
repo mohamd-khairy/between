@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\DayNumber;
 use App\Models\Diet;
+use App\Models\State;
 use App\Models\Target;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -21,9 +22,12 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         User::create([
-            'name' => 'admin',
+            'en' => ['name' => 'admin'],
+            'ar' => ['name' => 'أدمن'],
             'email' => 'admin@admin.com',
             'password' => Hash::make('password'),
+            'type' => 'admin',
+            'gender' => 'male'
         ]);
 
 
@@ -113,6 +117,44 @@ class DatabaseSeeder extends Seeder
         foreach ($days as $day) {
             DayNumber::create($day);
         }
+
+
+        /**************************************************************** */
+
+
+        $states = [
+            [
+                'en' => ['name' => 'Dubai'],
+                'ar' => ['name' => 'دبي'],
+            ],
+            [
+                'en' => ['name' => 'Abu dhabi'],
+                'ar' => ['name' => 'أبوظبي'],
+            ],
+            [
+                'en' => ['name' => 'Ajman'],
+                'ar' => ['name' => 'عجمان'],
+            ],
+            [
+                'en' => ['name' => 'Sharjah'],
+                'ar' => ['name' => 'الشارقة'],
+            ],
+            [
+                'en' => ['name' => 'Fujairah'],
+                'ar' => ['name' => 'الفجيرة'],
+            ],  [
+                'en' => ['name' => 'Ras Al Khaimah'],
+                'ar' => ['name' => 'رأس الخيمة'],
+            ],  [
+                'en' => ['name' => 'Umm al Quwain'],
+                'ar' => ['name' => 'أم القيوين'],
+            ],
+        ];
+
+        foreach ($states as $state) {
+            State::create($state);
+        }
+
         // $countItem = 10;
         // for ($i = 0; $i < $countItem; $i++) {
         // }

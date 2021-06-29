@@ -18,7 +18,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        $data = $this->get($this->model, $this->with);
+        $data = $this->getBy($this->model, $this->indexCondition ?? [], $this->with);
         if (!request()->expectsJson()) {
             return view('admin.' . $this->view . '.index', compact('data'));
         } else {
@@ -101,6 +101,12 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->phone){
+            $this->edit_validation['phone'] = 'required|unique:users,phone,'.$id;
+        }
+        if($request->email){
+            $this->edit_validation['email'] = 'required|email|unique:users,email,'.$id;
+        }
         if (!request()->expectsJson()) {
             $data = $request->validate($this->edit_validation);
         } else {

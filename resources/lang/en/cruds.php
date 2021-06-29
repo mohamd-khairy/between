@@ -13,6 +13,11 @@ return [
     'select_all' => 'select-all',
     'deselect_all' => 'Deselect-all',
     'actions' => 'Actions',
+    'male' => 'Male',
+    'female' => 'Female',
+    'user' => 'User',
+    'admin' => 'Admin',
+
 
     'deleted_success' => 'Deleted Successfully',
     'created_success' => 'Created Successfully',
@@ -50,6 +55,32 @@ return [
         'fields' => [
             'id' => 'Number',
             'number' => 'Day Numbers',
+        ]
+    ],
+    'state' => [
+        'title' => 'state',
+        'create' => 'Create state',
+        'update' => 'Update state',
+        'fields' => [
+            'id' => 'Number',
+            'name' => 'Name',
+        ]
+    ],
+    'users' => [
+        'title' => 'Users',
+        'create' => 'Create user',
+        'update' => 'Update user',
+        'fields' => [
+            'id' => 'Number',
+            'name' => 'Name',
+            'email' => 'Email',
+            'password' => 'Password',
+            'type' => 'Type',
+            'phone' => 'Phone',
+            'weight' => 'Weight',
+            'height' => 'Height',
+            'gender' => 'Gender',
+            'birth_date' => 'Birth Date',
         ]
     ],
 ];

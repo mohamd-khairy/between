@@ -18,9 +18,11 @@ Auth::routes();
 
 Route::view('/', 'welcome');
 
-Route::group(['middleware' => 'auth', 'as' => 'admin.'], function () {
+Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function () {
     Route::get('home', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
     Route::resource('target', \App\Http\Controllers\Admin\TargetController::class);
     Route::resource('diet', \App\Http\Controllers\Admin\DietController::class);
     Route::resource('daynumber', \App\Http\Controllers\Admin\DayNumberController::class);
+    Route::resource('state', \App\Http\Controllers\Admin\StateController::class);
+    Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
 });
