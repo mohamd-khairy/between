@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\HelperTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class MainController extends Controller
@@ -54,6 +55,9 @@ class MainController extends Controller
             }
         }
         $data = translated_fields($this->model, $data);
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
         $data = $this->add($this->model, $data);
 
         if (!request()->expectsJson()) {
@@ -101,11 +105,11 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->phone){
-            $this->edit_validation['phone'] = 'required|unique:users,phone,'.$id;
+        if ($request->phone) {
+            $this->edit_validation['phone'] = 'required|unique:users,phone,' . $id;
         }
-        if($request->email){
-            $this->edit_validation['email'] = 'required|email|unique:users,email,'.$id;
+        if ($request->email) {
+            $this->edit_validation['email'] = 'required|email|unique:users,email,' . $id;
         }
         if (!request()->expectsJson()) {
             $data = $request->validate($this->edit_validation);
@@ -117,6 +121,9 @@ class MainController extends Controller
             }
         }
         $data = translated_fields($this->model, $data);
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
         $data = $this->put($this->model, ['id' => $id], $data);
 
         if (!request()->expectsJson()) {

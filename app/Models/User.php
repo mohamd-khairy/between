@@ -60,12 +60,4 @@ class User extends Authenticatable implements TranslatableContract
     {
         return $this->translatedAttributes;
     }
-
-
-    public function setPasswordAttribute($value)
-    {
-        if ($value) {
-            $this->attributes['password'] = Hash::make($value);
-        }
-    }
 }

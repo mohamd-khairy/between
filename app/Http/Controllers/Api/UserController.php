@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $validateData = Validator::make($request->all(), [
+        $data = $request->all();
+        $validateData = Validator::make($data, [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
@@ -22,7 +24,10 @@ class UserController extends Controller
             return responseFail($validateData->errors()->first());
         }
 
-        $user = User::create($request->all());
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
+        $user = User::create($data);
         return responseSuccess($user, __('auth.register_success'));
     }
 
