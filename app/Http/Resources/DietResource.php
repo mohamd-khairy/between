@@ -14,6 +14,11 @@ class DietResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id ?? null,
+            'name' => $this->name ?? null,
+            'protein' => $this->protein ?? null,
+            'carb' => $this->carb ?? null,
+        ];
     }
 }

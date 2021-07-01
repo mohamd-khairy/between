@@ -14,6 +14,10 @@ class TargetResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id ?? null,
+            'name' => $this->name ?? null,
+            'diets' =>  DietResource::collection($this->diets) ?? null,
+        ];
     }
 }

@@ -21,6 +21,12 @@ class Diet extends Model implements TranslatableContract
         'target_id'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     public $translatedAttributes = ['name'];
 
     public function gettranslatable()

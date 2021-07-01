@@ -14,6 +14,11 @@ class State extends Model implements TranslatableContract
 
     protected $fillable = [];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+    
     public $translatedAttributes = ['name'];
 
     public function gettranslatable()

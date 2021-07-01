@@ -12,4 +12,9 @@ class DayNumber extends Model
     protected $fillable = [
         'number'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }

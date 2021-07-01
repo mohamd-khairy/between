@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [\App\Http\Controllers\Api\UserController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login']);
 
+Route::get('get-public-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_public_data']);
+
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('user', function (Request $request) { return responseSuccess(new UserResource($request->user())); });
     Route::get('user-get-address', [\App\Http\Controllers\Api\AddressController::class, 'user_get_address']);

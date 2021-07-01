@@ -25,6 +25,11 @@ class Address extends Model implements TranslatableContract
 
     public $translatedAttributes = ['country', 'state', 'district', 'street', 'full_address'];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function gettranslatable()
     {
         return $this->translatedAttributes;

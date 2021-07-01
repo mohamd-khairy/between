@@ -16,10 +16,21 @@ class Target extends Model implements TranslatableContract
 
     protected $fillable = [];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     public $translatedAttributes = ['name'];
 
     public function gettranslatable()
     {
         return $this->translatedAttributes;
+    }
+
+    public function diets()
+    {
+        return $this->hasMany(Diet::class);
     }
 }
