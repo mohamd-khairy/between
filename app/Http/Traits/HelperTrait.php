@@ -48,26 +48,26 @@ trait HelperTrait
     {
         $data = $input;
         // try {
-        DB::beginTransaction();
-        $item = $model::create($data);
+            DB::beginTransaction();
+            $item = $model::create($data);
 
-        if (isset($input['photo'])) {
-            if (is_array($input['photo'])) {
-                foreach ($input['photo'] as $k => $photo) {
-                    $photos[$k]['photo'] = $this->upload($photo);
-                    $photos[$k]['model'] = $model;
-                    $photos[$k]['item_id'] = $item->id;
+            if (isset($input['photo'])) {
+                if (is_array($input['photo'])) {
+                    foreach ($input['photo'] as $k => $photo) {
+                        $photos[$k]['photo'] = $this->upload($photo);
+                        $photos[$k]['model'] = $model;
+                        $photos[$k]['item_id'] = $item->id;
+                    }
+                } else {
+                    $photos['photo'] = $this->upload($input['photo']);
+                    $photos['model'] = $model;
+                    $photos['item_id'] = $item->id;
                 }
-            } else {
-                $photos['photo'] = $this->upload($input['photo']);
-                $photos['model'] = $model;
-                $photos['item_id'] = $item->id;
-            }
 
-            Image::insert($photos);
-        }
-        DB::commit();
-        return $item;
+                Image::insert($photos);
+            }
+            DB::commit();
+            return $item;
         // } catch (\Throwable $th) {
         //     if (isset($input['photo'])) {
         //         foreach ($input['photo'] as $photo) {
@@ -75,7 +75,7 @@ trait HelperTrait
         //         }
         //     }
         //     DB::rollBack();
-        //     return false;
+        //     return $th;
         // }
     }
 
@@ -88,7 +88,7 @@ trait HelperTrait
     {
         $data = $input;
         $item = $model::where($conditions)->first();
-        try {
+        // try {
             DB::beginTransaction();
             if (isset($input['photo'])) {
                 if (is_array($input['photo'])) {
@@ -107,10 +107,10 @@ trait HelperTrait
             $item->update($data);
             DB::commit();
             return $item;
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            return false;
-        }
+        // } catch (\Throwable $th) {
+        //     DB::rollBack();
+        //     return $th;
+        // }
     }
 
     public function find($model, $conditions)

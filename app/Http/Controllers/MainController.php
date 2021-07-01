@@ -121,9 +121,13 @@ class MainController extends Controller
             }
         }
         $data = translated_fields($this->model, $data);
-        if ($request->password) {
+
+        if ($request->password && $request->password != null) {
             $data['password'] = Hash::make($request->password);
+        } else {
+            unset($data['password']);
         }
+
         $data = $this->put($this->model, ['id' => $id], $data);
 
         if (!request()->expectsJson()) {

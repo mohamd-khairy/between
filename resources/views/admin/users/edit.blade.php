@@ -39,7 +39,7 @@
 
                         <div class="form-group ">
                             <label for="inputName">{{__('cruds.users.fields.password')}} </label>
-                            <input type="password" id="inputName" placeholder="enter" value="{{old('password' , '')}}" name="password" class="form-control">
+                            <input type="password" id="inputName" placeholder="enter" value="" name="password" class="form-control">
                         </div>
 
                         <div class="form-group ">
