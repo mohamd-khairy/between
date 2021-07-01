@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\File;
 
 trait HelperTrait
 {
+    public function filters($filters)
+    {
+        $conditions = [];
+        foreach ($filters as $filter) {
+            if (request($filter)) {
+                $conditions[$filter] = request($filter);
+            }
+        }
+        return $conditions;
+    }
+
     public function paginate($model, $with = [], $page_size = 10)
     {
         return $model::with($with)->paginate($page_size);
@@ -36,36 +47,36 @@ trait HelperTrait
     public function add($model, $input)
     {
         $data = $input;
-        try {
-            DB::beginTransaction();
-            $item = $model::create($data);
+        // try {
+        DB::beginTransaction();
+        $item = $model::create($data);
 
-            if (isset($input['photo'])) {
-                if (is_array($input['photo'])) {
-                    foreach ($input['photo'] as $k => $photo) {
-                        $photos[$k]['photo'] = $this->upload($photo);
-                        $photos[$k]['model'] = $model;
-                        $photos[$k]['item_id'] = $item->id;
-                    }
-                } else {
-                    $photos['photo'] = $this->upload($input['photo']);
-                    $photos['model'] = $model;
-                    $photos['item_id'] = $item->id;
+        if (isset($input['photo'])) {
+            if (is_array($input['photo'])) {
+                foreach ($input['photo'] as $k => $photo) {
+                    $photos[$k]['photo'] = $this->upload($photo);
+                    $photos[$k]['model'] = $model;
+                    $photos[$k]['item_id'] = $item->id;
                 }
+            } else {
+                $photos['photo'] = $this->upload($input['photo']);
+                $photos['model'] = $model;
+                $photos['item_id'] = $item->id;
+            }
 
-                Image::insert($photos);
-            }
-            DB::commit();
-            return $item;
-        } catch (\Throwable $th) {
-            if (isset($input['photo'])) {
-                foreach ($input['photo'] as $photo) {
-                    $this->deleteImage($photo);
-                }
-            }
-            DB::rollBack();
-            return false;
+            Image::insert($photos);
         }
+        DB::commit();
+        return $item;
+        // } catch (\Throwable $th) {
+        //     if (isset($input['photo'])) {
+        //         foreach ($input['photo'] as $photo) {
+        //             $this->deleteImage($photo);
+        //         }
+        //     }
+        //     DB::rollBack();
+        //     return false;
+        // }
     }
 
     public function create($model, $input)

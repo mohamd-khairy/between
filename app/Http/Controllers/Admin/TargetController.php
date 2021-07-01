@@ -19,7 +19,7 @@ class TargetController extends MainController
         'name_en' => 'required',
         'name_ar' => 'required'
     ];
-
+    public $indexCondition = [];
     public $with = [];
 
 }

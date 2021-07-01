@@ -2,6 +2,8 @@
 
 return [
 
+    'google_map_key' => env('GOOGLE_MAP_KEY', 'AIzaSyCMk0rodttpnH6PaTd0O6l6lcZfbXzCc8Q'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

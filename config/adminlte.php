@@ -263,11 +263,6 @@ return [
         ['header' => 'main_section'],
 
         [
-            'text' => 'users',
-            'url'  => 'user',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-        [
             'text' => 'targets',
             'url'  => 'target',
             'icon' => 'fas fa-fw fa-home',
@@ -286,6 +281,20 @@ return [
             'text' => 'states',
             'url'  => 'state',
             'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text'    => 'user_section',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'users',
+                    'url'  => 'user',
+                ],
+                [
+                    'text' => 'user_addresses',
+                    'url'  => 'address',
+                ],
+            ],
         ],
         /******************************************************************************************************** */
         // ['header' => 'main'],

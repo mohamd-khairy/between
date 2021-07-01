@@ -25,4 +25,5 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('daynumber', \App\Http\Controllers\Admin\DayNumberController::class);
     Route::resource('state', \App\Http\Controllers\Admin\StateController::class);
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('address', \App\Http\Controllers\Admin\AddressController::class);
 });

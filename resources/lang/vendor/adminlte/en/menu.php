@@ -7,5 +7,8 @@ return [
     'diets' => 'Diets',
     'daynumbers' => 'Subscription Day Numbers',
     'states' => 'United Arab Emirate States',
-    'users' => 'Users'
+    'users' => 'Users',
+    'addresses' => 'Addresses',
+    'user_addresses' => 'User Addresses',
+    'user_section' => 'User Section'
 ];

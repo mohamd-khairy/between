@@ -18,7 +18,9 @@ return [
     'user' => 'User',
     'admin' => 'Admin',
 
-
+    'home' => 'Home',
+    'work' => 'Work',
+    
     'deleted_success' => 'Deleted Successfully',
     'created_success' => 'Created Successfully',
     'updated_success' => 'Updated Successfully',
@@ -32,7 +34,7 @@ return [
         'create' => 'Create Target',
         'update' => 'Update Target',
         'fields' => [
-            'id' => 'Number',
+            'id' => 'Id',
             'name' => 'Name',
         ]
     ],
@@ -41,7 +43,7 @@ return [
         'create' => 'Create Diet',
         'update' => 'Update Diet',
         'fields' => [
-            'id' => 'Number',
+            'id' => 'Id',
             'name' => 'Name',
             'protein' => 'Protein',
             'carb' => 'Carbohydrate',
@@ -53,7 +55,7 @@ return [
         'create' => 'Create Subscription Day Numbers',
         'update' => 'Update Subscription Day Numbers',
         'fields' => [
-            'id' => 'Number',
+            'id' => 'Id',
             'number' => 'Day Numbers',
         ]
     ],
@@ -71,7 +73,7 @@ return [
         'create' => 'Create user',
         'update' => 'Update user',
         'fields' => [
-            'id' => 'Number',
+            'id' => 'Id',
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
@@ -81,6 +83,24 @@ return [
             'height' => 'Height',
             'gender' => 'Gender',
             'birth_date' => 'Birth Date',
+        ]
+    ],
+    'address' => [
+        'title' => 'Addresses',
+        'create' => 'Create Address',
+        'update' => 'Update Address',
+        'fields' => [
+            'id' => 'Id',
+            'country' => 'Country',
+            'state' => 'State',
+            'full_address' => 'Full Address',
+            'district' => 'District',
+            'building' => 'Building',
+            'floor' => 'Floor',
+            'apartment_number' => 'Apartment Number',
+            'type' => 'Type',
+            'street' => 'Street',
+            'user' => 'User',
         ]
     ],
 ];

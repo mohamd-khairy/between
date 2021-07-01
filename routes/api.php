@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return responseSuccess($request->user());
+
+Route::post('register', [\App\Http\Controllers\Api\UserController::class, 'register']);
+Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login']);
+
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('user', function (Request $request) { return responseSuccess(new UserResource($request->user())); });
+    Route::get('user-get-address', [\App\Http\Controllers\Api\AddressController::class, 'user_get_address']);
+    Route::post('user-add-address', [\App\Http\Controllers\Api\AddressController::class, 'user_add_address']);
 });
-
-
-Route::post('register' , [\App\Http\Controllers\Api\UserController::class , 'register']);
-Route::post('login' , [\App\Http\Controllers\Api\UserController::class , 'login']);

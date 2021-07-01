@@ -17,6 +17,8 @@ return [
     'female' => 'أنثي',
     'user' => 'مستخدم',
     'admin' => 'أدمن',
+    'home' => 'المنزل',
+    'work' => 'العمل',
 
     'deleted_success' => 'تم المسح بنجاح',
     'created_success' => 'تم الانشاء بنجاح',
@@ -80,6 +82,24 @@ return [
             'height' => 'الطول',
             'gender' => 'الجنس',
             'birth_date' => 'تاريخ الميلاد',
+        ]
+    ],
+    'address' => [
+        'title' => 'العناوين',
+        'create' => 'انشاء عنوان',
+        'update' => 'تعديل عنوان',
+        'fields' => [
+            'id' => 'الرقم',
+            'country' => 'البلد',
+            'state' => 'الاماره',
+            'full_address' => 'العنوان',
+            'district' => 'المنطقه',
+            'building' => 'المبني',
+            'floor' => 'الطابق',
+            'apartment_number' => ' الوحده',
+            'type' => 'النوع',
+            'street' => 'الشارع',
+            'user' => 'المستخدم',
         ]
     ],
 ];

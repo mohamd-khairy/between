@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class MainController extends Controller
 {
     use HelperTrait;
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +18,8 @@ class MainController extends Controller
      */
     public function index()
     {
-        $data = $this->getBy($this->model, $this->indexCondition ?? [], $this->with);
+        $conditions = $this->filters($this->indexCondition);
+        $data = $this->getBy($this->model, $conditions, $this->with);
         if (!request()->expectsJson()) {
             return view('admin.' . $this->view . '.index', compact('data'));
         } else {

@@ -33,23 +33,23 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        if ($request->email && $request->password) {
-            $validateData = Validator::make($request->all(), [
-                'email' => 'required|email',
-                'password' => 'required|string|min:6', //|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/
-            ]);
+        $validateData = Validator::make($request->all(), [
+            'phone' => 'required_without:email',
+            'email' => 'required_without:phone|email',
+            'password' => 'required|string|min:6', //|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/
+        ]);
 
-            if ($validateData->fails()) {
-                return responseFail($validateData->errors()->first());
-            }
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-                $user = Auth::user();
-                $data = new \stdClass();
-                $data->user = $user;
-                $data->token = $user->createToken('MyApp')->accessToken;
-                return responseSuccess($data, 'logged in successfully');
-            }
+        if ($validateData->fails()) {
+            return responseFail($validateData->errors()->first());
         }
+        if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password]) || Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+            $data = new \stdClass();
+            $data->user = $user;
+            $data->token = $user->createToken('MyApp')->accessToken;
+            return responseSuccess($data, 'logged in successfully');
+        }
+
         return responseFail('Unauthorized', 401);
     }
 }
