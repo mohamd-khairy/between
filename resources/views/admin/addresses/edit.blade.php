@@ -41,24 +41,24 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.address.fields.district')}} En</label>
-                                <input type="text" placeholder="enter" value="{{old('district_en' , $data->translate('en')->district)}}" name="district_en" class="form-control">
+                                <input type="text" placeholder="enter" value="{{old('district_en' , $data->translate('en')->district ?? '')}}" name="district_en" class="form-control">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.address.fields.district')}} Ar</label>
-                                <input type="text" placeholder="enter" value="{{old('district_ar' , $data->translate('ar')->district)}}" name="district_ar" class="form-control">
+                                <input type="text" placeholder="enter" value="{{old('district_ar' , $data->translate('ar')->district ?? '')}}" name="district_ar" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.address.fields.street')}} En</label>
-                                <input type="text" placeholder="enter" value="{{old('street_en' , $data->translate('en')->street)}}" name="street_en" class="form-control">
+                                <input type="text" placeholder="enter" value="{{old('street_en' , $data->translate('en')->street ?? '')}}" name="street_en" class="form-control">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.address.fields.street')}} Ar</label>
-                                <input type="text" placeholder="enter" value="{{old('street_ar' , $data->translate('ar')->street)}}" name="street_ar" class="form-control">
+                                <input type="text" placeholder="enter" value="{{old('street_ar' , $data->translate('ar')->street ?? '')}}" name="street_ar" class="form-control">
                             </div>
                         </div>
 

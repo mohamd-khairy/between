@@ -23,12 +23,12 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.users.fields.name')}} En</label>
-                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_en' , $data->translate('en')->name)}}" name="name_en" class="form-control">
+                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_en' , $data->translate('en')->name ?? '')}}" name="name_en" class="form-control">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.users.fields.name')}} Ar</label>
-                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , $data->translate('ar')->name)}}" name="name_ar" class="form-control">
+                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , $data->translate('ar')->name ?? '')}}" name="name_ar" class="form-control">
                             </div>
                         </div>
 
@@ -39,7 +39,7 @@
 
                         <div class="form-group ">
                             <label for="inputName">{{__('cruds.users.fields.password')}} </label>
-                            <input type="password" id="inputName" placeholder="enter" value="{{old('password' , null)}}" name="password" class="form-control">
+                            <input type="password" id="inputName" placeholder="enter" value="{{old('password' , '')}}" name="password" class="form-control">
                         </div>
 
                         <div class="form-group ">

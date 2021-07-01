@@ -23,12 +23,12 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.state.fields.name')}} En</label>
-                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_en' , $data->translate('en')->name)}}" name="name_en" class="form-control">
+                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_en' , $data->translate('en')->name ?? '')}}" name="name_en" class="form-control">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.state.fields.name')}} Ar</label>
-                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , $data->translate('ar')->name)}}" name="name_ar" class="form-control">
+                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , $data->translate('ar')->name ?? '')}}" name="name_ar" class="form-control">
                             </div>
                         </div>
                     </div>
