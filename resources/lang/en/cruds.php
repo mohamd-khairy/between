@@ -20,7 +20,7 @@ return [
 
     'home' => 'Home',
     'work' => 'Work',
-    
+
     'deleted_success' => 'Deleted Successfully',
     'created_success' => 'Created Successfully',
     'updated_success' => 'Updated Successfully',
@@ -64,7 +64,7 @@ return [
         'create' => 'Create state',
         'update' => 'Update state',
         'fields' => [
-            'id' => 'Number',
+            'id' => 'Id',
             'name' => 'Name',
         ]
     ],
@@ -101,6 +101,16 @@ return [
             'type' => 'Type',
             'street' => 'Street',
             'user' => 'User',
+        ]
+    ],
+    'mealtype' => [
+        'title' => 'Types',
+        'create' => 'Create Type',
+        'update' => 'Update Type',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+            'main_type' => 'Main Type'
         ]
     ],
 ];

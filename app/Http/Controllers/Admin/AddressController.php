@@ -38,7 +38,9 @@ class AddressController extends MainController
         'apartment_number' => 'required',
         'type' => 'required|in:home,work',
     ];
-    public $indexCondition = ['user_id'];
+    public $filters = ['user_id'];
+    public $indexCondition = [];
+
     public $with = ['user'];
 
     public function create()

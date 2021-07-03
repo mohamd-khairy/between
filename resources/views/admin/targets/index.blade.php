@@ -22,7 +22,7 @@
     <div class="card">
 
         <div class="card-body">
-            <table id="tagets" class="table table-bordered table-hover">
+            <table id="example" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>
@@ -87,7 +87,11 @@
 @section('js')
     <script>
     $(document).ready(function() {
-        $('#tagets').DataTable();
+        $('#example').DataTable({
+            order: [
+                [0, 'desc']
+            ]
+        });
     } );
     </script>
 @stop

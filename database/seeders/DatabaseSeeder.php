@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\DayNumber;
 use App\Models\Diet;
+use App\Models\MealType;
 use App\Models\State;
 use App\Models\Target;
 use App\Models\User;
@@ -155,8 +156,101 @@ class DatabaseSeeder extends Seeder
             State::create($state);
         }
 
-        // $countItem = 10;
-        // for ($i = 0; $i < $countItem; $i++) {
-        // }
+        /******************************************************************** */
+
+        $meal_types_protein = MealType::create([
+            'en' => ['name' => 'protein'],
+            'ar' => ['name' => 'بروتين'],
+            'parent' => 1,
+            'parent_id' => 0
+        ]);
+
+        $meal_types_carb = MealType::create([
+            'en' => ['name' => 'carb'],
+            'ar' => ['name' => 'كربوهيدرات'],
+            'parent' => 1,
+            'parent_id' => 0
+        ]);
+
+        $meal_types_snacks = MealType::create([
+            'en' => ['name' => 'snacks'],
+            'ar' => ['name' => 'وجبات خفيفه'],
+            'parent' => 1,
+            'parent_id' => 0
+        ]);
+
+        $meal_types = [
+            [
+                'en' => ['name' => 'Seafood'],
+                'ar' => ['name' => 'مأكولات بحريه'],
+                'parent' => 0,
+                'parent_id' => $meal_types_protein->id
+            ],
+            [
+                'en' => ['name' => 'Chicken'],
+                'ar' => ['name' => 'دجاج'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_protein->id
+            ],
+            [
+                'en' => ['name' => 'Beef'],
+                'ar' => ['name' => 'لحم'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_protein->id
+            ],
+            [
+                'en' => ['name' => 'Fish'],
+                'ar' => ['name' => 'سمك'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_protein->id
+            ],
+
+            [
+                'en' => ['name' => 'Potatoes'],
+                'ar' => ['name' => 'بطاطا'],
+                'parent' => 0,
+                'parent_id' => $meal_types_carb->id
+            ],
+            [
+                'en' => ['name' => 'Rice'],
+                'ar' => ['name' => 'أرز'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_carb->id
+            ],
+            [
+                'en' => ['name' => 'Bread'],
+                'ar' => ['name' => 'خبز'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_carb->id
+            ],
+            [
+                'en' => ['name' => 'Pasta'],
+                'ar' => ['name' => 'الباستا'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_carb->id
+            ],
+            [
+                'en' => ['name' => 'sweets'],
+                'ar' => ['name' => 'حلويات'],
+                'parent' => 0,
+                'parent_id' => $meal_types_snacks->id
+            ],
+            [
+                'en' => ['name' => 'salad'],
+                'ar' => ['name' => 'سلطه'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_snacks->id
+            ],
+            [
+                'en' => ['name' => 'soup'],
+                'ar' => ['name' => 'حساء'],
+                'parent' => 0,
+                'parent_id' =>  $meal_types_snacks->id
+            ],
+        ];
+
+        foreach ($meal_types as $meal_type) {
+            MealType::create($meal_type);
+        }
     }
 }

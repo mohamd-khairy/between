@@ -20,6 +20,7 @@ class StateController extends MainController
         'name_en' => 'required',
         'name_ar' => 'required'
     ];
+    public $filters = [];
     public $indexCondition = [];
     public $with = [];
 }

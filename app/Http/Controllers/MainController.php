@@ -18,7 +18,8 @@ class MainController extends Controller
      */
     public function index()
     {
-        $conditions = $this->filters($this->indexCondition);
+        $conditions = $this->filters($this->filters) + $this->indexCondition;
+        // $conditions = count($this->filters($this->filters)) > 0 ? $this->filters($this->filters) : $this->indexCondition;
         $data = $this->getBy($this->model, $conditions, $this->with);
         if (!request()->expectsJson()) {
             return view('admin.' . $this->view . '.index', compact('data'));

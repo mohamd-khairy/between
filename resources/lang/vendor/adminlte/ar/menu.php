@@ -11,5 +11,7 @@ return [
     'users' => 'المستخدمين',
     'addresses' => 'العناوين',
     'user_addresses' => 'عناوين المستخدمين',
-    'user_section' => 'قسم المستخدمين'
+    'user_section' => 'قسم المستخدمين',
+    'main_types' => 'انواع الوجبات الاساسيه',
+    'meal_types' => 'انواع الوجبات'
 ];

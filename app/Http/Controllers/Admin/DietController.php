@@ -26,6 +26,7 @@ class DietController extends MainController
         'carb' => 'required',
         'target_id' => 'required|exists:targets,id',
     ];
+    public $filters = [];
     public $indexCondition = [];
     public $with = ['target'];
 

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('cruds.address.title'))
+@section('title', __('cruds.mealtype.title'))
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{__('cruds.address.title')}}</h1>
+<h1 class="m-0 text-dark">{{__('cruds.mealtype.title')}}</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,11 @@
 
     <div class="row p-3">
         <div class="col-12">
-            <a type="submit" href="{{route('admin.address.create')}}" class="btn btn-success text-dark text-bold">{{__('cruds.address.create')}}</a>
+            @if(request('parent'))
+            <a type="submit" href="{{route('admin.mealtype.create')}}?parent={{request('parent')}}" class="btn btn-success text-dark text-bold">{{__('cruds.mealtype.create')}}</a>
+            @else
+            <a type="submit" href="{{route('admin.mealtype.create')}}" class="btn btn-success text-dark text-bold">{{__('cruds.mealtype.create')}}</a>
+            @endif
         </div>
     </div>
 
@@ -25,30 +29,16 @@
                 <thead>
                     <tr>
                         <th>
-                            {{__('cruds.address.fields.id')}}
+                            {{__('cruds.mealtype.fields.id')}}
                         </th>
                         <th>
-                            {{__('cruds.address.fields.user')}}
+                            {{__('cruds.mealtype.fields.name')}}
                         </th>
+                        @if(!request('parent'))
                         <th>
-                            {{__('cruds.address.fields.country')}}
+                            {{__('cruds.mealtype.fields.main_type')}}
                         </th>
-                        <th>
-                            {{__('cruds.address.fields.full_address')}}
-                        </th>
-                        <th>
-                            {{__('cruds.address.fields.building')}}
-                        </th>
-                        <th>
-                            {{__('cruds.address.fields.floor')}}
-                        </th>
-                        <th>
-                            {{__('cruds.address.fields.apartment_number')}}
-                        </th>
-                        <th>
-                            {{__('cruds.address.fields.type')}}
-                        </th>
-
+                        @endif
                         <th>
                         </th>
                     </tr>
@@ -60,42 +50,40 @@
                             {{$value->id ?? '-'}}
                         </td>
                         <td>
-                            {{$value->user->name ?? '-'}}
+                            {{$value->name ?? '-'}}
                         </td>
+                        @if(!request('parent'))
                         <td>
-                            {{$value->country ?? '-'}}
+                            {{$value->main_type->name ?? '-'}}
                         </td>
-                        <td>
-                            {{$value->full_address ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->building ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->floor ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->apartment_number ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->type ?? '-'}}
-                        </td>
+                        @endif
+
                         <td class="project-actions text-right">
 
-                            <a class="btn btn-primary btn-sm" href="{{route('admin.address.show' , $value->id)}}">
+                            <a class="btn btn-primary btn-sm" href="{{route('admin.mealtype.show' , $value->id)}}">
                                 <i class="fas fa-eye">
                                 </i>
                                 {{__('cruds.view')}}
                             </a>
 
 
-                            <a class="btn btn-info btn-sm" href="{{route('admin.address.edit' , $value->id)}}">
+                            @if(request('parent'))
+                            <a class="btn btn-info btn-sm" href="{{route('admin.mealtype.edit' , $value->id)}}?parent={{request('parent')}}">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 {{__('cruds.edit')}}
                             </a>
+                            @else
+                            <a class="btn btn-info btn-sm" href="{{route('admin.mealtype.edit' , $value->id)}}">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                {{__('cruds.edit')}}
+                            </a>
+                            @endif
 
-                            <form action="{{route('admin.address.destroy' , $value->id)}}" method="post" onsubmit="return confirm('Are You Sure?');" style="display: inline-block;">
+
+
+                            <form action="{{route('admin.mealtype.destroy' , $value->id)}}" method="post" onsubmit="return confirm('Are You Sure?');" style="display: inline-block;">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-danger btn-sm" type="submit">
@@ -120,13 +108,13 @@
 @endsection
 
 @section('js')
-    <script>
+<script>
     $(document).ready(function() {
         $('#example').DataTable({
             order: [
                 [0, 'desc']
             ]
         });
-    } );
-    </script>
+    });
+</script>
 @stop

@@ -18,6 +18,7 @@ class DayNumberController extends MainController
     public $edit_validation = [
         'number' => 'required',
     ];
+    public $filters = [];
     public $indexCondition = [];
     public $with = [];
 }

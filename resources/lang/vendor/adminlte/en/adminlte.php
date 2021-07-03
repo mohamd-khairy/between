@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'lang' => 'Arabic',
+    'langKey' => 'ar',
     'home' => 'Home',
     'full_name'                   => 'Full name',
     'email'                       => 'Email',

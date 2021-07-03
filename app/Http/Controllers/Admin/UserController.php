@@ -31,6 +31,7 @@ class UserController extends MainController
         'gender' => 'required|in:male,female',
         'birth_date' => 'nullable|date|before:today',
     ];
+    public $filters = [];
     public $indexCondition = [];
     public $with = [];
 }

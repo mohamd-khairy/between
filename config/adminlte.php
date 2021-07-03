@@ -231,23 +231,7 @@ return [
         //     'text'         => 'search',
         //     'topnav_right' => true,
         // ],
-        [
-            'text' => 'Language',
-            'topnav_right' => true,
-            'icon' => 'flag-icon flag-icon-us',
-            'submenu' => [
-                [
-                    'text' => 'English',
-                    'icon' => 'flag-icon flag-icon-us',
-                    'url' =>  '/home?change_language=en'
-                ],
-                [
-                    'text' => 'Arabic',
-                    'icon' => 'flag-icon flag-icon-kh',
-                    'url' =>  '/home?change_language=ar'
-                ]
-            ]
-        ],
+     
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -270,6 +254,19 @@ return [
         [
             'text' => 'diets',
             'url'  => 'diet',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+
+
+        [
+            'text' => 'main_types',
+            'url'  => 'maintype?parent=1',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+
+        [
+            'text' => 'meal_types',
+            'url'  => 'mealtype',
             'icon' => 'fas fa-fw fa-home',
         ],
         [
