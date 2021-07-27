@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [\App\Http\Controllers\Api\UserController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login']);
+Route::post('forget-password', [\App\Http\Controllers\Api\UserController::class, 'forget_password']);
+Route::post('new-password', [\App\Http\Controllers\Api\UserController::class, 'new_password']);
 
 Route::get('get-public-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_public_data']);
 

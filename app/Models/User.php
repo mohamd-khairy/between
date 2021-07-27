@@ -24,13 +24,13 @@ class User extends Authenticatable implements TranslatableContract
      */
     protected $fillable = [
         'email',
-        'password',
         'type',
         'phone',
         'weight',
         'height',
         'gender',
         'birth_date',
+        'code'
     ];
 
     public $translatedAttributes = ['name'];

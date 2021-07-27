@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('height')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->date('birth_date')->nullable();
+            $table->string('code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
