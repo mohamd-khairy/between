@@ -71,6 +71,13 @@
                                 <option value="admin" {{old('type' , $data->type) == 'admin' ? 'selected' : ''}}>{{__('cruds.admin')}}</option>
                             </select>
                         </div>
+
+                        <div class="form-group ">
+                            <label for="inputName">{{__('cruds.users.fields.verify')}} </label><br>
+                            <input type="radio" id="inputName" placeholder="enter" value="1" name="verify" {{$data->email_verified_at ? 'checked' : ''}}>Verify <br>
+                            <input type="radio" id="inputName" placeholder="enter" value="0" name="verify" {{$data->email_verified_at ?  '' :  'checked'}}>Not Verify
+                        </div>
+
                         <!-- /.card-body -->
                         <div class="row p-3">
                             <div class="col-12">

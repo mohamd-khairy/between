@@ -128,6 +128,9 @@ class MainController extends Controller
         } else {
             unset($data['password']);
         }
+        if (isset($request->verify)) {
+            $data['email_verified_at'] = $request->verify == 1 ? now() : null;
+        }
 
         $data = $this->put($this->model, ['id' => $id], $data);
 
