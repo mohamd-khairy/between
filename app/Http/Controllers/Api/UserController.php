@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Notifications\ForgetPasswordEmail;
+use App\Notifications\VerifiyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +31,17 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
         }
         $user = User::create($data);
-        return responseSuccess($user, __('auth.register_success'));
+
+        try {
+            $user_data = implode(',', [$request->email]);
+            $code = encrypted($user_data);
+            $user->code = $code;
+            $user->save();
+            $user->notify(new VerifiyEmail($request->email, $code, $request->name));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        return responseSuccess([], __('auth.register_success'));
     }
 
     public function login(Request $request)
@@ -45,8 +57,11 @@ class UserController extends Controller
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
+            if ($user->email_verified_at == null) {
+                return responseFail('Please Verify Your Email');
+            }
             $data = new \stdClass();
-            $data->user = $user;
+            $data->user = new UserResource($user);
             $data->token = $user->createToken('MyApp')->accessToken;
             return responseSuccess($data, 'logged in successfully');
         }
@@ -91,5 +106,33 @@ class UserController extends Controller
         $user->update(['password' => Hash::make($request->password), 'code' => null]);
 
         return responseSuccess([], 'password changed successfully');
+    }
+
+    public function verify(Request $request)
+    {
+        $validateData = Validator::make($request->all(), [
+            'code' => 'required|exists:users,code',
+        ]);
+
+        if ($validateData->fails()) {
+            return responseFail($validateData->errors()->first());
+        }
+
+        $data = explode(',', decrypted($request->code));
+        $email = $data[0];
+
+        /** get user with this email and this code */
+        $user = User::where(['email' => $email, 'code' => $request->code])->first();
+
+        if ($user) {
+
+            $user->code = null;
+            $user->email_verified_at = now();
+            $user->save();
+
+            return responseSuccess(['url' => asset('/api/login')], "email verified successfully .");
+        } else {
+            return responseFail("Sorry , some thing wrong !");
+        }
     }
 }

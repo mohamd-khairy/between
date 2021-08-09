@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Crypt;
+
 function responseSuccess($data = [], $message = 'success', $status = 200)
 {
     return response()->json([
@@ -102,4 +104,16 @@ function get_address_from_google($lat, $long, $lang)
     } catch (\Exception $ex) {
         return false;
     }
+}
+
+function encrypted($data)
+{
+    $encrypted = Crypt::encryptString($data);
+    return $encrypted;
+}
+
+function decrypted($encrypted)
+{
+    $decrypted = Crypt::decryptString($encrypted);
+    return $decrypted;
 }

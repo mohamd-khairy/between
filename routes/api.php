@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('register', [\App\Http\Controllers\Api\UserController::class, 'register']);
+Route::get('verify', [\App\Http\Controllers\Api\UserController::class, 'verify']);
 Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login']);
 Route::post('forget-password', [\App\Http\Controllers\Api\UserController::class, 'forget_password']);
 Route::post('new-password', [\App\Http\Controllers\Api\UserController::class, 'new_password']);
