@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 
-class State extends Model implements TranslatableContract
+class City extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
 
-    protected $fillable = [];
+    protected $fillable = ['state_id'];
 
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
-    
+
     public $translatedAttributes = ['name'];
 
     public function gettranslatable()
@@ -26,8 +26,8 @@ class State extends Model implements TranslatableContract
         return $this->translatedAttributes;
     }
 
-    public function cities()
+    public function state()
     {
-        return $this->hasMany(City::class);
+        return $this->belongsTo(State::class);
     }
 }

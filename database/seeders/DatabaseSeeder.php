@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\MealType;
@@ -153,7 +154,14 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($states as $state) {
-            State::create($state);
+            $state = State::create($state);
+            for ($i = 0; $i < 10; $i++) {
+                City::create([
+                    'state_id' => $state->id,
+                    'en' => ['name' => 'city' . $i],
+                    'ar' => ['name' => $i . 'سيتي'],
+                ]);
+            }
         }
 
         /******************************************************************** */

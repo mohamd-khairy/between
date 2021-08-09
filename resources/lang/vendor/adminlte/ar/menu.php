@@ -13,5 +13,6 @@ return [
     'user_addresses' => 'عناوين المستخدمين',
     'user_section' => 'قسم المستخدمين',
     'main_types' => 'انواع الوجبات الاساسيه',
-    'meal_types' => 'انواع الوجبات'
+    'meal_types' => 'انواع الوجبات',
+    'cities' => 'المدن'
 ];

@@ -12,5 +12,6 @@ return [
     'user_addresses' => 'User Addresses',
     'user_section' => 'User Section',
     'main_types' => 'Main Types',
-    'meal_types' => 'Meal Types'
+    'meal_types' => 'Meal Types',
+    'cities' => 'Cities'
 ];

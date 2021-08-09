@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('diet', \App\Http\Controllers\Admin\DietController::class);
     Route::resource('daynumber', \App\Http\Controllers\Admin\DayNumberController::class);
     Route::resource('state', \App\Http\Controllers\Admin\StateController::class);
+    Route::resource('city', \App\Http\Controllers\Admin\CityController::class);
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('address', \App\Http\Controllers\Admin\AddressController::class);
     Route::resource('mealtype', \App\Http\Controllers\Admin\MealTypeController::class);

@@ -22,6 +22,7 @@ Route::post('forget-password', [\App\Http\Controllers\Api\UserController::class,
 Route::post('new-password', [\App\Http\Controllers\Api\UserController::class, 'new_password']);
 
 Route::get('get-public-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_public_data']);
+Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('user', function (Request $request) {

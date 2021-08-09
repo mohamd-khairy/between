@@ -113,4 +113,14 @@ return [
             'main_type' => 'Main Type'
         ]
     ],
+    'city' => [
+        'title' => 'city',
+        'create' => 'Create city',
+        'update' => 'Update city',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+            'state' => 'State'
+        ]
+    ],
 ];

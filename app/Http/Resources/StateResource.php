@@ -17,6 +17,7 @@ class StateResource extends JsonResource
         return [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
+            'cities' => $this->cities ?? null
         ];
     }
 }

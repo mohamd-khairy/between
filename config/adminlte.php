@@ -280,6 +280,11 @@ return [
             'icon' => 'fas fa-fw fa-home',
         ],
         [
+            'text' => 'cities',
+            'url'  => 'city',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
             'text'    => 'user_section',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [

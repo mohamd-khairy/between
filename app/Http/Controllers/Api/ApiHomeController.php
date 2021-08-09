@@ -22,9 +22,15 @@ class ApiHomeController extends Controller
     {
         $data = [];
         $data['target'] = TargetResource::collection($this->get(Target::class, ['diets']));
-        $data['states'] = StateResource::collection($this->get(State::class));
         $data['daynumbers'] = DayNumberResource::collection($this->get(DayNumber::class));
         $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class , ['parent' => 1], ['meal_types']));
+        return responseSuccess($data);
+    }
+
+    public function get_address_create_data()
+    {
+        $data = [];
+        $data['states'] = StateResource::collection($this->get(State::class));
         return responseSuccess($data);
     }
 }
