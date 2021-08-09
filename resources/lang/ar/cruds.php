@@ -82,6 +82,8 @@ return [
             'height' => 'الطول',
             'gender' => 'الجنس',
             'birth_date' => 'تاريخ الميلاد',
+            'verify' => 'التحقق'
+
         ]
     ],
     'address' => [

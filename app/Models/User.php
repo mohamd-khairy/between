@@ -31,7 +31,8 @@ class User extends Authenticatable implements TranslatableContract
         'height',
         'gender',
         'birth_date',
-        'code'
+        'code',
+        'email_verified_at'
     ];
 
     public $translatedAttributes = ['name'];

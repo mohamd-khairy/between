@@ -83,6 +83,7 @@ return [
             'height' => 'Height',
             'gender' => 'Gender',
             'birth_date' => 'Birth Date',
+            'verify' => 'Verify'
         ]
     ],
     'address' => [
