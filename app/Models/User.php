@@ -53,13 +53,17 @@ class User extends Authenticatable implements TranslatableContract
      * @var array
      */
     protected $casts = [
+        'birth_date' => 'date',
         'email_verified_at' => 'datetime',
     ];
-
-
 
     public function gettranslatable()
     {
         return $this->translatedAttributes;
+    }
+
+    public function setBirthDateAttribute($value)
+    {
+        $this->attributes['birth_date'] = $value ? date('Y-m-d', strtotime($value)) : null;
     }
 }

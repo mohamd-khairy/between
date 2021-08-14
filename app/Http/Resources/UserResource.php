@@ -19,11 +19,10 @@ class UserResource extends JsonResource
             "name" =>  $this->name ?? null,
             "email" =>  $this->email ?? null,
             "phone" =>  $this->phone ?? null,
-            "type" =>  $this->type ?? null,
             "gender" =>  $this->gender ?? null,
             "weight" =>  $this->weight ?? null,
             "height" =>  $this->height ?? null,
-            "birth_date" =>  $this->birth_date ?? null,
+            "birth_date" => $this->birth_date ? date('Y-m-d', strtotime($this->birth_date)) : null,
         ];
     }
 }

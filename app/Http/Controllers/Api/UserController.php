@@ -135,4 +135,31 @@ class UserController extends Controller
             return responseFail("Sorry , some thing wrong !");
         }
     }
+
+    public function update_profile(Request $request)
+    {
+        $user = auth('api')->user();
+
+        $data = $request->all();
+        $validateData = Validator::make($data, [
+            'name' => 'required|min:3',
+            'phone' => 'required|unique:users,phone,' . $user->id,
+            'weight' => 'required|numeric',
+            'height' => 'required|numeric',
+            'birth_date' => 'required|date|before:today',
+            'gender' => 'required|in:male,female',
+        ]);
+
+        if ($validateData->fails()) {
+            return responseFail($validateData->errors()->first());
+        }
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
+        $user = User::find($user->id);
+        $user->update($data);
+
+        return responseSuccess(new UserResource($user), __('cruds.updated_success'));
+    }
 }
