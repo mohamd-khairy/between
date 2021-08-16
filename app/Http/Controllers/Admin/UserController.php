@@ -26,9 +26,9 @@ class UserController extends MainController
         'name_en' => 'required|min:3',
         'name_ar' => 'required|min:3',
         'password' => 'nullable|min:6',
-        'weight' => 'required',
-        'height' => 'required',
-        'gender' => 'required|in:male,female',
+        'weight' => 'nullable',
+        'height' => 'nullable',
+        'gender' => 'nullable|in:male,female',
         'birth_date' => 'nullable|date|before:today',
     ];
     public $filters = [];
