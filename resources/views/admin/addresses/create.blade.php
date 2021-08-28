@@ -21,7 +21,7 @@
 
                         <div class="form-group ">
                             <label for="inputName">{{__('cruds.address.fields.user')}} </label>
-                            <select class="form-control" name="user_id">
+                            <select class="form-control select2" name="user_id">
                                 @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
@@ -30,7 +30,7 @@
 
                         <div class="form-group ">
                             <label for="inputName">{{__('cruds.address.fields.state')}} </label>
-                            <select class="form-control" name="state_id">
+                            <select class="form-control select2" name="state_id">
                                 @foreach($states as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>
                                 @endforeach

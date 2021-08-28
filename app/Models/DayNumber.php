@@ -10,11 +10,21 @@ class DayNumber extends Model
     use HasFactory;
 
     protected $fillable = [
-        'number'
+        'number',
+        'diet_id'
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
+
+    protected $casts = [
+        'number' => 'integer',
+    ];
+
+    public function diet()
+    {
+        return $this->belongsTo(Diet::class);
+    }
 }

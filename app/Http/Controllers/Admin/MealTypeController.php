@@ -27,7 +27,13 @@ class MealTypeController extends MainController
     public $filters = ['parent'];
     public $indexCondition = ['parent' => 0];
     public $with = [];
+    public $create_data = [];
+    public $edit_data = [];
 
+    public function __construct()
+    {
+        $this->create_data = $this->edit_data = [];
+    }
 
     public function create()
     {

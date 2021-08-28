@@ -35,7 +35,7 @@ class MainController extends Controller
      */
     public function create()
     {
-        return view('admin.' . $this->view . '.create');
+        return view('admin.' . $this->view . '.create')->with('allData', $this->create_data ?? []);
     }
 
     /**
@@ -94,7 +94,7 @@ class MainController extends Controller
     public function edit($id)
     {
         $data = $this->findWith($this->model, ['id' => $id], $this->with);
-        return view('admin.' . $this->view . '.edit', compact('data'));
+        return view('admin.' . $this->view . '.edit', compact('data'))->with('allData', $this->edit_data ?? []);;
     }
 
     /**

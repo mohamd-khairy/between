@@ -23,4 +23,11 @@ class StateController extends MainController
     public $filters = [];
     public $indexCondition = [];
     public $with = [];
+    public $create_data = [];
+    public $edit_data = [];
+
+    public function __construct()
+    {
+        $this->create_data = $this->edit_data = [];
+    }
 }

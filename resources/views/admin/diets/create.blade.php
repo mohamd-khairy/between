@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.diet.fields.target')}}</label>
-                            <select class="form-control" name="target_id">
+                            <select class="form-control select2" name="target_id">
                                 <option value="">select</option>
                                 @foreach($targets as $target)
                                 <option value="{{$target->id}}">{{$target->name}}</option>
@@ -51,6 +51,12 @@
                                 <label for="inputName">{{__('cruds.diet.fields.carb')}}</label>
                                 <input type="number" id="inputName" placeholder="enter" value="{{old('carb' , '')}}" name="carb" class="form-control">
                             </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.diet.fields.price_for_meal')}}</label>
+                            <input type="number" id="inputName" placeholder="enter" value="{{old('price_for_meal' , '')}}" name="price_for_meal" class="form-control">
                         </div>
                     </div>
                     <!-- /.card-body -->

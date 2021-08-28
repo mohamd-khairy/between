@@ -31,6 +31,9 @@
                             {{__('cruds.daynumber.fields.number')}}
                         </th>
                         <th>
+                            {{__('cruds.daynumber.fields.diet')}}
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -42,6 +45,9 @@
                         </td>
                         <td>
                             {{$value->number ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->diet->name ?? '-'}}
                         </td>
 
                         <td class="project-actions text-right">

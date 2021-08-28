@@ -18,6 +18,7 @@ class DietController extends MainController
         'protein' => 'required',
         'carb' => 'required',
         'target_id' => 'required|exists:targets,id',
+        'price_for_meal' => 'required'
     ];
     public $edit_validation = [
         'name_en' => 'required',
@@ -25,10 +26,18 @@ class DietController extends MainController
         'protein' => 'required',
         'carb' => 'required',
         'target_id' => 'required|exists:targets,id',
+        'price_for_meal' => 'required'
     ];
     public $filters = [];
     public $indexCondition = [];
     public $with = ['target'];
+    public $create_data = [];
+    public $edit_data = [];
+
+    public function __construct()
+    {
+        $this->create_data = $this->edit_data = [];
+    }
 
     public function create()
     {

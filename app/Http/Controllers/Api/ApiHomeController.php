@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DayNumberResource;
+use App\Http\Resources\DietResource;
 use App\Http\Resources\MainTypeResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\TargetResource;
 use App\Http\Traits\HelperTrait;
 use App\Models\DayNumber;
+use App\Models\Diet;
 use App\Models\MealType;
 use App\Models\State;
 use App\Models\Target;
@@ -31,6 +33,12 @@ class ApiHomeController extends Controller
     {
         $data = [];
         $data['states'] = StateResource::collection($this->get(State::class));
+        return responseSuccess($data);
+    }
+
+    public function get_diet_days()
+    {
+        $data = DietResource::collection($this->get(Diet::class, ['days']));  
         return responseSuccess($data);
     }
 }

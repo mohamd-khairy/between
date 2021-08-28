@@ -23,14 +23,16 @@ Route::post('forget-password', [\App\Http\Controllers\Api\UserController::class,
 Route::post('new-password', [\App\Http\Controllers\Api\UserController::class, 'new_password']);
 
 Route::get('get-public-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_public_data']);
+Route::get('get-diets-days', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_diet_days']);
 Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
+
 
 Route::group(['middleware' => ['auth:api']], function () {
 
-    Route::put('update-profile', [\App\Http\Controllers\Api\UserController::class, 'update_profile']);
     Route::get('user', function (Request $request) {
         return responseSuccess(new UserResource($request->user()));
     });
+    Route::put('update-profile', [\App\Http\Controllers\Api\UserController::class, 'update_profile']);
     Route::get('user-get-address', [\App\Http\Controllers\Api\AddressController::class, 'user_get_address']);
     Route::post('user-add-address', [\App\Http\Controllers\Api\AddressController::class, 'user_add_address']);
 });

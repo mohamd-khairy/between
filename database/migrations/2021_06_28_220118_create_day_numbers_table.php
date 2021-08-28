@@ -16,6 +16,7 @@ class CreateDayNumbersTable extends Migration
         Schema::create('day_numbers', function (Blueprint $table) {
             $table->id();
             $table->string('number')->nullable();
+            $table->foreignId('diet_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

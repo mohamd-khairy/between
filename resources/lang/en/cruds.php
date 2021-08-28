@@ -47,16 +47,18 @@ return [
             'name' => 'Name',
             'protein' => 'Protein',
             'carb' => 'Carbohydrate',
-            'target' => 'Target'
+            'target' => 'Target',
+            'price_for_meal' => 'Price For Meal'
         ]
     ],
     'daynumber' => [
-        'title' => 'Subscription Day Numbers',
-        'create' => 'Create Subscription Day Numbers',
-        'update' => 'Update Subscription Day Numbers',
+        'title' => 'Diet Day Numbers',
+        'create' => 'Create Day Numbers',
+        'update' => 'Update Day Numbers',
         'fields' => [
             'id' => 'Id',
             'number' => 'Day Numbers',
+            'diet' => 'Diet'
         ]
     ],
     'state' => [

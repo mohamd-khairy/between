@@ -17,6 +17,8 @@ class DayNumberResource extends JsonResource
         return [
             'id' => $this->id ?? null,
             'number' => $this->number ?? null,
+            'diet_id' => $this->diet_id ?? null,
+            'diet' => $this->diet->name ?? null
         ];
     }
 }

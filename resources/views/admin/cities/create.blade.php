@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.city.fields.state')}}</label>
-                            <select class="form-control" name="state_id">
+                            <select class="form-control select2" name="state_id">
                                 <option value="">select</option>
                                 @foreach($states as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>

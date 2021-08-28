@@ -40,9 +40,15 @@ class AddressController extends MainController
     ];
     public $filters = ['user_id'];
     public $indexCondition = [];
-
     public $with = ['user'];
+    public $create_data = [];
+    public $edit_data = [];
 
+    public function __construct()
+    {
+        $this->create_data = $this->edit_data = [];
+    }
+    
     public function create()
     {
         $users = User::where('type', 'user')->get();

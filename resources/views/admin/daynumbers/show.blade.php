@@ -28,6 +28,10 @@
                     <th>{{__('cruds.daynumber.fields.number')}}</th>
                     <td>{{$data->number ?? ''}}</td>
                 </tr>
+                <tr>
+                    <th>{{__('cruds.daynumber.fields.diet')}}</th>
+                    <td>{{$data->diet->name ?? ''}}</td>
+                </tr>
             </tbody>
         </table>
     </div>

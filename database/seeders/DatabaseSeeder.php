@@ -60,64 +60,62 @@ class DatabaseSeeder extends Seeder
                 'ar' => ['name' => 'كيتو'],
                 'protein' => '100',
                 'carb' => '100',
-                'target_id' => 1
+                'target_id' => 1,
+                'price_for_meal' => 100,
             ],
             [
                 'en' => ['name' => 'Easy'],
                 'ar' => ['name' => 'سهل'],
                 'protein' => '100',
                 'carb' => '100',
-                'target_id' => 1
+                'target_id' => 1,
+                'price_for_meal' => 100,
             ],
             [
                 'en' => ['name' => 'Maintaining 1'],
                 'ar' => ['name' => '1 المحافظه'],
                 'protein' => '150',
                 'carb' => '150',
-                'target_id' => 2
+                'target_id' => 2,
+                'price_for_meal' => 100,
             ], [
                 'en' => ['name' => 'Maintaining 2'],
                 'ar' => ['name' => '2 المحافظه'],
                 'protein' => '150',
                 'carb' => '150',
-                'target_id' => 2
+                'target_id' => 2,
+                'price_for_meal' => 100,
             ],
             [
                 'en' => ['name' => 'Overweight 1'],
                 'ar' => ['name' => 'زياده 1'],
                 'protein' => '200',
                 'carb' => '200',
-                'target_id' => 3
+                'target_id' => 3,
+                'price_for_meal' => 100,
             ],
             [
                 'en' => ['name' => 'Overweight 2'],
                 'ar' => ['name' => 'زياده 2'],
                 'protein' => '250',
                 'carb' => '250',
-                'target_id' => 3
+                'target_id' => 3,
+                'price_for_meal' => 100,
             ],
         ];
 
         foreach ($diets as $diet) {
-            Diet::create($diet);
-        }
-
-        /******************************************************** */
-
-        $days = [
-            [
-                'number' => 14
-            ],
-            [
-                'number' => 20
-            ],
-            [
-                'number' => 26
-            ],
-        ];
-
-        foreach ($days as $day) {
-            DayNumber::create($day);
+            $diet = Diet::create($diet);
+            $day = DayNumber::insert([
+                [
+                    'number' => rand(1, 100),
+                    'diet_id' => $diet->id
+                ],
+                [
+                    'number' => rand(1, 100),
+                    'diet_id' => $diet->id
+                ]
+            ]);
         }
 
 

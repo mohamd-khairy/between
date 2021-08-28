@@ -46,7 +46,8 @@ return [
             'name' => 'الاسم',
             'protein' => 'البروتين',
             'carb' => 'الكربوهيدرات',
-            'target' => 'الهدف'
+            'target' => 'الهدف',
+            'price_for_meal' => 'سعر الوجبه الواحده'
         ]
     ],
     'daynumber' => [
@@ -65,6 +66,7 @@ return [
         'fields' => [
             'id' => 'الرقم',
             'name' => 'الاسم',
+            'diet' => 'النظام'
         ]
     ],
     'users' => [

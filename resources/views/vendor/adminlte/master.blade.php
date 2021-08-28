@@ -156,6 +156,9 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
+    <script>
+        $('.select2').select2()
+    </script>
 </body>
 
 </html>

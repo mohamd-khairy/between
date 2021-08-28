@@ -18,6 +18,7 @@ class CreateDietsTable extends Migration
             $table->foreignId('target_id')->constrained()->cascadeOnDelete();
             $table->string('protein')->nullable();
             $table->string('carb')->nullable();
+            $table->string('price_for_meal')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

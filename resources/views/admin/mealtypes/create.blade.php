@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.mealtype.fields.main_type')}}</label>
-                            <select class="form-control" name="parent_id">
+                            <select class="form-control select2" name="parent_id">
                                 <option value="">select</option>
                                 @foreach($main_types as $type)
                                 <option value="{{$type->id}}">{{$type->name}}</option>

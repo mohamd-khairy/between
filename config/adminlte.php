@@ -231,7 +231,7 @@ return [
         //     'text'         => 'search',
         //     'topnav_right' => true,
         // ],
-     
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -247,43 +247,19 @@ return [
         ['header' => 'main_section'],
 
         [
-            'text' => 'targets',
-            'url'  => 'target',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-        [
-            'text' => 'diets',
-            'url'  => 'diet',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-
-
-        [
-            'text' => 'main_types',
-            'url'  => 'maintype?parent=1',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-
-        [
-            'text' => 'meal_types',
-            'url'  => 'mealtype',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-        [
-            'text' => 'daynumbers',
-            'url'  => 'daynumber',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-        [
-            'text' => 'states',
-            'url'  => 'state',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-        [
-            'text' => 'cities',
-            'url'  => 'city',
-            'icon' => 'fas fa-fw fa-home',
-        ],
+            'text'    => 'address_section',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'states',
+                    'url'  => 'state',
+                ],
+                [
+                    'text' => 'cities',
+                    'url'  => 'city',
+                ],
+            ],
+        ],//address
         [
             'text'    => 'user_section',
             'icon'    => 'fas fa-fw fa-share',
@@ -297,7 +273,45 @@ return [
                     'url'  => 'address',
                 ],
             ],
-        ],
+        ],//user
+        [
+            'text'    => 'types_section',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'main_types',
+                    'url'  => 'maintype?parent=1',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+                [
+                    'text' => 'meal_types',
+                    'url'  => 'mealtype',
+                ],
+            ],
+        ],//type
+        [
+            'text'    => 'subscription_section',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'targets',
+                    'url'  => 'target',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+                [
+                    'text' => 'diets',
+                    'url'  => 'diet',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+
+                [
+                    'text' => 'daynumbers',
+                    'url'  => 'daynumber',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+            ],
+        ],//subscription
+
         /******************************************************************************************************** */
         // ['header' => 'main'],
         // [
@@ -439,16 +453,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],
@@ -464,11 +478,11 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],

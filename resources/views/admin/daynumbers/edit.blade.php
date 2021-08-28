@@ -19,7 +19,14 @@
                         <h3 class="card-title">{{__('cruds.daynumber.update')}}</h3>
                     </div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.daynumber.fields.diet')}}</label>
+                            <select name="number" class="form-control select2">
+                                @foreach($allData['diets'] as $diet)
+                                <option value="{{$diet->id}}" {{old('diet_id' , $data->diet_id) == $diet->id ? 'selected' : ''}}>{{$diet->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.daynumber.fields.number')}}</label>
                             <input type="number" id="inputName" placeholder="enter" value="{{old('number' , $data->number)}}" name="number" class="form-control">

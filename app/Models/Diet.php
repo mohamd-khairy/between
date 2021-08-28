@@ -18,7 +18,8 @@ class Diet extends Model implements TranslatableContract
     protected $fillable = [   
         'protein',
         'carb',
-        'target_id'
+        'target_id',
+        'price_for_meal'
     ];
 
     protected $hidden = [
@@ -37,5 +38,10 @@ class Diet extends Model implements TranslatableContract
     public function target()
     {
         return $this->belongsTo(Target::class);
+    }
+
+    public function days()
+    {
+        return $this->hasMany(DayNumber::class);
     }
 }

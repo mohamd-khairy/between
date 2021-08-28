@@ -40,6 +40,9 @@
                             {{__('cruds.diet.fields.carb')}}
                         </th>
                         <th>
+                            {{__('cruds.diet.fields.price_for_meal')}}
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -61,7 +64,9 @@
                         <td>
                             {{$value->carb ?? '-'}}
                         </td>
-
+                        <td>
+                            {{$value->price_for_meal ?? '-'}}
+                        </td>
                         <td class="project-actions text-right">
 
                             <a class="btn btn-primary btn-sm" href="{{route('admin.diet.show' , $value->id)}}">

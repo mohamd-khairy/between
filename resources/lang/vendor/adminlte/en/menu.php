@@ -5,13 +5,16 @@ return [
     'dashboard' => 'Dashboard',
     'targets' => 'Targets',
     'diets' => 'Diets',
-    'daynumbers' => 'Subscription Day Numbers',
-    'states' => 'United Arab Emirate States',
+    'daynumbers' => 'Diet Day Numbers',
+    'states' => 'States',
     'users' => 'Users',
     'addresses' => 'Addresses',
     'user_addresses' => 'User Addresses',
-    'user_section' => 'User Section',
-    'main_types' => 'Main Types',
-    'meal_types' => 'Meal Types',
-    'cities' => 'Cities'
+    'user_section' => 'Users Section',
+    'main_types' => 'Main Type',
+    'meal_types' => 'Meal Type',
+    'cities' => 'Cities',
+    'types_section' => 'Types Section',
+    'address_section' => 'Address Section',
+    'subscription_section' => 'Subscription Section'
 ];

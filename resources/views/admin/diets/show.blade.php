@@ -44,7 +44,10 @@
                     <th>{{__('cruds.diet.fields.carb')}} Ar</th>
                     <td>{{$data->carb ?? ''}}</td>
                 </tr>
-
+                <tr>
+                    <th>{{__('cruds.diet.fields.price_for_meal')}} Ar</th>
+                    <td>{{$data->price_for_meal ?? ''}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
