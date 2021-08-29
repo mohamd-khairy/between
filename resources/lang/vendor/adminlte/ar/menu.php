@@ -3,6 +3,7 @@
 
 return [
     'main_section' => 'الاقسام الرئيسيه',
+    'between_section' => 'أقسام بيتوين',
     'dashboard' => 'الصفحه الرئيسيه',
     'targets' => 'الاهداف',
     'diets' => 'الانظمه',
