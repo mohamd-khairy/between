@@ -274,6 +274,7 @@ return [
                 ],
             ],
         ],//user
+        ['header' => 'between_section'],
         [
             'text'    => 'types_section',
             'icon'    => 'fas fa-fw fa-share',
