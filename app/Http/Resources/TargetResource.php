@@ -17,7 +17,7 @@ class TargetResource extends JsonResource
         return [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
-            'diets' =>  DietResource::collection($this->diets) ?? null,
+            'diets' =>  $this->diets ? DietResource::collection($this->diets) : null,
         ];
     }
 }

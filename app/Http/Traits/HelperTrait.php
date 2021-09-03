@@ -113,7 +113,7 @@ trait HelperTrait
         // }
     }
 
-    public function find($model, $conditions)
+    public function find($model, $conditions = [])
     {
         return $model::where($conditions)->first();
     }
@@ -123,7 +123,7 @@ trait HelperTrait
         return $model::with($with)->withCount($withCount)->where($conditions)->first();
     }
 
-    public function delete($model, $conditions)
+    public function delete($model, $conditions = [])
     {
         $row = $model::where($conditions)->first();
         $row->delete();

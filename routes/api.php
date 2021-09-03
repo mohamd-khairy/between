@@ -25,6 +25,7 @@ Route::post('new-password', [\App\Http\Controllers\Api\UserController::class, 'n
 Route::get('get-public-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_public_data']);
 Route::get('get-diets-days', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_diet_days']);
 Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
+Route::get('get-one-target/{id}', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_one_target']);
 
 
 Route::group(['middleware' => ['auth:api']], function () {

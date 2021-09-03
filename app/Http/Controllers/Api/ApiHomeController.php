@@ -25,7 +25,7 @@ class ApiHomeController extends Controller
         $data = [];
         $data['target'] = TargetResource::collection($this->get(Target::class, ['diets']));
         $data['daynumbers'] = DayNumberResource::collection($this->get(DayNumber::class));
-        $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class , ['parent' => 1], ['meal_types']));
+        $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class, ['parent' => 1], ['meal_types']));
         return responseSuccess($data);
     }
 
@@ -38,7 +38,17 @@ class ApiHomeController extends Controller
 
     public function get_diet_days()
     {
-        $data = DietResource::collection($this->get(Diet::class, ['days']));  
+        $data = DietResource::collection($this->get(Diet::class, ['days']));
+        return responseSuccess($data);
+    }
+
+    public function get_one_target($id)
+    {
+        $data = $this->findWith(Target::class, ['id' => $id], ['diets']);
+        if(!$data){
+            return responseFail('there is no target with this id');
+        }
+        $data = new TargetResource($data);
         return responseSuccess($data);
     }
 }
