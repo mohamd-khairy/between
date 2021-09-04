@@ -32,6 +32,9 @@
                             {{__('cruds.target.fields.name')}}
                         </th>
                         <th>
+                            {{__('cruds.target.fields.photo')}}
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -44,7 +47,9 @@
                         <td>
                             {{$value->name ?? '-'}}
                         </td>
-
+                        <td>
+                            <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">
+                        </td>
                         <td class="project-actions text-right">
 
                             <a class="btn btn-primary btn-sm" href="{{route('admin.target.show' , $value->id)}}">
@@ -85,13 +90,13 @@
 @endsection
 
 @section('js')
-    <script>
+<script>
     $(document).ready(function() {
         $('#example').DataTable({
             order: [
                 [0, 'desc']
             ]
         });
-    } );
-    </script>
+    });
+</script>
 @stop

@@ -24,6 +24,8 @@ class Target extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name'];
 
+    public $with = ['image'];
+    
     public function gettranslatable()
     {
         return $this->translatedAttributes;
@@ -32,5 +34,10 @@ class Target extends Model implements TranslatableContract
     public function diets()
     {
         return $this->hasMany(Diet::class);
+    }
+
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'item_id', 'id')->where('model', 'App\Models\Target');
     }
 }

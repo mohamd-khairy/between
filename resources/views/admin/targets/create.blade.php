@@ -18,7 +18,7 @@
                         <h3 class="card-title">{{__('cruds.target.create')}}</h3>
                     </div>
                     <div class="card-body">
-                    
+
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.target.fields.name')}} En</label>
@@ -29,6 +29,12 @@
                                 <label for="inputName">{{__('cruds.target.fields.name')}} Ar</label>
                                 <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , '')}}" name="name_ar" class="form-control">
                             </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.target.fields.photo')}}</label>
+                            <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
                         </div>
                     </div>
                     <!-- /.card-body -->

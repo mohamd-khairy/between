@@ -13,11 +13,13 @@ class TargetController extends MainController
     public $route = 'target';
     public $create_validation = [
         'name_en' => 'required',
-        'name_ar' => 'required'
+        'name_ar' => 'required',
+        'photo'   => 'required|image|max:2048'
     ];
     public $edit_validation = [
         'name_en' => 'required',
-        'name_ar' => 'required'
+        'name_ar' => 'required',
+        'photo'   => 'required|image|max:2048'
     ];
     public $filters = [];
     public $indexCondition = [];

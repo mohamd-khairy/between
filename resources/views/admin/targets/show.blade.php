@@ -33,6 +33,10 @@
                     <td>{{$data->translate('ar')->name ?? ''}}</td>
                 </tr>
 
+                <tr>
+                    <th>{{__('cruds.target.fields.photo')}}</th>
+                    <td><img src="{{display_img($value->image?$value->image->photo:null)}}" style="width: 70px;height:70px" class="img-circle"></td>
+                </tr>
             </tbody>
         </table>
     </div>

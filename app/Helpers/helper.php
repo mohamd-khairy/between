@@ -117,3 +117,31 @@ function decrypted($encrypted)
     $decrypted = Crypt::decryptString($encrypted);
     return $decrypted;
 }
+
+function upload_image($image = null, $folder = 'all')
+{
+    if ($image) {
+        $image_name = time() . rand(1, 100000) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images/' . $folder = 'all'), $image_name);
+        return 'images/' . $folder = 'all' . '/' . $image_name;
+    }
+    return null;
+}
+
+function delete_image($image = null)
+{
+    if ($image && file_exists(public_path($image))) {
+        unlink(public_path($image));
+    }
+}
+
+function display_img($img)
+{
+    if ($img && file_exists($img)) {
+        return asset($img);
+    } else if (file_exists('images/default.jpg')) {
+        return asset('images/default.jpg');
+    } else {
+        return null;
+    }
+}

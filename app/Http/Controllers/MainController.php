@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\HelperTrait;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -59,7 +60,13 @@ class MainController extends Controller
         if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }
+
         $data = $this->add($this->model, $data);
+
+        // if ($request->image) {
+        //     $image = upload_image($request->image, $this->route);
+        //     Image::create(['photo' => $image, 'item_id' => $data->id, 'model' => $this->route]);
+        // }
 
         if (!request()->expectsJson()) {
             session()->flash('success', __('cruds.created_success'));
@@ -121,6 +128,7 @@ class MainController extends Controller
                 return responseFail($validateData->errors()->first());
             }
         }
+
         $data = translated_fields($this->model, $data);
 
         if ($request->password && $request->password != null) {
@@ -133,6 +141,13 @@ class MainController extends Controller
         }
 
         $data = $this->put($this->model, ['id' => $id], $data);
+
+        // if ($request->image) {
+        //     $image = upload_image($request->image, $this->route);
+        //     $old = Image::where(['item_id' => $data->id])->first();
+        //     delete_image($old->photo);
+        //     $old->update(['photo' => $image]);
+        // }
 
         if (!request()->expectsJson()) {
             session()->flash('success', __('cruds.updated_success'));

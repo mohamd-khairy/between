@@ -31,6 +31,18 @@
                                 <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , $data->translate('ar')->name ?? '')}}" name="name_ar" class="form-control">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-10">
+                                <label for="inputName">{{__('cruds.target.fields.photo')}}</label>
+                                <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
+                            </div>
+
+                            <div class="col-md-2">
+                                <img src="{{display_img($data->image ? $data->image->photo : null)}}" class="img-circle" style="width: 100px;height:100px;">
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

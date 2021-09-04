@@ -49,6 +49,7 @@ trait HelperTrait
         $data = $input;
         // try {
         DB::beginTransaction();
+        unset($data['photo']);
         $item = $model::create($data);
 
         if (isset($input['photo'])) {
@@ -63,7 +64,6 @@ trait HelperTrait
                 $photos['model'] = $model;
                 $photos['item_id'] = $item->id;
             }
-
             Image::insert($photos);
         }
         DB::commit();
@@ -103,6 +103,7 @@ trait HelperTrait
                 $photos['item_id'] = $item->id;
             }
             Image::insert($photos);
+            unset($data['photo']);
         }
         $item->update($data);
         DB::commit();
@@ -126,6 +127,10 @@ trait HelperTrait
     public function delete($model, $conditions = [])
     {
         $row = $model::where($conditions)->first();
+
+        if (isset($row->image)) {
+            delete_image($row->image->photo);
+        }
         $row->delete();
         return $row;
     }
