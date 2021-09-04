@@ -36,6 +36,7 @@ return [
         'fields' => [
             'id' => 'Id',
             'name' => 'Name',
+            'photo' => 'Photo'
         ]
     ],
     'diet' => [
