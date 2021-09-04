@@ -17,7 +17,7 @@ class TargetResource extends JsonResource
         return [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
-            'photo' => $this->image ? display_img($this->image->photo) : null,
+            'photo' => display_img($this->image ? $this->image->photo : null),
             'diets' =>  $this->diets ? DietResource::collection($this->diets) : null,
         ];
     }
