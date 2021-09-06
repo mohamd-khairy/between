@@ -35,5 +35,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     });
     Route::put('update-profile', [\App\Http\Controllers\Api\UserController::class, 'update_profile']);
     Route::get('user-get-address', [\App\Http\Controllers\Api\AddressController::class, 'user_get_address']);
+    Route::delete('user-delete-address/{id}', [\App\Http\Controllers\Api\AddressController::class, 'user_delete_address']);
+    Route::put('user-update-address/{id}', [\App\Http\Controllers\Api\AddressController::class, 'user_update_address']);
     Route::post('user-add-address', [\App\Http\Controllers\Api\AddressController::class, 'user_add_address']);
 });

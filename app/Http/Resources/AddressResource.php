@@ -26,6 +26,7 @@ class AddressResource extends JsonResource
             'apartment_number' => $this->apartment_number ?? null,
             'lat' => $this->lat ?? null,
             'long' => $this->long ?? null,
+            'type' => $this->type ?? null,
             'state_id' => $this->state_id ?? null,
             'user' => new UserResource($this->user) ?? null,
         ];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Address\AddUserAddressRequest;
+use App\Http\Requests\API\Address\UpdateUserAddressRequest;
 use App\Http\Resources\AddressResource;
 use App\Http\Traits\HelperTrait;
 use App\Models\Address;
@@ -39,5 +40,28 @@ class AddressController extends Controller
         $user = auth('api')->user();
         $result = $this->getBy(Address::class, ['user_id' => $user->id], ['user']);
         return responseSuccess(AddressResource::collection($result));
+    }
+
+    public function user_delete_address($id)
+    {
+        $user = auth('api')->user();
+        $result = $this->find(Address::class, ['id' => $id, 'user_id' => $user->id]);
+        if(!$result){
+            return responseFail('there is no address with this id');
+        }
+        $result->delete();
+        return responseSuccess([], 'deleted successfully');
+    }
+
+    public function user_update_address($id, UpdateUserAddressRequest $request)
+    {
+        $data = $request->all();
+        $user = auth('api')->user();
+        $result = $this->find(Address::class, ['id' => $id, 'user_id' => $user->id]);
+        if(!$result){
+            return responseFail('there is no address with this id');
+        }
+        $result->update($data);
+        return responseSuccess(new AddressResource($result), 'updated successfully');
     }
 }
