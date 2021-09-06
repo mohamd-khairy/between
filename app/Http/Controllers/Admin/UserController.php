@@ -24,7 +24,7 @@ class UserController extends MainController
     ];
     public $edit_validation = [
         'name_en' => 'required|min:3',
-        'name_ar' => 'required|min:3',
+        'name_ar' => 'nullable|min:3',
         'password' => 'nullable|min:6',
         'weight' => 'nullable',
         'height' => 'nullable',
