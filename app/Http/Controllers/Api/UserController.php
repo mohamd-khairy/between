@@ -142,12 +142,12 @@ class UserController extends Controller
 
         $data = $request->all();
         $validateData = Validator::make($data, [
-            'name' => 'required|min:3',
-            'phone' => 'required|unique:users,phone,' . $user->id,
-            'weight' => 'required|numeric',
-            'height' => 'required|numeric',
-            'birth_date' => 'required|date|before:today',
-            'gender' => 'required|in:male,female',
+            'name' => 'nullable|min:3',
+            'phone' => 'nullable|unique:users,phone,' . $user->id,
+            'weight' => 'nullable|numeric',
+            'height' => 'nullable|numeric',
+            'birth_date' => 'nullable|date|before:today',
+            'gender' => 'nullable|in:male,female',
         ]);
 
         if ($validateData->fails()) {
