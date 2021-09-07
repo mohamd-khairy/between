@@ -37,8 +37,8 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'host' => 'smtp.sendgrid.net', //env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => 465, //env('MAIL_PORT', 587),
-            'encryption' => 'ssl', // env('MAIL_ENCRYPTION', 'tls'),
+            'port' => 2525, //env('MAIL_PORT', 587),
+            'encryption' => 'tls', // env('MAIL_ENCRYPTION', 'tls'),
             'username' => 'apikey', // env('MAIL_USERNAME'),
             'password' => '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', //env('MAIL_PASSWORD'),
             'timeout' => null,
@@ -85,7 +85,7 @@ return [
 
     'from' => [
         'address' => 'mohamed.khairy.eg@gmail.com', // env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => 'Between', //env('MAIL_FROM_NAME', 'Example'),
+        'name' => 'between-app', //env('MAIL_FROM_NAME', 'Example'),
     ],
 
     /*
