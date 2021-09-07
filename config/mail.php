@@ -40,7 +40,7 @@ return [
             'port' => 2525, //env('MAIL_PORT', 587),
             'encryption' => 'ssl', // env('MAIL_ENCRYPTION', 'tls'),
             'username' => 'apikey', // env('MAIL_USERNAME'),
-            'password' => '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', //env('MAIL_PASSWORD'),
+            'password' => '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', //env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
         ],
