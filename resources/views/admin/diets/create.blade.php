@@ -58,6 +58,12 @@
                             <label for="inputName">{{__('cruds.diet.fields.price_for_meal')}}</label>
                             <input type="number" id="inputName" placeholder="enter" value="{{old('price_for_meal' , '')}}" name="price_for_meal" class="form-control">
                         </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.target.fields.photo')}}</label>
+                            <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
+                        </div>
+                        
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

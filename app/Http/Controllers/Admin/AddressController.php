@@ -62,7 +62,7 @@ class AddressController extends MainController
         $state = State::find($request->state_id);
         $data['state_en'] = $state->translate('en')->name;
         $data['state_ar'] = $state->translate('ar')->name;
-        $data['country_en'] = 'United Arab Emirates	';
+        $data['country_en'] = 'United Arab Emirates';
         $data['country_ar'] = 'الإمارات العربية المتحدة';
         $data['full_address_en'] = $data['street_en'] . '-' . $data['district_en'] . '-' . $data['state_en'] . '-' . $data['country_en'];
         $data['full_address_ar'] = $data['street_ar'] . '-' . $data['district_ar'] . '-' . $data['state_ar'] . '-' . $data['country_ar'];

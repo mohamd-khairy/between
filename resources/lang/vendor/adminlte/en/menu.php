@@ -17,5 +17,7 @@ return [
     'cities' => 'Cities',
     'types_section' => 'Types Section',
     'address_section' => 'Address Section',
-    'subscription_section' => 'Subscription Section'
+    'subscription_section' => 'Subscription Section',
+    'preferedtimes' => 'Prefered Times',
+    'mealnumbers' => 'Meal Day Numbers'
 ];

@@ -18,5 +18,7 @@ return [
     'cities' => 'المدن',
     'types_section' => 'قسم الانواع',
     'address_section' => 'قسم العنوان',
-    'subscription_section' => 'قسم النظام'
+    'subscription_section' => 'قسم النظام',
+    'preferedtimes' => 'الاوقات المفضله',
+    'mealnumbers' => 'عدد الوجبات'
 ];

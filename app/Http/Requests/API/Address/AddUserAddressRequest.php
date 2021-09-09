@@ -27,7 +27,7 @@ class AddUserAddressRequest extends ApiFormRequest
             'lat' => 'required_with:long',
             'long' => 'required_with:lat',
             'state_id' => 'required|exists:states,id',
-            'country' => 'required_without:lat',
+            'country' => 'nullable',
             'district' => 'required_without:lat',
             'street' => 'required_without:lat',
             'building' => 'required',

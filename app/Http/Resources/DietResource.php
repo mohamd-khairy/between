@@ -20,7 +20,8 @@ class DietResource extends JsonResource
             'protein' => $this->protein ?? null,
             'carb' => $this->carb ?? null,
             'price_for_meal' => $this->price_for_meal ?? null,
-            'days' => $this->days ?? null
+            'days' => $this->days ?? null,
+            'mealNumbers' => $this->mealNumbers ?? null,
         ];
     }
 }

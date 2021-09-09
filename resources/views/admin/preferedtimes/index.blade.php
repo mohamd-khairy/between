@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('cruds.diet.title'))
+@section('title', __('cruds.preferedtime.title'))
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{__('cruds.diet.title')}}</h1>
+<h1 class="m-0 text-dark">{{__('cruds.preferedtime.title')}}</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 
     <div class="row p-3">
         <div class="col-12">
-            <a type="submit" href="{{route('admin.diet.create')}}" class="btn btn-success text-dark text-bold">{{__('cruds.diet.create')}}</a>
+            <a type="submit" href="{{route('admin.preferedtime.create')}}" class="btn btn-success text-dark text-bold">{{__('cruds.preferedtime.create')}}</a>
         </div>
     </div>
 
@@ -25,25 +25,13 @@
                 <thead>
                     <tr>
                         <th>
-                            {{__('cruds.diet.fields.id')}}
+                            {{__('cruds.preferedtime.fields.id')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.name')}}
+                            {{__('cruds.preferedtime.fields.from')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.target')}}
-                        </th>
-                        <th>
-                            {{__('cruds.diet.fields.protein')}}
-                        </th>
-                        <th>
-                            {{__('cruds.diet.fields.carb')}}
-                        </th>
-                        <th>
-                            {{__('cruds.diet.fields.price_for_meal')}}
-                        </th>
-                        <th>
-                            {{__('cruds.target.fields.photo')}}
+                            {{__('cruds.preferedtime.fields.to')}}
                         </th>
                         <th>
                         </th>
@@ -56,39 +44,28 @@
                             {{$value->id ?? '-'}}
                         </td>
                         <td>
-                            {{$value->name ?? '-'}}
+                            {{$value->from ?? '-'}}
                         </td>
                         <td>
-                            {{$value->target->name ?? '-'}}
+                            {{$value->to ?? '-'}}
                         </td>
-                        <td>
-                            {{$value->protein ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->carb ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->price_for_meal ?? '-'}}
-                        </td>
-                        <td>
-                            <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">
-                        </td>
+
                         <td class="project-actions text-right">
 
-                            <a class="btn btn-primary btn-sm" href="{{route('admin.diet.show' , $value->id)}}">
+                            <a class="btn btn-primary btn-sm" href="{{route('admin.preferedtime.show' , $value->id)}}">
                                 <i class="fas fa-eye">
                                 </i>
                                 {{__('cruds.view')}}
                             </a>
 
 
-                            <a class="btn btn-info btn-sm" href="{{route('admin.diet.edit' , $value->id)}}">
+                            <a class="btn btn-info btn-sm" href="{{route('admin.preferedtime.edit' , $value->id)}}">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 {{__('cruds.edit')}}
                             </a>
 
-                            <form action="{{route('admin.diet.destroy' , $value->id)}}" method="post" onsubmit="return confirm('Are You Sure?');" style="display: inline-block;">
+                            <form action="{{route('admin.preferedtime.destroy' , $value->id)}}" method="post" onsubmit="return confirm('Are You Sure?');" style="display: inline-block;">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-danger btn-sm" type="submit">

@@ -310,6 +310,16 @@ return [
                     'url'  => 'daynumber',
                     'icon' => 'fas fa-fw fa-home',
                 ],
+                [
+                    'text' => 'mealnumbers',
+                    'url'  => 'mealnumber',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+                [
+                    'text' => 'preferedtimes',
+                    'url'  => 'preferedtime',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
             ],
         ],//subscription
 

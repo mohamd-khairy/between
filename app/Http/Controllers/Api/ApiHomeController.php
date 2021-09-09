@@ -12,6 +12,7 @@ use App\Http\Traits\HelperTrait;
 use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\MealType;
+use App\Models\PreferedTime;
 use App\Models\State;
 use App\Models\Target;
 use Illuminate\Http\Request;
@@ -26,6 +27,8 @@ class ApiHomeController extends Controller
         $data['target'] = TargetResource::collection($this->get(Target::class, ['diets']));
         $data['daynumbers'] = DayNumberResource::collection($this->get(DayNumber::class));
         $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class, ['parent' => 1], ['meal_types']));
+        $data['preferedtimes'] = $this->get(PreferedTime::class);
+
         return responseSuccess($data);
     }
 
@@ -36,19 +39,30 @@ class ApiHomeController extends Controller
         return responseSuccess($data);
     }
 
-    public function get_diet_days()
+    public function get_diets()
     {
-        $data = DietResource::collection($this->get(Diet::class, ['days']));
+        if (request('diet_id')) {
+            $data = new DietResource($this->findWith(Diet::class, ['id' => request('diet_id')], ['days', 'mealNumbers']));
+            if (!$data) {
+                return responseFail('there is no diet with this id');
+            }
+        } else {
+            $data = DietResource::collection($this->get(Diet::class, ['days', 'mealNumbers']));
+        }
         return responseSuccess($data);
     }
 
-    public function get_one_target($id)
+    public function get_targets()
     {
-        $data = $this->findWith(Target::class, ['id' => $id], ['diets']);
-        if(!$data){
-            return responseFail('there is no target with this id');
+
+        if (request('target_id')) {
+            $data = new TargetResource($this->findWith(Target::class, ['id' => request('target_id')], ['diets']));
+            if (!$data) {
+                return responseFail('there is no target with this id');
+            }
+        } else {
+            $data = TargetResource::collection($this->get(Target::class, ['diets']));
         }
-        $data = new TargetResource($data);
         return responseSuccess($data);
     }
 }

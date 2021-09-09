@@ -10,6 +10,7 @@ use App\Http\Traits\HelperTrait;
 use App\Models\Address;
 use App\Models\State;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AddressController extends Controller
 {
@@ -26,6 +27,7 @@ class AddressController extends Controller
         } else {
             $data['state'] = State::find($request->state_id)->name;
             $data = translated_fields(Address::class, $data);
+            $data['country'] = App::getLocale() == 'en' ? 'United Arab Emirates' : 'الإمارات العربية المتحدة';
             $data['full_address'] = $data['street'] . '-' . $data['district'] . '-' . $data['state'] . '-' . $data['country'];
         }
         $data['user_id'] = $user->id;
@@ -46,7 +48,7 @@ class AddressController extends Controller
     {
         $user = auth('api')->user();
         $result = $this->find(Address::class, ['id' => $id, 'user_id' => $user->id]);
-        if(!$result){
+        if (!$result) {
             return responseFail('there is no address with this id');
         }
         $result->delete();
@@ -58,7 +60,7 @@ class AddressController extends Controller
         $data = $request->all();
         $user = auth('api')->user();
         $result = $this->find(Address::class, ['id' => $id, 'user_id' => $user->id]);
-        if(!$result){
+        if (!$result) {
             return responseFail('there is no address with this id');
         }
         $result->update($data);

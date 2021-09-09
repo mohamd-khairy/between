@@ -127,4 +127,25 @@ return [
             'state' => 'State'
         ]
     ],
+    'mealnumber' => [
+        'title' => 'Diet meal Numbers',
+        'create' => 'Create meal Numbers',
+        'update' => 'Update meal Numbers',
+        'fields' => [
+            'id' => 'Id',
+            'number' => 'meal Numbers',
+            'price' => 'Price',
+            'diet' => 'Diet'
+        ]
+    ],
+    'preferedtime' => [
+        'title' => 'Prefered Time',
+        'create' => 'Create Prefered Time',
+        'update' => 'Update Prefered Time',
+        'fields' => [
+            'id' => 'Id',
+            'from' => 'From',
+            'to' => 'To'
+        ]
+    ],
 ];

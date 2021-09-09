@@ -12,10 +12,10 @@ class Diet extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
-    use SoftDeletes; 
+    use SoftDeletes;
 
-    
-    protected $fillable = [   
+
+    protected $fillable = [
         'protein',
         'carb',
         'target_id',
@@ -30,6 +30,8 @@ class Diet extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name'];
 
+    public $with = ['image'];
+
     public function gettranslatable()
     {
         return $this->translatedAttributes;
@@ -43,5 +45,16 @@ class Diet extends Model implements TranslatableContract
     public function days()
     {
         return $this->hasMany(DayNumber::class);
+    }
+
+    public function mealNumbers()
+    {
+        return $this->hasMany(MealNumber::class);
+    }
+
+
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'item_id', 'id')->where('model', 'App\Models\Diet');
     }
 }
