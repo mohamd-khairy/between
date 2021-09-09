@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('cruds.mealnumber.title'))
+@section('title', __('cruds.preferedtime.title'))
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{__('cruds.mealnumber.title')}}</h1>
+<h1 class="m-0 text-dark">{{__('cruds.preferedtime.title')}}</h1>
 @stop
 
 @section('content')
@@ -11,12 +11,12 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <form method="post" action="{{route('admin.mealnumber.update' , $data->id)}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('admin.preferedtime.update' , $data->id)}}" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">{{__('cruds.mealnumber.update')}}</h3>
+                        <h3 class="card-title">{{__('cruds.preferedtime.update')}}</h3>
                     </div>
                     <div class="card-body">
 
