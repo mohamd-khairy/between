@@ -259,7 +259,7 @@ return [
                     'url'  => 'city',
                 ],
             ],
-        ],//address
+        ], //address
         [
             'text'    => 'user_section',
             'icon'    => 'fas fa-fw fa-share',
@@ -273,7 +273,7 @@ return [
                     'url'  => 'address',
                 ],
             ],
-        ],//user
+        ], //user
         ['header' => 'between_section'],
         [
             'text'    => 'types_section',
@@ -289,7 +289,7 @@ return [
                     'url'  => 'mealtype',
                 ],
             ],
-        ],//type
+        ], //type
         [
             'text'    => 'subscription_section',
             'icon'    => 'fas fa-fw fa-share',
@@ -320,8 +320,13 @@ return [
                     'url'  => 'preferedtime',
                     'icon' => 'fas fa-fw fa-home',
                 ],
+                [
+                    'text' => 'foods',
+                    'url'  => 'food',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
             ],
-        ],//subscription
+        ], //subscription
 
         /******************************************************************************************************** */
         // ['header' => 'main'],

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('cruds.diet.title'))
+@section('title', __('cruds.food.title'))
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{__('cruds.diet.title')}}</h1>
+<h1 class="m-0 text-dark">{{__('cruds.food.title')}}</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 
     <div class="row p-3">
         <div class="col-12">
-            <a type="submit" href="{{route('admin.diet.create')}}" class="btn btn-success text-dark text-bold">{{__('cruds.diet.create')}}</a>
+            <a type="submit" href="{{route('admin.food.create')}}" class="btn btn-success text-dark text-bold">{{__('cruds.food.create')}}</a>
         </div>
     </div>
 
@@ -25,22 +25,28 @@
                 <thead>
                     <tr>
                         <th>
-                            {{__('cruds.diet.fields.id')}}
+                            {{__('cruds.food.fields.id')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.name')}}
+                            {{__('cruds.food.fields.name')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.target')}}
+                            {{__('cruds.food.fields.main_type')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.protein')}}
+                            {{__('cruds.food.fields.mealtypes')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.carb')}}
+                            {{__('cruds.food.fields.protein')}}
                         </th>
                         <th>
-                            {{__('cruds.diet.fields.fats')}}
+                            {{__('cruds.food.fields.carb')}}
+                        </th>
+                        <th>
+                            {{__('cruds.food.fields.fats')}}
+                        </th>
+                        <th>
+                            {{__('cruds.food.fields.price')}}
                         </th>
                         <th>
                             {{__('cruds.target.fields.photo')}}
@@ -59,7 +65,10 @@
                             {{$value->name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->target->name ?? '-'}}
+                            {{$value->main_type->name ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->mealtypes->pluck('name') ?? '-'}}
                         </td>
                         <td>
                             {{$value->protein ?? '-'}}
@@ -71,24 +80,27 @@
                             {{$value->fats ?? '-'}}
                         </td>
                         <td>
+                            {{$value->price ?? '-'}}
+                        </td>
+                        <td>
                             <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">
                         </td>
                         <td class="project-actions text-right">
 
-                            <a class="btn btn-primary btn-sm" href="{{route('admin.diet.show' , $value->id)}}">
+                            <a class="btn btn-primary btn-sm" href="{{route('admin.food.show' , $value->id)}}">
                                 <i class="fas fa-eye">
                                 </i>
                                 {{__('cruds.view')}}
                             </a>
 
 
-                            <a class="btn btn-info btn-sm" href="{{route('admin.diet.edit' , $value->id)}}">
+                            <a class="btn btn-info btn-sm" href="{{route('admin.food.edit' , $value->id)}}">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 {{__('cruds.edit')}}
                             </a>
 
-                            <form action="{{route('admin.diet.destroy' , $value->id)}}" method="post" onsubmit="return confirm('Are You Sure?');" style="display: inline-block;">
+                            <form action="{{route('admin.food.destroy' , $value->id)}}" method="post" onsubmit="return confirm('Are You Sure?');" style="display: inline-block;">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-danger btn-sm" type="submit">

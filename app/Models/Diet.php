@@ -18,8 +18,8 @@ class Diet extends Model implements TranslatableContract
     protected $fillable = [
         'protein',
         'carb',
-        'target_id',
-        'price_for_meal'
+        'fats',
+        'target_id'
     ];
 
     protected $hidden = [

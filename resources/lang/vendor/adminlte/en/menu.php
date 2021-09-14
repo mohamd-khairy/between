@@ -19,5 +19,6 @@ return [
     'address_section' => 'Address Section',
     'subscription_section' => 'Subscription Section',
     'preferedtimes' => 'Prefered Times',
-    'mealnumbers' => 'Meal Day Numbers'
+    'mealnumbers' => 'Meal Day Numbers',
+    'foods' => 'Foods'
 ];

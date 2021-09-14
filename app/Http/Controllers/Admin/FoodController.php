@@ -3,27 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\MainController;
-use App\Models\Diet;
-use App\Models\Target;
+use App\Models\Food;
+use App\Models\MealType;
 use Illuminate\Http\Request;
 
-class DietController extends MainController
+class FoodController extends MainController
 {
-    public $model = Diet::class;
-    public $view = 'diets';
-    public $route = 'diet';
+    public $model = Food::class;
+    public $view = 'foods';
+    public $route = 'food';
     public $create_validation = [
         'name_en' => 'required',
         'name_ar' => 'required',
+        'details_en' => 'required',
+        'details_ar' => 'required',
         'protein' => 'required',
         'carb' => 'required',
         'fats' => 'required',
-        'target_id' => 'required|exists:targets,id',
         'photo'   => 'required|image|max:2048'
     ];
     public $edit_validation = [
         'name_en' => 'required',
         'name_ar' => 'required',
+        'details_en' => 'required',
+        'details_ar' => 'required',
         'protein' => 'required',
         'carb' => 'required',
         'target_id' => 'required|exists:targets,id',
@@ -32,7 +35,7 @@ class DietController extends MainController
     ];
     public $filters = [];
     public $indexCondition = [];
-    public $with = ['target'];
+    public $with = [];
     public $create_data = [];
     public $edit_data = [];
 
@@ -43,14 +46,18 @@ class DietController extends MainController
 
     public function create()
     {
-        $targets = Target::all();
-        return view('admin.' . $this->view . '.create', compact('targets'));
+        $created = [
+            'MealType' => MealType::all()
+        ];
+        return view('admin.' . $this->view . '.create', compact('created'));
     }
 
     public function edit($id)
     {
-        $targets = Target::all();
-        $data = $this->findWith($this->model, ['id' => $id], ['target']);
-        return view('admin.' . $this->view . '.edit', compact('data', 'targets'));
+        $updated = [
+            'MealType' => MealType::all()
+        ];
+        $data = $this->findWith($this->model, ['id' => $id], ['mealtypes']);
+        return view('admin.' . $this->view . '.edit', compact('data', 'updated'));
     }
 }

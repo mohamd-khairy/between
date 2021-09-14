@@ -49,7 +49,7 @@ return [
             'protein' => 'Protein',
             'carb' => 'Carbohydrate',
             'target' => 'Target',
-            'price_for_meal' => 'Price For Meal'
+            'fats' => 'Fats'
         ]
     ],
     'daynumber' => [
@@ -146,6 +146,22 @@ return [
             'id' => 'Id',
             'from' => 'From',
             'to' => 'To'
+        ]
+    ],
+    'food' => [
+        'title' => 'Foods',
+        'create' => 'Create Food',
+        'update' => 'Update Food',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+            'details' => 'Details',
+            'protein' => 'Protein',
+            'carb' => 'Carbohydrate',
+            'mealtypes' => 'Meal types',
+            'fats' => 'Fats',
+            'price' => 'Price',
+            'main_type' => 'Main Type'
         ]
     ],
 ];

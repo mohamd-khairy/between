@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\City;
 use App\Models\DayNumber;
 use App\Models\Diet;
+use App\Models\Food;
+use App\Models\FoodMealType;
 use App\Models\MealType;
 use App\Models\State;
 use App\Models\Target;
@@ -60,47 +62,53 @@ class DatabaseSeeder extends Seeder
                 'ar' => ['name' => 'كيتو'],
                 'protein' => '100',
                 'carb' => '100',
+                'fats' => 100,
                 'target_id' => 1,
-                'price_for_meal' => 100,
+
             ],
             [
                 'en' => ['name' => 'Easy'],
                 'ar' => ['name' => 'سهل'],
                 'protein' => '100',
                 'carb' => '100',
+                'fats' => 100,
                 'target_id' => 1,
-                'price_for_meal' => 100,
+
             ],
             [
                 'en' => ['name' => 'Maintaining 1'],
                 'ar' => ['name' => '1 المحافظه'],
                 'protein' => '150',
                 'carb' => '150',
+                'fats' => 100,
                 'target_id' => 2,
-                'price_for_meal' => 100,
+
             ], [
                 'en' => ['name' => 'Maintaining 2'],
                 'ar' => ['name' => '2 المحافظه'],
                 'protein' => '150',
                 'carb' => '150',
+                'fats' => 100,
                 'target_id' => 2,
-                'price_for_meal' => 100,
+
             ],
             [
                 'en' => ['name' => 'Overweight 1'],
                 'ar' => ['name' => 'زياده 1'],
                 'protein' => '200',
                 'carb' => '200',
+                'fats' => 100,
                 'target_id' => 3,
-                'price_for_meal' => 100,
+
             ],
             [
                 'en' => ['name' => 'Overweight 2'],
                 'ar' => ['name' => 'زياده 2'],
                 'protein' => '250',
                 'carb' => '250',
+                'fats' => 100,
                 'target_id' => 3,
-                'price_for_meal' => 100,
+
             ],
         ];
 
@@ -255,8 +263,23 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        foreach ($meal_types as $meal_type) {
-            MealType::create($meal_type);
+        foreach ($meal_types as $k => $meal_type) {
+            $meal_type = MealType::create($meal_type);
+
+            $food = Food::create([
+                'en' => ['name' => 'food ' . $k, 'details' => 'details ' . $k],
+                'ar' => ['name' => 'food ' . $k, 'details' => 'details ' . $k],
+                'main_type_id' => $meal_type->main_type->id,
+                'protein' => '100',
+                'carb' => '100',
+                'fats' => '100',
+                'price' => 500,
+            ]);
+
+            FoodMealType::create([
+                'food_id' => $food->id,
+                'meal_type_id' => $meal_type->id
+            ]);
         }
     }
 }

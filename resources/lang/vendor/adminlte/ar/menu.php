@@ -20,5 +20,7 @@ return [
     'address_section' => 'قسم العنوان',
     'subscription_section' => 'قسم النظام',
     'preferedtimes' => 'الاوقات المفضله',
-    'mealnumbers' => 'عدد الوجبات'
+    'mealnumbers' => 'عدد الوجبات',
+    'foods' => 'الوجبات'
+    
 ];
