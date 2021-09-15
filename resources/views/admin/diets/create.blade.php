@@ -51,19 +51,39 @@
                                 <label for="inputName">{{__('cruds.diet.fields.carb')}}</label>
                                 <input type="number" id="inputName" placeholder="enter" value="{{old('carb' , '')}}" name="carb" class="form-control">
                             </div>
-
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputName">{{__('cruds.diet.fields.fats')}}</label>
-                            <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , '')}}" name="fats" class="form-control">
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.diet.fields.fats')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , '')}}" name="fats" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.diet.fields.calories')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('calories' , '')}}" name="calories" class="form-control">
+                            </div>
                         </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.diet.fields.weight_from')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('weight_from' , '')}}" name="weight_from" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.diet.fields.weight_to')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('weight_to' , '')}}" name="weight_to" class="form-control">
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.target.fields.photo')}}</label>
                             <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
                         </div>
-                        
+
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

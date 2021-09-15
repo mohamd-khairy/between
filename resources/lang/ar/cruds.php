@@ -48,7 +48,10 @@ return [
             'protein' => 'البروتين',
             'carb' => 'الكربوهيدرات',
             'target' => 'الهدف',
-            'fats' => 'الدهون'
+            'fats' => 'الدهون',
+            'calories' => 'سعرات',
+            'weight_from' => 'الوزن من',
+            'weight_to' => 'الوزن الي'
         ]
     ],
     'daynumber' => [
@@ -162,7 +165,15 @@ return [
             'mealtypes' => 'انواع الوجبات',
             'fats' => 'الدهون',
             'price' => 'السعر',
-            'main_type' => 'النوع الاساسي'
+            'main_type' => 'النوع الاساسي',
+            'breakfast' => 'الفطار',
+            'dinner' => 'الغداء',
+            'launch' => 'العشاء',
+            'other' => 'اخري',
+            'photo' => 'الصوره',
+            'calories' => 'سعرات',
+            'weight' => 'الوزن ',
+            'type' => 'النوع'
         ]
     ],
 ];

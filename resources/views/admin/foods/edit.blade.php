@@ -33,12 +33,33 @@
                         </div>
 
                         <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.food.fields.details')}} En</label>
+                                <input type="text" id="inputdetails" placeholder="enter" value="{{old('details_en' , $data->translate('en')->details ?? '')}}" name="details_en" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputdetails">{{__('cruds.food.fields.details')}} Ar</label>
+                                <input type="text" id="inputdetails" placeholder="enter" value="{{old('details_ar' , $data->translate('ar')->details ?? '')}}" name="details_ar" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="inputName">{{__('cruds.food.fields.mealtypes')}}</label>
                             <select class="form-control select2" name="meal_type_id[]" multiple>
-                                <option value="">select</option>
                                 @foreach($allData['MealType'] as $type)
                                 <option value="{{$type->id}}" {{in_array($type->id , $data->mealtypes_many->pluck('meal_type_id')->toArray()) ? 'selected' : '' }}>{{$type->name}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.food.fields.type')}}</label>
+                            <select class="form-control select2" name="type[]" multiple>
+                                <option value="breakfast" {{in_array('breakfast' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.breakfast')}}</option>
+                                <option value="dinner" {{in_array('dinner' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.dinner')}}</option>
+                                <option value="launch" {{in_array('launch' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.launch')}}</option>
+                                <option value="other" {{in_array('other' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.other')}}</option>
                             </select>
                         </div>
 
@@ -54,13 +75,29 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.food.fields.fats')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , $data->fats)}}" name="fats" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.food.fields.calories')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('calories' , $data->calories)}}" name="calories" class="form-control">
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label for="inputName">{{__('cruds.food.fields.fats')}}</label>
-                            <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , $data->fats)}}" name="fats" class="form-control">
+                            <label for="inputName">{{__('cruds.food.fields.weight')}}</label>
+                            <input type="number" id="inputName" placeholder="enter" value="{{old('weight' , $data->weight)}}" name="weight" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.food.fields.price')}}</label>
+                            <input type="number" id="inputName" placeholder="enter" value="{{old('price' , $data->price)}}" name="price" class="form-control">
                         </div>
 
                         <div class="form-group row">
-
                             <div class="col-md-10">
                                 <label for="inputName">{{__('cruds.food.fields.photo')}}</label>
                                 <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">

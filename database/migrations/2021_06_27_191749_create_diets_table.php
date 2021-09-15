@@ -19,6 +19,9 @@ class CreateDietsTable extends Migration
             $table->string('protein')->nullable();
             $table->string('carb')->nullable();
             $table->string('fats')->nullable();
+            $table->string('calories')->nullable();
+            $table->string('weight_from')->nullable();
+            $table->string('weight_to')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

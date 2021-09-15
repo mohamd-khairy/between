@@ -46,10 +46,19 @@
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.food.fields.mealtypes')}}</label>
                             <select class="form-control select2" name="meal_type_id[]" multiple>
-                                <option value="">select</option>
                                 @foreach($allData['MealType'] as $type)
                                 <option value="{{$type->id}}">{{$type->name}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.food.fields.type')}}</label>
+                            <select class="form-control select2" name="type[]" multiple>
+                                <option value="breakfast">{{__('cruds.food.fields.breakfast')}}</option>
+                                <option value="dinner">{{__('cruds.food.fields.dinner')}}</option>
+                                <option value="launch">{{__('cruds.food.fields.launch')}}</option>
+                                <option value="other">{{__('cruds.food.fields.other')}}</option>
                             </select>
                         </div>
 
@@ -63,19 +72,30 @@
                                 <label for="inputName">{{__('cruds.food.fields.carb')}}</label>
                                 <input type="number" id="inputName" placeholder="enter" value="{{old('carb' , '')}}" name="carb" class="form-control">
                             </div>
+                        </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.food.fields.fats')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , '')}}" name="fats" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputName">{{__('cruds.food.fields.calories')}}</label>
+                                <input type="number" id="inputName" placeholder="enter" value="{{old('calories' , '')}}" name="calories" class="form-control">
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputName">{{__('cruds.food.fields.fats')}}</label>
-                            <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , '')}}" name="fats" class="form-control">
+                            <label for="inputName">{{__('cruds.food.fields.weight')}}</label>
+                            <input type="number" id="inputName" placeholder="enter" value="{{old('weight' , '')}}" name="weight" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.food.fields.photo')}}</label>
                             <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
                         </div>
-                        
+
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

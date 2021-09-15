@@ -41,12 +41,24 @@
                     <td>{{$data->protein ?? ''}}</td>
                 </tr>
                 <tr>
-                    <th>{{__('cruds.diet.fields.carb')}} Ar</th>
+                    <th>{{__('cruds.diet.fields.carb')}}</th>
                     <td>{{$data->carb ?? ''}}</td>
                 </tr>
                 <tr>
-                    <th>{{__('cruds.diet.fields.fats')}} Ar</th>
+                    <th>{{__('cruds.diet.fields.fats')}}</th>
                     <td>{{$data->fats ?? ''}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('cruds.diet.fields.calories')}}</th>
+                    <td>{{$data->calories ?? ''}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('cruds.diet.fields.weight_from')}}</th>
+                    <td>{{$data->weight_from ?? ''}}</td>
+                </tr>
+                <tr>
+                    <th>{{__('cruds.diet.fields.weight_to')}}</th>
+                    <td>{{$data->weight_to ?? ''}}</td>
                 </tr>
                 <tr>
                     <th>{{__('cruds.target.fields.photo')}}</th>

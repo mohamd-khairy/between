@@ -18,11 +18,12 @@ class CreateFoodTable extends Migration
             $table->string('protein')->nullable();
             $table->string('carb')->nullable();
             $table->string('fats')->nullable();
+            $table->string('calories')->nullable();
+            $table->string('weight')->nullable();
             $table->string('price')->nullable();
-
             $table->unsignedBigInteger('main_type_id')->nullable();
-            $table->enum('type', ['breakfast', 'dinner', 'launch', 'other'])->default('other');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

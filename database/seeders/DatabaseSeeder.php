@@ -7,6 +7,7 @@ use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\Food;
 use App\Models\FoodMealType;
+use App\Models\FoodType;
 use App\Models\MealType;
 use App\Models\State;
 use App\Models\Target;
@@ -63,6 +64,9 @@ class DatabaseSeeder extends Seeder
                 'protein' => '100',
                 'carb' => '100',
                 'fats' => 100,
+                'weight_from' => 100,
+                'weight_to' => 500,
+                'calories' => 100,
                 'target_id' => 1,
 
             ],
@@ -72,6 +76,9 @@ class DatabaseSeeder extends Seeder
                 'protein' => '100',
                 'carb' => '100',
                 'fats' => 100,
+                'weight_from' => 100,
+                'weight_to' => 500,
+                'calories' => 100,
                 'target_id' => 1,
 
             ],
@@ -81,6 +88,9 @@ class DatabaseSeeder extends Seeder
                 'protein' => '150',
                 'carb' => '150',
                 'fats' => 100,
+                'weight_from' => 100,
+                'weight_to' => 500,
+                'calories' => 100,
                 'target_id' => 2,
 
             ], [
@@ -89,6 +99,9 @@ class DatabaseSeeder extends Seeder
                 'protein' => '150',
                 'carb' => '150',
                 'fats' => 100,
+                'weight_from' => 100,
+                'weight_to' => 500,
+                'calories' => 100,
                 'target_id' => 2,
 
             ],
@@ -98,6 +111,9 @@ class DatabaseSeeder extends Seeder
                 'protein' => '200',
                 'carb' => '200',
                 'fats' => 100,
+                'weight_from' => 100,
+                'weight_to' => 500,
+                'calories' => 100,
                 'target_id' => 3,
 
             ],
@@ -107,6 +123,9 @@ class DatabaseSeeder extends Seeder
                 'protein' => '250',
                 'carb' => '250',
                 'fats' => 100,
+                'weight_from' => 100,
+                'weight_to' => 500,
+                'calories' => 100,
                 'target_id' => 3,
 
             ],
@@ -263,6 +282,7 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $types = ['breakfast', 'dinner', 'launch', 'other'];
         foreach ($meal_types as $k => $meal_type) {
             $meal_type = MealType::create($meal_type);
 
@@ -273,12 +293,19 @@ class DatabaseSeeder extends Seeder
                 'protein' => '100',
                 'carb' => '100',
                 'fats' => '100',
+                'calories' => '100',
+                'weight' => '100',
                 'price' => 500,
             ]);
 
             FoodMealType::create([
                 'food_id' => $food->id,
                 'meal_type_id' => $meal_type->id
+            ]);
+
+            FoodType::create([
+                'type' => $types[rand(0, 3)],
+                'food_id' => $food->id
             ]);
         }
     }

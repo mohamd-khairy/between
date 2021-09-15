@@ -19,7 +19,10 @@ class Diet extends Model implements TranslatableContract
         'protein',
         'carb',
         'fats',
-        'target_id'
+        'target_id',
+        'weight_from',
+        'weight_to',
+        'calories'
     ];
 
     protected $hidden = [

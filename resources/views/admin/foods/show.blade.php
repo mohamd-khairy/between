@@ -57,6 +57,17 @@
                     <th>{{__('cruds.food.fields.fats')}}</th>
                     <td>{{$data->fats ?? ''}}</td>
                 </tr>
+
+                <tr>
+                    <th>{{__('cruds.food.fields.calories')}}</th>
+                    <td>{{$data->calories ?? ''}}</td>
+                </tr>
+
+                <tr>
+                    <th>{{__('cruds.food.fields.weight')}}</th>
+                    <td>{{$data->weight ?? ''}}</td>
+                </tr>
+
                 <tr>
                     <th>{{__('cruds.food.fields.price')}}</th>
                     <td>{{$data->price ?? ''}}</td>

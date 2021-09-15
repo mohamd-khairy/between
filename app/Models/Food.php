@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Food extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
+    use SoftDeletes;
 
     protected $fillable = [
         'protein',
@@ -18,6 +20,8 @@ class Food extends Model implements TranslatableContract
         'fats',
         'main_type_id',
         'price',
+        'weight',
+        'calories'
     ];
 
     protected $hidden = [
@@ -52,5 +56,10 @@ class Food extends Model implements TranslatableContract
     public function mealtypes_many()
     {
         return $this->hasMany(FoodMealType::class)->with('meal_type');
+    }
+
+    public function foodtypes_many()
+    {
+        return $this->hasMany(FoodType::class);
     }
 }

@@ -43,6 +43,15 @@
                             {{__('cruds.diet.fields.fats')}}
                         </th>
                         <th>
+                            {{__('cruds.diet.fields.calories')}}
+                        </th>
+                        <th>
+                            {{__('cruds.diet.fields.weight_from')}}
+                        </th>
+                        <th>
+                            {{__('cruds.diet.fields.weight_to')}}
+                        </th>
+                        <th>
                             {{__('cruds.target.fields.photo')}}
                         </th>
                         <th>
@@ -69,6 +78,15 @@
                         </td>
                         <td>
                             {{$value->fats ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->calories ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->weight_from ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->weight_to ?? '-'}}
                         </td>
                         <td>
                             <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">

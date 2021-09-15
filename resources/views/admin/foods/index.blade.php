@@ -31,7 +31,7 @@
                             {{__('cruds.food.fields.name')}}
                         </th>
                         <th>
-                            {{__('cruds.food.fields.main_type')}}
+                            {{__('cruds.food.fields.type')}}
                         </th>
                         <th>
                             {{__('cruds.food.fields.mealtypes')}}
@@ -44,6 +44,12 @@
                         </th>
                         <th>
                             {{__('cruds.food.fields.fats')}}
+                        </th>
+                        <th>
+                            {{__('cruds.food.fields.calories')}}
+                        </th>
+                        <th>
+                            {{__('cruds.food.fields.weight')}}
                         </th>
                         <th>
                             {{__('cruds.food.fields.price')}}
@@ -65,10 +71,10 @@
                             {{$value->name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->main_type->name ?? '-'}}
+                            {{$value->foodtypes_many ? $value->foodtypes_many->pluck('type') : '-'}}
                         </td>
                         <td>
-                            {{$value->mealtypes->pluck('name') ?? '-'}}
+                            {{$value->mealtypes ? $value->mealtypes->pluck('name') : '-'}}
                         </td>
                         <td>
                             {{$value->protein ?? '-'}}
@@ -78,6 +84,12 @@
                         </td>
                         <td>
                             {{$value->fats ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->calories ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->weight ?? '-'}}
                         </td>
                         <td>
                             {{$value->price ?? '-'}}

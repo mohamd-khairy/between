@@ -49,7 +49,10 @@ return [
             'protein' => 'Protein',
             'carb' => 'Carbohydrate',
             'target' => 'Target',
-            'fats' => 'Fats'
+            'fats' => 'Fats',
+            'calories' => 'Calories',
+            'weight_from' => 'Weight From',
+            'weight_to' => 'Weight To'
         ]
     ],
     'daynumber' => [
@@ -161,7 +164,15 @@ return [
             'mealtypes' => 'Meal types',
             'fats' => 'Fats',
             'price' => 'Price',
-            'main_type' => 'Main Type'
+            'main_type' => 'Main Type',
+            'breakfast' => 'Breakfast',
+            'dinner' => 'Dinner',
+            'launch' => 'Launch',
+            'other' => 'Other',
+            'photo' => 'Photo',
+            'calories' => 'Calories',
+            'weight' => 'Weight',
+            'type' => 'Type'
         ]
     ],
 ];

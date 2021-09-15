@@ -19,7 +19,10 @@ class DietController extends MainController
         'carb' => 'required',
         'fats' => 'required',
         'target_id' => 'required|exists:targets,id',
-        'photo'   => 'required|image|max:2048'
+        'photo'   => 'required|image|max:2048',
+        'calories' => 'required',
+        'weight_from' => 'required',
+        'weight_to' => 'required'
     ];
     public $edit_validation = [
         'name_en' => 'required',
@@ -28,7 +31,10 @@ class DietController extends MainController
         'carb' => 'required',
         'target_id' => 'required|exists:targets,id',
         'fats' => 'required',
-        'photo'   => 'required|image|max:2048'
+        'photo'   => 'required|image|max:2048',
+        'calories' => 'required',
+        'weight_from' => 'required',
+        'weight_to' => 'required'
     ];
     public $filters = [];
     public $indexCondition = [];
