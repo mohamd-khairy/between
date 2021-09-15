@@ -41,23 +41,8 @@ class FoodController extends MainController
 
     public function __construct()
     {
-        $this->create_data = $this->edit_data = [];
-    }
-
-    public function create()
-    {
-        $created = [
+        $this->create_data = $this->edit_data = [
             'MealType' => MealType::all()
         ];
-        return view('admin.' . $this->view . '.create', compact('created'));
-    }
-
-    public function edit($id)
-    {
-        $updated = [
-            'MealType' => MealType::all()
-        ];
-        $data = $this->findWith($this->model, ['id' => $id], ['mealtypes']);
-        return view('admin.' . $this->view . '.edit', compact('data', 'updated'));
     }
 }

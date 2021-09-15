@@ -47,7 +47,7 @@
                             <label for="inputName">{{__('cruds.food.fields.mealtypes')}}</label>
                             <select class="form-control select2" name="meal_type_id[]" multiple>
                                 <option value="">select</option>
-                                @foreach($created['MealType'] as $type)
+                                @foreach($allData['MealType'] as $type)
                                 <option value="{{$type->id}}">{{$type->name}}</option>
                                 @endforeach
                             </select>
