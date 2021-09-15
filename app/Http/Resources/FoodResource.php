@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DietResource extends JsonResource
+class FoodResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,11 +21,11 @@ class DietResource extends JsonResource
             'carb' => $this->carb ?? null,
             'fats' => $this->fats ?? null,
             'calories' => $this->calories ?? null,
-            'weight_from' => $this->weight_from ?? null,
-            'weight_to' => $this->weight_to ?? null,
+            'weight' => $this->weight ?? null,
+            'price' => $this->price ?? null,
             'photo' => display_img($this->image ? $this->image->photo : null),
-            'days' => $this->days ?? null,
-            'mealNumbers' => $this->mealNumbers ?? null,
+            'meal_types' => $this->mealtypes ? MealTypeResource::collection($this->mealtypes) : null,
+            'food_types' => $this->foodtypes_many ?? null,
         ];
     }
 }

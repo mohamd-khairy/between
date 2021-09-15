@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DayNumberResource;
 use App\Http\Resources\DietResource;
+use App\Http\Resources\FoodResource;
 use App\Http\Resources\MainTypeResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\TargetResource;
 use App\Http\Traits\HelperTrait;
 use App\Models\DayNumber;
 use App\Models\Diet;
+use App\Models\Food;
 use App\Models\MealType;
 use App\Models\PreferedTime;
 use App\Models\State;
@@ -65,4 +67,19 @@ class ApiHomeController extends Controller
         }
         return responseSuccess($data);
     }
+
+    public function get_foods()
+    {
+        if (request('food_id')) {
+            $data = new FoodResource($this->findWith(Food::class, ['id' => request('food_id')], ['mealtypes', 'foodtypes_many']));
+            if (!$data) {
+                return responseFail('there is no diet with this id');
+            }
+        } else {
+            $data = FoodResource::collection($this->get(Food::class, ['mealtypes', 'foodtypes_many']));
+        }
+        return responseSuccess($data);
+    }
+
+    
 }
