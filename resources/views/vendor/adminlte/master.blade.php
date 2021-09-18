@@ -156,8 +156,59 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
+
+    <script src="{{asset('vendor/datatables-plugins/buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/jszip/jszip.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/buttons/css/buttons.bootstrap4.min.css')}}"></script>
+
     <script>
         $('.select2').select2()
+
+        $(document).ready(function() {
+            $('#example').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: ':not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':not(:last-child)'
+                        }
+                    }
+                ],
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
     </script>
 </body>
 
