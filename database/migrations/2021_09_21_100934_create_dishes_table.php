@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFoodTypesTable extends Migration
+class CreateDishesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateFoodTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_types', function (Blueprint $table) {
+        Schema::create('dishes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('food_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->enum('type', ['breakfast', 'dinner', 'launch', 'other'])->default('other');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateFoodTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food_types');
+        Schema::dropIfExists('dishes');
     }
 }
