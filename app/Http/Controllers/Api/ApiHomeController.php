@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\DayNumberResource;
 use App\Http\Resources\DietResource;
 use App\Http\Resources\FoodResource;
+use App\Http\Resources\GeneralResource;
 use App\Http\Resources\MainTypeResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\TargetResource;
 use App\Http\Traits\HelperTrait;
 use App\Models\DayNumber;
 use App\Models\Diet;
+use App\Models\Dish;
 use App\Models\Food;
 use App\Models\MealType;
 use App\Models\PreferedTime;
@@ -30,6 +32,7 @@ class ApiHomeController extends Controller
         $data['daynumbers'] = DayNumberResource::collection($this->get(DayNumber::class));
         $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class, ['parent' => 1], ['meal_types']));
         $data['preferedtimes'] = $this->get(PreferedTime::class);
+        $data['dishes'] = GeneralResource::collection($this->get(Dish::class));
 
         return responseSuccess($data);
     }
@@ -75,11 +78,28 @@ class ApiHomeController extends Controller
             if (!$data) {
                 return responseFail('there is no diet with this id');
             }
+        } elseif (request('dish_id')) {
+            $data = Food::whereHas('foodtypes_many', function ($q) {
+                $q->where('dish_id', request('dish_id'));
+            })->get();
+            $data = FoodResource::collection($data);
         } else {
             $data = FoodResource::collection($this->get(Food::class, ['mealtypes', 'foodtypes_many']));
         }
         return responseSuccess($data);
     }
 
-    
+    public function get_dishes()
+    {
+        if (request('dish_id')) {
+            $data = new GeneralResource($this->findWith(Dish::class, ['id' => request('dish_id')], []));
+            if (!$data) {
+                return responseFail('there is no dish with this id');
+            }
+        } else {
+            $data = GeneralResource::collection($this->get(Dish::class));
+        }
+
+        return responseSuccess($data);
+    }
 }

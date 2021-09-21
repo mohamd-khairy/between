@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\City;
 use App\Models\DayNumber;
 use App\Models\Diet;
+use App\Models\Dish;
 use App\Models\Food;
 use App\Models\FoodMealType;
 use App\Models\FoodType;
@@ -303,8 +304,13 @@ class DatabaseSeeder extends Seeder
                 'meal_type_id' => $meal_type->id
             ]);
 
+            $dish = Dish::create([
+                'en' => ['name' => $types[rand(0, 3)] . $k],
+                'ar' => ['name' => $types[rand(0, 3)] . $k],
+            ]);
+
             FoodType::create([
-                'type' => $types[rand(0, 3)],
+                'dish_id' => $dish->id,
                 'food_id' => $food->id
             ]);
         }

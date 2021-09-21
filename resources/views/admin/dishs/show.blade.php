@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('cruds.mealtype.title'))
+@section('title', __('cruds.dish.title'))
 
 @section('content_header')
-<h1 class="m-0 text-dark">{{__('cruds.mealtype.title')}}</h1>
+<h1 class="m-0 text-dark">{{__('cruds.dish.title')}}</h1>
 @stop
 
 @section('content')
@@ -20,16 +20,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>{{__('cruds.mealtype.fields.id')}}</th>
+                    <th>{{__('cruds.dish.fields.id')}}</th>
                     <td>{{$data->id ?? ''}}</td>
                 </tr>
 
                 <tr>
-                    <th>{{__('cruds.mealtype.fields.name')}} En</th>
+                    <th>{{__('cruds.dish.fields.name')}} En</th>
                     <td>{{$data->translate('en')->name ?? ''}}</td>
                 </tr>
                 <tr>
-                    <th>{{__('cruds.mealtype.fields.name')}} Ar</th>
+                    <th>{{__('cruds.dish.fields.name')}} Ar</th>
                     <td>{{$data->translate('ar')->name ?? ''}}</td>
                 </tr>
 

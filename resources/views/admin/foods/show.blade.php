@@ -46,6 +46,11 @@
                     <td>{{$data->mealtypes->pluck('name') ?? ''}}</td>
                 </tr>
                 <tr>
+                    <th>{{__('cruds.food.fields.type')}}</th>
+                    <td> {{$data->foodtypes_many ? $data->foodtypes_many->pluck('dish.name') : '-'}}
+                    </td>
+                </tr>
+                <tr>
                     <th>{{__('cruds.food.fields.protein')}}</th>
                     <td>{{$data->protein ?? ''}}</td>
                 </tr>
@@ -74,7 +79,7 @@
                 </tr>
                 <tr>
                     <th>{{__('cruds.target.fields.photo')}}</th>
-                    <td><img src="{{display_img($value->image?$value->image->photo:null)}}" style="width: 70px;height:70px" class="img-circle"></td>
+                    <td><img src="{{display_img($data->image?$data->image->photo:null)}}" style="width: 70px;height:70px" class="img-circle"></td>
                 </tr>
             </tbody>
         </table>

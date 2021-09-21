@@ -20,5 +20,6 @@ return [
     'subscription_section' => 'Subscription Section',
     'preferedtimes' => 'Prefered Times',
     'mealnumbers' => 'Meal Day Numbers',
-    'foods' => 'Foods'
+    'foods' => 'Foods',
+    'dishs' => 'Dishs'
 ];

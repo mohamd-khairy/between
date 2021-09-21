@@ -71,7 +71,7 @@
                             {{$value->name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->foodtypes_many ? $value->foodtypes_many->pluck('type') : '-'}}
+                            {{$value->foodtypes_many ? $value->foodtypes_many->pluck('dish.name') : '-'}}
                         </td>
                         <td>
                             {{$value->mealtypes ? $value->mealtypes->pluck('name') : '-'}}

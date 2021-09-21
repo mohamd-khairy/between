@@ -288,6 +288,10 @@ return [
                     'text' => 'meal_types',
                     'url'  => 'mealtype',
                 ],
+                [
+                    'text' => 'dishs',
+                    'url'  => 'dish',
+                ],
             ],
         ], //type
         [

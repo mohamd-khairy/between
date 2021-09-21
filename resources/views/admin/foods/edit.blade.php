@@ -53,13 +53,13 @@
                             </select>
                         </div>
 
+
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.food.fields.type')}}</label>
                             <select class="form-control select2" name="type[]" multiple>
-                                <option value="breakfast" {{in_array('breakfast' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.breakfast')}}</option>
-                                <option value="dinner" {{in_array('dinner' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.dinner')}}</option>
-                                <option value="launch" {{in_array('launch' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.launch')}}</option>
-                                <option value="other" {{in_array('other' , $data->foodtypes_many->pluck('type')->toArray()) ? 'selected' : '' }}>{{__('cruds.food.fields.other')}}</option>
+                                @foreach($allData['dishs'] as $item)
+                                <option value="{{$item->id}}" {{in_array($item->id , $data->foodtypes_many->pluck('dish_id')->toArray()) ? 'selected' : '' }}>{{$item->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 

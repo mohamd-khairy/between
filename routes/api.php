@@ -25,6 +25,7 @@ Route::get('get-public-data', [\App\Http\Controllers\Api\ApiHomeController::clas
 Route::get('get-targets', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_targets']);
 Route::get('get-diets', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_diets']);
 Route::get('get-foods', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_foods']);
+Route::get('get-dishes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_dishes']);
 Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
 
 Route::group(['middleware' => ['auth:api']], function () {

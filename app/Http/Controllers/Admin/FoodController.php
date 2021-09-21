@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\MainController;
+use App\Models\Dish;
 use App\Models\Food;
 use App\Models\FoodType;
 use App\Models\MealType;
@@ -49,7 +50,8 @@ class FoodController extends MainController
     public function __construct()
     {
         $this->create_data = $this->edit_data = [
-            'MealType' => MealType::all()
+            'MealType' => MealType::all(),
+            'dishs' => Dish::all()
         ];
     }
 
@@ -75,7 +77,7 @@ class FoodController extends MainController
             foreach ($request->type as $key => $value) {
                 FoodType::create([
                     'food_id' => $data->id,
-                    'type' => $value
+                    'dish_id' => $value
                 ]);
             }
         }
@@ -120,7 +122,7 @@ class FoodController extends MainController
             foreach ($request->type as $key => $value) {
                 FoodType::create([
                     'food_id' => $id,
-                    'type' => $value
+                    'dish_id' => $value
                 ]);
             }
         }

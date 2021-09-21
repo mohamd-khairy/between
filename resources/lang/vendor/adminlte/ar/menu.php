@@ -21,6 +21,6 @@ return [
     'subscription_section' => 'قسم النظام',
     'preferedtimes' => 'الاوقات المفضله',
     'mealnumbers' => 'عدد الوجبات',
-    'foods' => 'الوجبات'
-    
+    'foods' => 'الوجبات',
+    'dishs' => 'أطباق'
 ];

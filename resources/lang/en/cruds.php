@@ -175,4 +175,14 @@ return [
             'type' => 'Type'
         ]
     ],
+
+    'dish' => [
+        'title' => 'Dsihs',
+        'create' => 'Create Dsih',
+        'update' => 'Update Dsih',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+        ]
+    ],
 ];

@@ -55,10 +55,9 @@
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.food.fields.type')}}</label>
                             <select class="form-control select2" name="type[]" multiple>
-                                <option value="breakfast">{{__('cruds.food.fields.breakfast')}}</option>
-                                <option value="dinner">{{__('cruds.food.fields.dinner')}}</option>
-                                <option value="launch">{{__('cruds.food.fields.launch')}}</option>
-                                <option value="other">{{__('cruds.food.fields.other')}}</option>
+                                @foreach($allData['dishs'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 

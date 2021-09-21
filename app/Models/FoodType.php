@@ -12,4 +12,9 @@ class FoodType extends Model
     public $guarded = [];
 
     public $timestamps = false;
+
+    public function dish()
+    {
+        return $this->belongsTo(Dish::class);
+    }
 }
