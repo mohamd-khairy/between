@@ -83,6 +83,11 @@ class ApiHomeController extends Controller
                 $q->where('dish_id', request('dish_id'));
             })->get();
             $data = FoodResource::collection($data);
+        } elseif (request('meal_type_id')) {
+            $data = Food::whereHas('mealtypes_many', function ($q) {
+                $q->where('meal_type_id', request('meal_type_id'));
+            })->get();
+            $data = FoodResource::collection($data);
         } else {
             $data = FoodResource::collection($this->get(Food::class, ['mealtypes', 'foodtypes_many']));
         }
@@ -98,6 +103,20 @@ class ApiHomeController extends Controller
             }
         } else {
             $data = GeneralResource::collection($this->get(Dish::class));
+        }
+
+        return responseSuccess($data);
+    }
+
+    public function get_mealtypes()
+    {
+        if (request('meal_type_id')) {
+            $data = new GeneralResource($this->findWith(MealType::class, ['id' => request('meal_type_id')], []));
+            if (!$data) {
+                return responseFail('there is no meal type with this id');
+            }
+        } else {
+            $data = GeneralResource::collection($this->get(MealType::class));
         }
 
         return responseSuccess($data);
