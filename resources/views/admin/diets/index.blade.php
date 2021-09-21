@@ -130,14 +130,4 @@
 <!-- /.content -->
 @endsection
 
-@section('js')
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            order: [
-                [0, 'desc']
-            ]
-        });
-    } );
-    </script>
-@stop
+
