@@ -165,6 +165,8 @@
     <script src="{{asset('vendor/datatables-plugins/pdfmake/pdfmake.min.js')}}"></script>
     <script src="{{asset('vendor/datatables-plugins/pdfmake/vfs_fonts.js')}}"></script>
     <script src="{{asset('vendor/datatables-plugins/buttons/css/buttons.bootstrap4.min.css')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('vendor/datatables-plugins/responsive/css/dataTables.bootstrap4.min.css')}}"></script>
 
     <script>
         $('.select2').select2()
@@ -207,6 +209,15 @@
                 "info": false,
                 "autoWidth": true,
                 "responsive": true,
+                columnDefs: [{
+                        responsivePriority: 1,
+                        targets: 0
+                    },
+                    {
+                        responsivePriority: 2,
+                        targets: -1
+                    }
+                ]
             });
         });
     </script>

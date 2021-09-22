@@ -6,6 +6,28 @@
 <h1 class="m-0 text-dark">{{__('cruds.food.title')}}</h1>
 @stop
 
+@section('adminlte_css')
+<style>
+    .dtr-control.sorting_1:before{
+        left: 35px;
+        height: 14px;
+        width: 14px;
+        display: block;
+        position: absolute;
+        color: white;
+        border: 2px solid white;
+        border-radius: 14px;
+        box-shadow: 0 0 3px #444;
+        box-sizing: content-box;
+        text-align: center;
+        text-indent: 0 !important;
+        font-family: 'Courier New', Courier, monospace;
+        line-height: 14px;
+        content: '+';
+        background-color: #31b131;
+    }
+</style>
+@endsection
 @section('content')
 
 <!-- Main content -->
@@ -24,6 +46,9 @@
             <table id="example" class="table table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th width="10">
+
+                        </th>
                         <th>
                             {{__('cruds.food.fields.id')}}
                         </th>
@@ -67,6 +92,7 @@
                 <tbody>
                     @foreach($data as $key => $value)
                     <tr>
+                        <td></td>
                         <td>
                             {{$value->id ?? '-'}}
                         </td>
