@@ -15,6 +15,7 @@ use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\Dish;
 use App\Models\Food;
+use App\Models\Ingredient;
 use App\Models\MealType;
 use App\Models\PreferedTime;
 use App\Models\State;
@@ -73,24 +74,28 @@ class ApiHomeController extends Controller
 
     public function get_foods()
     {
+        $data = Food::query();
+
         if (request('food_id')) {
-            $data = new FoodResource($this->findWith(Food::class, ['id' => request('food_id')], ['mealtypes', 'foodtypes_many']));
-            if (!$data) {
-                return responseFail('there is no diet with this id');
-            }
+            $data = $data->where('id', request('food_id'));
         } elseif (request('dish_id')) {
-            $data = Food::whereHas('foodtypes_many', function ($q) {
-                $q->where('dish_id', request('dish_id'));
-            })->get();
-            $data = FoodResource::collection($data);
+            $data = $data->whereHas('foodtypes_many', function ($q) {
+                $q->whereIn('dish_id', json_decode(request('dish_ids')));
+            });
         } elseif (request('meal_type_id')) {
-            $data = Food::whereHas('mealtypes_many', function ($q) {
-                $q->where('meal_type_id', request('meal_type_id'));
-            })->get();
-            $data = FoodResource::collection($data);
+            $data = $data->whereHas('mealtypes_many', function ($q) {
+                $q->whereIn('mealtype_id', json_decode(request('mealtype_ids')));
+            });
+        } elseif (request('ingredient_ids')) {
+            $data = $data->whereHas('ingredients_many', function ($q) {
+                $q->whereIn('ingredient_id', json_decode(request('ingredient_ids')));
+            });
         } else {
-            $data = FoodResource::collection($this->get(Food::class, ['mealtypes', 'foodtypes_many']));
+            $data = FoodResource::collection($this->get(Food::class, ['mealtypes', 'foodtypes_many', 'ingredients_many']));
+            return responseSuccess($data);
         }
+
+        $data = FoodResource::collection($data->get());
         return responseSuccess($data);
     }
 
@@ -117,6 +122,21 @@ class ApiHomeController extends Controller
             }
         } else {
             $data = GeneralResource::collection($this->get(MealType::class));
+        }
+
+        return responseSuccess($data);
+    }
+
+
+    public function get_ingredients()
+    {
+        if (request('ingredient_id')) {
+            $data = new GeneralResource($this->findWith(Ingredient::class, ['id' => request('ingredient_id')], []));
+            if (!$data) {
+                return responseFail('there is no ingredient with this id');
+            }
+        } else {
+            $data = GeneralResource::collection($this->get(Ingredient::class));
         }
 
         return responseSuccess($data);

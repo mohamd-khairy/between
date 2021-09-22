@@ -37,6 +37,9 @@
                             {{__('cruds.food.fields.mealtypes')}}
                         </th>
                         <th>
+                            {{__('cruds.food.fields.ingredients')}}
+                        </th>
+                        <th>
                             {{__('cruds.food.fields.protein')}}
                         </th>
                         <th>
@@ -75,6 +78,9 @@
                         </td>
                         <td>
                             {{$value->mealtypes ? $value->mealtypes->pluck('name') : '-'}}
+                        </td>
+                        <td>
+                            {{$value->ingredients_many ? $value->ingredients_many->pluck('ingredient.name') : '-'}}
                         </td>
                         <td>
                             {{$value->protein ?? '-'}}
@@ -135,5 +141,3 @@
 </section>
 <!-- /.content -->
 @endsection
-
-

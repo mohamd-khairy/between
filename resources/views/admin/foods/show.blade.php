@@ -51,6 +51,11 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>{{__('cruds.food.fields.ingredients')}}</th>
+                    <td> {{$data->ingredients_many ? $data->ingredients_many->pluck('ingredient.name') : '-'}}
+                    </td>
+                </tr>
+                <tr>
                     <th>{{__('cruds.food.fields.protein')}}</th>
                     <td>{{$data->protein ?? ''}}</td>
                 </tr>

@@ -61,6 +61,16 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.food.fields.ingredients')}}</label>
+                            <select class="form-control select2" name="ingredients[]" multiple>
+                                @foreach($allData['ingredients'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="inputName">{{__('cruds.food.fields.protein')}}</label>

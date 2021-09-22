@@ -33,4 +33,5 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('preferedtime', \App\Http\Controllers\Admin\PreferedTimeController::class);
     Route::resource('food', \App\Http\Controllers\Admin\FoodController::class);
     Route::resource('dish', \App\Http\Controllers\Admin\DishController::class);
+    Route::resource('ingredient', \App\Http\Controllers\Admin\IngredientController::class);
 });

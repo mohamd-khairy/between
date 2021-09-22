@@ -292,6 +292,10 @@ return [
                     'text' => 'dishs',
                     'url'  => 'dish',
                 ],
+                [
+                    'text' => 'ingredients',
+                    'url'  => 'ingredient',
+                ],
             ],
         ], //type
         [

@@ -9,6 +9,7 @@ use App\Models\Dish;
 use App\Models\Food;
 use App\Models\FoodMealType;
 use App\Models\FoodType;
+use App\Models\Ingredient;
 use App\Models\MealType;
 use App\Models\State;
 use App\Models\Target;
@@ -284,6 +285,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         $types = ['breakfast', 'dinner', 'launch', 'other'];
+        $ingredients_data = ['egg', 'milk', 'cheese', 'other'];
         foreach ($meal_types as $k => $meal_type) {
             $meal_type = MealType::create($meal_type);
 
@@ -312,6 +314,11 @@ class DatabaseSeeder extends Seeder
             FoodType::create([
                 'dish_id' => $dish->id,
                 'food_id' => $food->id
+            ]);
+
+            $ingredients = Ingredient::create([
+                'en' => ['name' => $ingredients_data[rand(0, 3)] . $k],
+                'ar' => ['name' => $ingredients_data[rand(0, 3)] . $k],
             ]);
         }
     }

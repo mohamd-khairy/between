@@ -21,5 +21,7 @@ return [
     'preferedtimes' => 'Prefered Times',
     'mealnumbers' => 'Meal Day Numbers',
     'foods' => 'Foods',
-    'dishs' => 'Dishs'
+    'dishs' => 'Dishs',
+    'ingredient' => 'Ingredients'
+
 ];

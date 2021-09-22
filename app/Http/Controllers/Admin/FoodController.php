@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\MainController;
 use App\Models\Dish;
 use App\Models\Food;
+use App\Models\FoodIngredient;
 use App\Models\FoodType;
+use App\Models\Ingredient;
 use App\Models\MealType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -51,7 +53,8 @@ class FoodController extends MainController
     {
         $this->create_data = $this->edit_data = [
             'MealType' => MealType::all(),
-            'dishs' => Dish::all()
+            'dishs' => Dish::all(),
+            'ingredients' => Ingredient::all()
         ];
     }
 
@@ -73,11 +76,21 @@ class FoodController extends MainController
             $data->mealtypes()->sync($request->meal_type_id);
         }
 
+
         if ($request->type) {
             foreach ($request->type as $key => $value) {
                 FoodType::create([
                     'food_id' => $data->id,
                     'dish_id' => $value
+                ]);
+            }
+        }
+
+        if ($request->ingredients) {
+            foreach ($request->ingredients as $key => $value) {
+                FoodIngredient::create([
+                    'food_id' => $data->id,
+                    'ingredient_id' => $value
                 ]);
             }
         }
@@ -123,6 +136,16 @@ class FoodController extends MainController
                 FoodType::create([
                     'food_id' => $id,
                     'dish_id' => $value
+                ]);
+            }
+        }
+
+        if ($request->ingredients && count($request->ingredients) > 0) {
+            FoodIngredient::where('food_id', $id)->delete();
+            foreach ($request->ingredients as $key => $value) {
+                FoodIngredient::create([
+                    'food_id' => $id,
+                    'ingredient_id' => $value
                 ]);
             }
         }

@@ -62,4 +62,9 @@ class Food extends Model implements TranslatableContract
     {
         return $this->hasMany(FoodType::class)->with('dish');
     }
+
+    public function ingredients_many()
+    {
+        return $this->hasMany(FoodIngredient::class);
+    }
 }

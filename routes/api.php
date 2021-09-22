@@ -28,6 +28,7 @@ Route::get('get-foods', [\App\Http\Controllers\Api\ApiHomeController::class, 'ge
 Route::get('get-dishes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_dishes']);
 Route::get('get-mealtypes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_mealtypes']);
 Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
+Route::get('get-ingredients', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_ingredients']);
 
 Route::group(['middleware' => ['auth:api']], function () {
 

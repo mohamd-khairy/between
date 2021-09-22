@@ -172,14 +172,25 @@ return [
             'photo' => 'Photo',
             'calories' => 'Calories',
             'weight' => 'Weight',
-            'type' => 'Type'
+            'type' => 'Type',
+            'ingredients' => 'Ingredients'
         ]
     ],
 
     'dish' => [
-        'title' => 'Dsihs',
-        'create' => 'Create Dsih',
-        'update' => 'Update Dsih',
+        'title' => 'Dishs',
+        'create' => 'Create Dish',
+        'update' => 'Update Dish',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+        ]
+    ],
+
+    'ingredient' => [
+        'title' => 'Ingredients',
+        'create' => 'Create ingredient',
+        'update' => 'Update ingredient',
         'fields' => [
             'id' => 'Id',
             'name' => 'Name',

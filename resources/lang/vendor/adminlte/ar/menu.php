@@ -22,5 +22,6 @@ return [
     'preferedtimes' => 'الاوقات المفضله',
     'mealnumbers' => 'عدد الوجبات',
     'foods' => 'الوجبات',
-    'dishs' => 'أطباق'
+    'dishs' => 'أطباق',
+    'ingredient' => 'الحساسيه'
 ];
