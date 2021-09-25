@@ -130,7 +130,7 @@ class UserController extends Controller
             $user->email_verified_at = now();
             $user->save();
 
-            return responseSuccess(['url' => asset('/api/login')], "email verified successfully .");
+            return responseSuccess(['verified' => 1], "email verified successfully .");
         } else {
             return responseFail("Sorry , some thing wrong !");
         }
