@@ -25,6 +25,7 @@ class FoodResource extends JsonResource
             'price' => $this->price ?? null,
             'photo' => display_img($this->image ? $this->image->photo : null),
             'meal_types' => $this->mealtypes ? MealTypeResource::collection($this->mealtypes) : null,
+            'status' => $this->status ? True : false
         ];
     }
 }
