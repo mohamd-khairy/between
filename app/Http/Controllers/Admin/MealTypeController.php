@@ -17,12 +17,14 @@ class MealTypeController extends MainController
         'name_ar' => 'required',
         'parent' => 'required',
         'parent_id' => 'required_if:parent,0',
+        'photo' => 'required|image|max:2048'
     ];
     public $edit_validation = [
         'name_en' => 'required',
         'name_ar' => 'required',
         'parent' => 'required',
         'parent_id' => 'required_if:parent,0',
+        'photo' => 'nullable|image|max:2048'
     ];
     public $filters = ['parent'];
     public $indexCondition = ['parent' => 0];

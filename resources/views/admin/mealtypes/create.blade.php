@@ -30,6 +30,12 @@
                                 <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , '')}}" name="name_ar" class="form-control">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.food.fields.photo')}}</label>
+                            <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
+                        </div>
+                        
                         @if($parent && $parent == 1)
 
                         <input type="hidden" name="parent" value="1">

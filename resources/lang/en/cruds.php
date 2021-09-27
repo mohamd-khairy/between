@@ -173,7 +173,8 @@ return [
             'calories' => 'Calories',
             'weight' => 'Weight',
             'type' => 'Type',
-            'ingredients' => 'Ingredients'
+            'ingredients' => 'Ingredients',
+            'status' => 'Status'
         ]
     ],
 

@@ -17,7 +17,8 @@ class MainTypeResource extends JsonResource
         return [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
-            'meal_types' =>  GeneralResource::collection($this->meal_types)
+            'meal_types' =>  GeneralResource::collection($this->meal_types),
+            'photo' => display_img($this->image ? $this->image->photo : null),
         ];
     }
 }

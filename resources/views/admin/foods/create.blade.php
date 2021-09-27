@@ -105,6 +105,15 @@
                             <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
                         </div>
 
+                        <div class="form-group ">
+                            <label for="inputName">{{__('cruds.food.fields.status')}}</label>
+                            <select style="width: 100%;" data-live-search="true" class="form-control " name="status">
+                                <option value="">select</option>
+                                <option value="1" {{old('status' , '') == 1 ? 'selected' : ''}}>Active</option>
+                                <option value="0" {{old('status' , '') == 0 ? 'selected' : ''}}>Not Active</option>
+                            </select>
+                        </div>
+                    
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

@@ -25,11 +25,17 @@ class MealType extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name'];
 
+    public $with = ['image'];
+
     public function gettranslatable()
     {
         return $this->translatedAttributes;
     }
 
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'item_id', 'id')->where('model', 'App\Models\MealType');
+    }
 
     public function main_type()
     {

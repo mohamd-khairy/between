@@ -40,6 +40,9 @@
                         </th>
                         @endif
                         <th>
+                            {{__('cruds.target.fields.photo')}}
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -57,6 +60,9 @@
                             {{$value->main_type->name ?? '-'}}
                         </td>
                         @endif
+                        <td>
+                            <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">
+                        </td>
 
                         <td class="project-actions text-right">
 

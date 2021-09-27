@@ -17,7 +17,8 @@ class MealTypeResource extends JsonResource
         return [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
-            'main_type' =>   new GeneralResource($this->main_type)
+            'main_type' =>   new GeneralResource($this->main_type),
+            'photo' => display_img($this->image ? $this->image->photo : null),
         ];
     }
 }

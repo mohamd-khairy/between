@@ -32,6 +32,18 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                <label for="inputName">{{__('cruds.food.fields.photo')}}</label>
+                                <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
+                            </div>
+
+                            <div class="col-md-2">
+                                <img src="{{display_img($data->image ? $data->image->photo : null)}}" class="img-circle" style="width: 100px;height:100px;">
+                            </div>
+                        </div>
+
                         @if($parent && $parent == 1)
 
                         <input type="hidden" name="parent" value="1">

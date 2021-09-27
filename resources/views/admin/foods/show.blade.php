@@ -86,6 +86,10 @@
                     <th>{{__('cruds.target.fields.photo')}}</th>
                     <td><img src="{{display_img($data->image?$data->image->photo:null)}}" style="width: 70px;height:70px" class="img-circle"></td>
                 </tr>
+                <tr>
+                    <th>{{__('cruds.food.fields.status')}}</th>
+                    <td> {{$data->status ? 'Active' : 'Not Active'}}</td>
+                </tr>
             </tbody>
         </table>
     </div>

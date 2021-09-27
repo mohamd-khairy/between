@@ -174,7 +174,8 @@ return [
             'calories' => 'سعرات',
             'weight' => 'الوزن ',
             'type' => 'النوع',
-            'ingredients' => 'الحساسيه'
+            'ingredients' => 'الحساسيه',
+            'status' => 'الحاله'
         ]
     ],
 

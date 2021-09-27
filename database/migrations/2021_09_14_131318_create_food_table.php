@@ -22,6 +22,7 @@ class CreateFoodTable extends Migration
             $table->string('weight')->nullable();
             $table->string('price')->nullable();
             $table->unsignedBigInteger('main_type_id')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

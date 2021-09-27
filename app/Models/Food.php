@@ -21,7 +21,8 @@ class Food extends Model implements TranslatableContract
         'main_type_id',
         'price',
         'weight',
-        'calories'
+        'calories',
+        'status'
     ];
 
     protected $hidden = [
