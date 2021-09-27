@@ -8,6 +8,7 @@ use App\Http\Resources\DietResource;
 use App\Http\Resources\FoodResource;
 use App\Http\Resources\GeneralResource;
 use App\Http\Resources\MainTypeResource;
+use App\Http\Resources\MealTypeResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\TargetResource;
 use App\Http\Traits\HelperTrait;
@@ -116,12 +117,12 @@ class ApiHomeController extends Controller
     public function get_mealtypes()
     {
         if (request('meal_type_id')) {
-            $data = new GeneralResource($this->findWith(MealType::class, ['id' => request('meal_type_id')], []));
+            $data = new MealTypeResource($this->findWith(MealType::class, ['id' => request('meal_type_id')], []));
             if (!$data) {
                 return responseFail('there is no meal type with this id');
             }
         } else {
-            $data = GeneralResource::collection($this->get(MealType::class));
+            $data = MealTypeResource::collection($this->get(MealType::class));
         }
 
         return responseSuccess($data);
