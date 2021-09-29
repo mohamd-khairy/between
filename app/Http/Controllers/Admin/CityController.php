@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CityController extends MainController
 {
     public $model = City::class;
-    public $view = 'general';
+    public $view = 'cities'; //general
     public $route = 'city';
     public $create_validation = [
         'name_en' => 'required',
