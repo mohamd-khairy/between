@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CityController extends MainController
 {
     public $model = City::class;
-    public $view = 'cities';
+    public $view = 'general';
     public $route = 'city';
     public $create_validation = [
         'name_en' => 'required',
@@ -31,19 +31,49 @@ class CityController extends MainController
 
     public function __construct()
     {
-        $this->create_data = $this->edit_data = [];
-    }
+        $this->view_fields = [
+            'crud_name' => 'city',
+            'crud_route' => 'city',
+            'fields' => [
+                'row' => [
+                    'translated' => [
+                        'name' => 'name',
+                        'display_name' => __('cruds.city.fields.name'),
+                    ],
+                    'col' => 6,
+                    'items' => [
+                        'name_en' => [
+                            'type' => 'text',
+                            'id' => 'name_en',
+                            'name' => 'name_en',
+                            'display_name' => __('cruds.city.fields.name') . ' En',
+                            'required' => 1
+                        ],
+                        'name_ar' => [
+                            'type' => 'text',
+                            'id' => 'name_ar',
+                            'name' => 'name_ar',
+                            'display_name' => __('cruds.city.fields.name') . ' Ar',
+                            'required' => 1
+                        ]
+                    ]
+                ],
+                'select' => [
+                    'type' => 'select',
+                    'relation' => [
+                        'name' => 'state',
+                        'item_name' => 'name'
+                    ],
+                    'id' => 'state_id',
+                    'name' => 'state_id',
+                    'display_name' => __('cruds.city.fields.state'),
+                    'required' => 1
+                ]
+            ]
+        ];
 
-    public function create()
-    {
-        $states = State::get();
-        return view('admin.' . $this->view . '.create', compact('states'));
-    }
-
-    public function edit($id)
-    {
-        $states = State::get();
-        $data = $this->findWith($this->model, ['id' => $id], $this->with);
-        return view('admin.' . $this->view . '.edit', compact('data', 'states'));
+        $this->create_data = $this->edit_data = [
+            'state' => State::get()
+        ];
     }
 }

@@ -21,13 +21,20 @@
                     <div class="card-body">
                         @if($view_fields && isset($view_fields['fields']))
                         @foreach($view_fields['fields'] as $key => $value)
+
                         @if($key == 'row' && isset($value['col']) && isset($value['items']))
                         <div class="form-group row">
                             @foreach($value['items'] as $k => $item)
+                            @php $i = 0 @endphp
                             <div class="col-md-{{$value['col']}}">
                                 <label for="inputName">{{$item['display_name']}}</label>
+                                @if(isset($value['translated']))
+                                <input type="{{$item['type']}}" placeholder="enter" value="{{old($item['name'] , $data['translations'][$i][$value['translated']['name']])}}" name="{{$item['name']}}" id="{{$item['id']}}" class="form-control" required="{{$item['required']}}">
+                                @else
                                 <input type="{{$item['type']}}" placeholder="enter" value="{{old($item['name'] , $data[$item['name']])}}" name="{{$item['name']}}" id="{{$item['id']}}" class="form-control" required="{{$item['required']}}">
+                                @endif
                             </div>
+                            @php $i++ @endphp
                             @endforeach
                         </div>
                         @elseif($key == 'textarea')
@@ -46,6 +53,16 @@
                             <div class="col-md-2">
                                 <img src="{{display_img($data->image ? $data->image->$value['name'] : null)}}" class="img-circle" style="width: 100px;height:100px;">
                             </div>
+                        </div>
+                        @elseif($key == 'select')
+                        <div class="form-group">
+                            <label for="inputName">{{$value['display_name']}}</label>
+                            <select class="form-control select2" name="{{$value['name']}}" id="{{$value['id']}}">
+                                <option value="">select</option>
+                                @foreach($allData[$value['relation']['name']] as $item)
+                                <option value="{{$item->id}}" {{old($value['name'] , $data[$value['name']]) == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         @else
                         <div class="form-group">

@@ -61,12 +61,12 @@
                         @if($key == 'row')
                         @if(isset($value['translated']))
                         <td>
-                            {{$result[$value['translated']['name']]}}
+                            {{$result[$value['translated']['name']] ?? '-'}}
                         </td>
                         @else
                         @foreach($value['items'] as $k => $item)
                         <td>
-                            {{$result->$item['name']}}
+                            {{$result[$item['name']] ?? '-'}}
                         </td>
                         @endforeach
                         @endif
@@ -74,9 +74,13 @@
                         <td>
                             <img src="{{display_img($result->image ? $result->image->$value['name'] : null)}}" style="width: 70px;height:70px" class="img-circle">
                         </td>
+                        @elseif($key == 'select')
+                        <td>
+                            {{$result[$value['relation']['name']][$value['relation']['item_name']] ?? '-'}}
+                        </td>
                         @else
                         <td>
-                            {{$result->$value['name']}}
+                            {{$result[$value['name']] ?? '-'}}
                         </td>
                         @endif
                         @endforeach

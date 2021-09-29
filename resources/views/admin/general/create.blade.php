@@ -20,31 +20,41 @@
                     <div class="card-body">
                         @if($view_fields && isset($view_fields['fields']))
                         @foreach($view_fields['fields'] as $key => $value)
-                            @if($key == 'row' && isset($value['col']) && isset($value['items']))
-                            <div class="form-group row">
-                                @foreach($value['items'] as $k => $item)
-                                <div class="col-md-{{$value['col']}}">
-                                    <label for="inputName">{{$item['display_name']}}</label>
-                                    <input type="{{$item['type']}}" placeholder="enter" value="{{old($item['name'] , '')}}" name="{{$item['name']}}" id="{{$item['id']}}" class="form-control" required="{{$item['required']}}">
-                                </div>
+                        @if($key == 'row' && isset($value['col']) && isset($value['items']))
+                        <div class="form-group row">
+                            @foreach($value['items'] as $k => $item)
+                            <div class="col-md-{{$value['col']}}">
+                                <label for="inputName">{{$item['display_name']}}</label>
+                                <input type="{{$item['type']}}" placeholder="enter" value="{{old($item['name'] , '')}}" name="{{$item['name']}}" id="{{$item['id']}}" class="form-control" required="{{$item['required']}}">
+                            </div>
+                            @endforeach
+                        </div>
+                        @elseif($key == 'textarea')
+                        <div class="form-group">
+                            <label for="inputName">{{$value['display_name']}}</label>
+                            <textarea class="form-control" id="{{$value['id']}}" name="{{$value['name']}}"></textarea>
+                        </div>
+                        @elseif($key == 'photo')
+                        <div class="form-group">
+                            <label for="inputName">{{$value['display_name']}}</label>
+                            <input type="{{$value['type']}}" name="{{$value['name']}}" id="{{$value['id']}}" placeholder="enter" class="form-control" required="{{$value['required']}}">
+                        </div>
+                        @elseif($key == 'select')
+                        <div class="form-group">
+                            <label for="inputName">{{$value['display_name']}}</label>
+                            <select class="form-control select2" name="{{$value['name']}}" id="{{$value['id']}}">
+                                <option value="">select</option>
+                                @foreach($allData[$value['relation']['name']] as $item)
+                                <option value="{{$item->id}}" {{old($value['name'] , '') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                 @endforeach
-                            </div>
-                            @elseif($key == 'textarea')
-                            <div class="form-group">
-                                <label for="inputName">{{$value['display_name']}}</label>
-                                <textarea class="form-control" id="{{$value['id']}}" name="{{$value['name']}}"></textarea>
-                            </div>
-                            @elseif($key == 'photo')
-                            <div class="form-group">
-                                <label for="inputName">{{$value['display_name']}}</label>
-                                <input type="{{$value['type']}}" name="{{$value['name']}}" id="{{$value['id']}}"  placeholder="enter" class="form-control" required="{{$value['required']}}">
-                            </div>
-                            @else
-                            <div class="form-group">
-                                <label for="inputName">{{$value['display_name']}}</label>
-                                <input type="{{$value['type']}}" value="{{old($value['name'] , '')}}" name="{{$value['name']}}" id="{{$value['id']}}"  placeholder="enter" class="form-control" required="{{$value['required']}}">
-                            </div>
-                            @endif
+                            </select>
+                        </div>
+                        @else
+                        <div class="form-group">
+                            <label for="inputName">{{$value['display_name']}}</label>
+                            <input type="{{$value['type']}}" value="{{old($value['name'] , '')}}" name="{{$value['name']}}" id="{{$value['id']}}" placeholder="enter" class="form-control" required="{{$value['required']}}">
+                        </div>
+                        @endif
                         @endforeach
                         @endif
                     </div>

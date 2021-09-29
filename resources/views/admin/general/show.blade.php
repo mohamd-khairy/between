@@ -27,18 +27,23 @@
                 @foreach($view_fields['fields'] as $key => $value)
                 @if($key == 'row' && isset($value['translated']))
                 <tr>
-                    <th>{{$value['translated']['display_name']}}</th>
-                    <td>{{$data[$value['translated']['name']]}}</td>
+                    <th>{{$value['translated']['display_name'] ?? '-'}}</th>
+                    <td>{{$data[$value['translated']['name']] ?? '-'}}</td>
                 </tr>
                 @elseif($key == 'photo')
                 <tr>
                     <th>{{$value['display_name']}}</th>
                     <td><img src="{{display_img($data->image?$data->image->$value['name']:null)}}" style="width: 70px;height:70px" class="img-circle"></td>
                 </tr>
+                @elseif($key == 'select')
+                <tr>
+                    <th>{{$value['display_name'] ?? '-'}}</th>
+                    <td>{{$data[$value['relation']['name']][$value['relation']['item_name']]  ?? '-'}}</td>
+                </tr>
                 @else
                 <tr>
-                    <th>{{$value['translated']['display_name']}}</th>
-                    <td>{{$data[$value['translated']['name']]}}</td>
+                    <th>{{$value['translated']['display_name'] ?? '-'}}</th>
+                    <td>{{$data[$value['translated']['name']] ?? '-'}}</td>
                 </tr>
                 @endif
                 @endforeach
