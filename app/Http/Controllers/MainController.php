@@ -19,11 +19,12 @@ class MainController extends Controller
      */
     public function index()
     {
+        $view_fields = $this->view_fields ?? null;
         $conditions = $this->filters($this->filters) + $this->indexCondition;
         // $conditions = count($this->filters($this->filters)) > 0 ? $this->filters($this->filters) : $this->indexCondition;
         $data = $this->getBy($this->model, $conditions, $this->with);
         if (!request()->expectsJson()) {
-            return view('admin.' . $this->view . '.index', compact('data'));
+            return view('admin.' . $this->view . '.index', compact('view_fields', 'data'));
         } else {
             return responseSuccess($data);
         }
@@ -36,7 +37,10 @@ class MainController extends Controller
      */
     public function create()
     {
-        return view('admin.' . $this->view . '.create')->with('allData', $this->create_data ?? []);
+        $view_fields = $this->view_fields ?? null;
+        return view('admin.' . $this->view . '.create')
+            ->with('view_fields', $view_fields)
+            ->with('allData', $this->create_data ?? []);
     }
 
     /**
@@ -84,9 +88,10 @@ class MainController extends Controller
      */
     public function show($id)
     {
+        $view_fields = $this->view_fields ?? null;
         $data = $this->findWith($this->model, ['id' => $id], $this->with);
         if (!request()->expectsJson()) {
-            return view('admin.' . $this->view . '.show', compact('data'));
+            return view('admin.' . $this->view . '.show', compact('view_fields', 'data'));
         } else {
             return responseSuccess($data);
         }
@@ -100,8 +105,11 @@ class MainController extends Controller
      */
     public function edit($id)
     {
+        $view_fields = $this->view_fields ?? null;
         $data = $this->findWith($this->model, ['id' => $id], $this->with);
-        return view('admin.' . $this->view . '.edit', compact('data'))->with('allData', $this->edit_data ?? []);;
+        return view('admin.' . $this->view . '.edit', compact('data'))
+            ->with('view_fields', $view_fields)
+            ->with('allData', $this->edit_data ?? []);;
     }
 
     /**

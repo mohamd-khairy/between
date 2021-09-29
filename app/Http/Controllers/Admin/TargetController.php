@@ -21,6 +21,7 @@ class TargetController extends MainController
         'name_ar' => 'required',
         'photo'   => 'required|image|max:2048'
     ];
+    public $view_fields = [];
     public $filters = [];
     public $indexCondition = [];
     public $with = [];
@@ -29,6 +30,43 @@ class TargetController extends MainController
 
     public function __construct()
     {
+        $this->view_fields = [
+            'crud_name' => 'target',
+            'crud_route' => 'target',
+            'fields' => [
+                'row' => [
+                    'translated' => [
+                        'name' => 'name',
+                        'display_name' => __('cruds.target.fields.name'),
+                    ],
+                    'col' => 6,
+                    'items' => [
+                        'name_en' => [
+                            'type' => 'text',
+                            'id' => 'name_en',
+                            'name' => 'name_en',
+                            'display_name' => __('cruds.target.fields.name') . ' En',
+                            'required' => 1
+                        ],
+                        'name_ar' => [
+                            'type' => 'text',
+                            'id' => 'name_ar',
+                            'name' => 'name_ar',
+                            'display_name' => __('cruds.target.fields.name') . ' Ar',
+                            'required' => 1
+                        ]
+                    ]
+                ],
+                'photo' => [
+                    'type' => 'file',
+                    'id' => 'photo',
+                    'name' => 'photo',
+                    'display_name' => __('cruds.target.fields.photo'),
+                    'required' => 0
+                ]
+            ]
+        ];
+
         $this->create_data = $this->edit_data = [];
     }
 }
