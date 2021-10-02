@@ -20,6 +20,7 @@ class Ingredient extends Model implements TranslatableContract
     ];
 
     public $translatedAttributes = ['name'];
+    public $with = ['translations'];
 
     public function gettranslatable()
     {

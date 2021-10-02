@@ -45,7 +45,7 @@ class FoodController extends MainController
     ];
     public $filters = [];
     public $indexCondition = [];
-    public $with = [];
+    public $with = ['foodtypes_many', 'ingredients_many', 'mealtypes'];
     public $create_data = [];
     public $edit_data = [];
 

@@ -24,6 +24,7 @@ class Address extends Model implements TranslatableContract
     ];
 
     public $translatedAttributes = ['country', 'state', 'district', 'street', 'full_address'];
+    public $with = ['translations'];
 
     protected $hidden = [
         'created_at',

@@ -32,8 +32,7 @@ class Diet extends Model implements TranslatableContract
     ];
 
     public $translatedAttributes = ['name'];
-
-    public $with = ['image'];
+    public $with = ['translations','image'];
 
     public function gettranslatable()
     {

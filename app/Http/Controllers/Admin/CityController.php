@@ -25,7 +25,7 @@ class CityController extends MainController
     ];
     public $filters = [];
     public $indexCondition = [];
-    public $with = [];
+    public $with = ['state'];
     public $create_data = [];
     public $edit_data = [];
 

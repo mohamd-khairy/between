@@ -24,8 +24,7 @@ class MealType extends Model implements TranslatableContract
     ];
 
     public $translatedAttributes = ['name'];
-
-    public $with = ['image'];
+    public $with = ['image','translations'];
 
     public function gettranslatable()
     {

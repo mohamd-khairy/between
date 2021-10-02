@@ -31,8 +31,7 @@ class Food extends Model implements TranslatableContract
     ];
 
     public $translatedAttributes = ['name', 'details'];
-
-    public $with = ['image'];
+    public $with = ['translations','image'];
 
     public function gettranslatable()
     {

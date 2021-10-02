@@ -36,6 +36,7 @@ class User extends Authenticatable implements TranslatableContract
     ];
 
     public $translatedAttributes = ['name'];
+    public $with = ['translations'];
 
     /**
      * The attributes that should be hidden for arrays.

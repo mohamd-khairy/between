@@ -25,7 +25,7 @@ class MealNumberController extends MainController
     ];
     public $filters = [];
     public $indexCondition = [];
-    public $with = [];
+    public $with = ['diet'];
     public $create_data = [];
     public $edit_data = [];
 
