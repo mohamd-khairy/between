@@ -14,9 +14,15 @@ class GeneralResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
         ];
+
+        if (isset($this->image->photo)) {
+            $data['photo'] = display_img($this->image ? $this->image->photo : null);
+        }
+
+        return $data;
     }
 }
