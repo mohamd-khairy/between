@@ -31,6 +31,10 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.target.fields.photo')}}</label>
+                            <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

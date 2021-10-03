@@ -20,11 +20,15 @@ class Dish extends Model implements TranslatableContract
     ];
 
     public $translatedAttributes = ['name'];
-    public $with = ['translations'];
+    public $with = ['translations', 'image'];
 
     public function gettranslatable()
     {
         return $this->translatedAttributes;
     }
 
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'item_id', 'id')->where('model', 'App\Models\Dish');
+    }
 }

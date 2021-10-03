@@ -35,6 +35,9 @@
                             {{__('cruds.dish.fields.name')}}
                         </th>
                         <th>
+                            {{__('cruds.target.fields.photo')}}
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -48,6 +51,9 @@
                             {{$value->name ?? '-'}}
                         </td>
 
+                        <td>
+                            <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">
+                        </td>
                         <td class="project-actions text-right">
 
                             <a class="btn btn-primary btn-sm" href="{{route('admin.dish.show' , $value->id)}}">

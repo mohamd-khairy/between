@@ -15,10 +15,12 @@ class DishController extends MainController
     public $create_validation = [
         'name_en' => 'required',
         'name_ar' => 'required',
+        'photo'   => 'required|image|max:2048',
     ];
     public $edit_validation = [
         'name_en' => 'required',
         'name_ar' => 'required',
+        'photo'   => 'nullable|image|max:2048',
     ];
     public $filters = [];
     public $indexCondition = [];

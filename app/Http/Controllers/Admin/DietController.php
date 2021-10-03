@@ -31,7 +31,7 @@ class DietController extends MainController
         'carb' => 'required',
         'target_id' => 'required|exists:targets,id',
         'fats' => 'required',
-        'photo'   => 'required|image|max:2048',
+        'photo'   => 'nullable|image|max:2048',
         'calories' => 'required',
         'weight_from' => 'required',
         'weight_to' => 'required'

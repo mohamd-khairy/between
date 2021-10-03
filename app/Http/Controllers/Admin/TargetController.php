@@ -19,7 +19,7 @@ class TargetController extends MainController
     public $edit_validation = [
         'name_en' => 'required',
         'name_ar' => 'required',
-        'photo'   => 'required|image|max:2048'
+        'photo'   => 'nullable|image|max:2048'
     ];
     public $filters = [];
     public $indexCondition = [];
