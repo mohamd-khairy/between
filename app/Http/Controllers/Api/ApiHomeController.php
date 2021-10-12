@@ -49,10 +49,11 @@ class ApiHomeController extends Controller
     public function get_diets()
     {
         if (request('diet_id')) {
-            $data = new DietResource($this->findWith(Diet::class, ['id' => request('diet_id')], ['days', 'mealNumbers']));
+            $data = $this->findWith(Diet::class, ['id' => request('diet_id')], ['days', 'mealNumbers']);
             if (!$data) {
                 return responseFail('there is no diet with this id');
             }
+            $data = new DietResource($data);
         } else {
             $data = DietResource::collection($this->get(Diet::class, ['days', 'mealNumbers']));
         }
@@ -63,10 +64,11 @@ class ApiHomeController extends Controller
     {
 
         if (request('target_id')) {
-            $data = new TargetResource($this->findWith(Target::class, ['id' => request('target_id')], ['diets']));
+            $data = $this->findWith(Target::class, ['id' => request('target_id')], ['diets']);
             if (!$data) {
                 return responseFail('there is no target with this id');
             }
+            $data = new TargetResource($data);
         } else {
             $data = TargetResource::collection($this->get(Target::class, ['diets']));
         }
@@ -83,6 +85,8 @@ class ApiHomeController extends Controller
             $data = $data->whereHas('foodtypes_many', function ($q) {
                 $q->whereIn('dish_id', json_decode(request('dish_ids')));
             });
+        } elseif (request('main_type_id')) {
+            $data = $data->where('main_type_id', request('main_type_id'));
         } elseif (request('meal_type_id')) {
             $data = $data->whereHas('mealtypes_many', function ($q) {
                 $q->whereIn('mealtype_id', json_decode(request('mealtype_ids')));
@@ -103,12 +107,28 @@ class ApiHomeController extends Controller
     public function get_dishes()
     {
         if (request('dish_id')) {
-            $data = new GeneralResource($this->findWith(Dish::class, ['id' => request('dish_id')], []));
+            $data = $this->findWith(Dish::class, ['id' => request('dish_id')], []);
             if (!$data) {
                 return responseFail('there is no dish with this id');
             }
+            $data = new GeneralResource($data);
         } else {
             $data = GeneralResource::collection($this->get(Dish::class));
+        }
+
+        return responseSuccess($data);
+    }
+
+    public function get_maintypes()
+    {
+        if (request('main_type_id')) {
+            $data = $this->findWith(MealType::class, ['id' => request('main_type_id'), 'parent_id' => 0], []);
+            if (!$data) {
+                return responseFail('there is no main type with this id');
+            }
+            $data = new MealTypeResource($data);
+        } else {
+            $data = MealTypeResource::collection($this->getBy(MealType::class,  ['parent_id' => 0]));
         }
 
         return responseSuccess($data);
@@ -117,17 +137,17 @@ class ApiHomeController extends Controller
     public function get_mealtypes()
     {
         if (request('meal_type_id')) {
-            $data = new MealTypeResource($this->findWith(MealType::class, ['id' => request('meal_type_id')], []));
+            $data = $this->findWith(MealType::class, ['id' => request('meal_type_id'), 'parent' => 0], []);
             if (!$data) {
                 return responseFail('there is no meal type with this id');
             }
+            $data = new MealTypeResource($data);
         } else {
-            $data = MealTypeResource::collection($this->get(MealType::class));
+            $data = MealTypeResource::collection($this->getBy(MealType::class,  ['parent' => 0]));
         }
 
         return responseSuccess($data);
     }
-
 
     public function get_ingredients()
     {

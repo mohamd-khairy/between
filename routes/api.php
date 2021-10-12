@@ -26,6 +26,7 @@ Route::get('get-targets', [\App\Http\Controllers\Api\ApiHomeController::class, '
 Route::get('get-diets', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_diets']);
 Route::get('get-foods', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_foods']);
 Route::get('get-dishes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_dishes']);
+Route::get('get-maintypes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_maintypes']);
 Route::get('get-mealtypes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_mealtypes']);
 Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
 Route::get('get-ingredients', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_ingredients']);

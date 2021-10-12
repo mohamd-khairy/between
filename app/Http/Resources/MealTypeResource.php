@@ -14,11 +14,16 @@ class MealTypeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data =  [
             'id' => $this->id ?? null,
             'name' => $this->name ?? null,
-            'main_type' =>   new GeneralResource($this->main_type),
-            'photo' => display_img($this->image ? $this->image->photo : null),
+            'photo' => display_img(isset($this->image) ? $this->image->photo : null),
         ];
+
+        if (isset($this->main_type)) {
+            $data['main_type'] =  isset($this->main_type) ?   new GeneralResource($this->main_type) : null;
+        }
+
+        return $data;
     }
 }
