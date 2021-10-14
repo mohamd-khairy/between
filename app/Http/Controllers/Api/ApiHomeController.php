@@ -83,13 +83,13 @@ class ApiHomeController extends Controller
             $data = $data->where('id', request('food_id'));
         } elseif (request('dish_id')) {
             $data = $data->whereHas('foodtypes_many', function ($q) {
-                $q->whereIn('dish_id', json_decode(request('dish_ids')));
+                $q->where('dish_id', request('dish_id'));
             });
         } elseif (request('main_type_id')) {
             $data = $data->where('main_type_id', request('main_type_id'));
         } elseif (request('meal_type_id')) {
             $data = $data->whereHas('mealtypes_many', function ($q) {
-                $q->whereIn('mealtype_id', json_decode(request('mealtype_ids')));
+                $q->where('meal_type_id', request('meal_type_id'));
             });
         } elseif (request('ingredient_ids')) {
             $data = $data->whereHas('ingredients_many', function ($q) {
