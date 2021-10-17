@@ -19,7 +19,7 @@ class GeneralResource extends JsonResource
             'name' => $this->name ?? null,
         ];
 
-        if (isset($this->image)) {
+        if ($this->image) {
             $data['photo'] = display_img($this->image ? $this->image->photo : null);
         }
 
