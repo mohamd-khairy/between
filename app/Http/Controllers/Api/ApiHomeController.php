@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DayNumberResource;
 use App\Http\Resources\DietResource;
+use App\Http\Resources\DishResource;
 use App\Http\Resources\FoodResource;
 use App\Http\Resources\GeneralResource;
 use App\Http\Resources\MainTypeResource;
@@ -111,9 +112,9 @@ class ApiHomeController extends Controller
             if (!$data) {
                 return responseFail('there is no dish with this id');
             }
-            $data = new GeneralResource($data);
+            $data = new DishResource($data);
         } else {
-            $data = GeneralResource::collection($this->get(Dish::class , ['image']));
+            $data = DishResource::collection($this->get(Dish::class , ['image']));
         }
 
         return responseSuccess($data);
