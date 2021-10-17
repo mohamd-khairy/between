@@ -107,13 +107,13 @@ class ApiHomeController extends Controller
     public function get_dishes()
     {
         if (request('dish_id')) {
-            $data = $this->findWith(Dish::class, ['id' => request('dish_id')], []);
+            $data = $this->findWith(Dish::class, ['id' => request('dish_id')], ['image']);
             if (!$data) {
                 return responseFail('there is no dish with this id');
             }
             $data = new GeneralResource($data);
         } else {
-            $data = GeneralResource::collection($this->get(Dish::class));
+            $data = GeneralResource::collection($this->get(Dish::class , ['image']));
         }
 
         return responseSuccess($data);
