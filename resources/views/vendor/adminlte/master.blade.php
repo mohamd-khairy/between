@@ -167,8 +167,34 @@
     <script src="{{asset('vendor/datatables-plugins/buttons/css/buttons.bootstrap4.min.css')}}"></script>
     <script src="{{asset('vendor/datatables-plugins/responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('vendor/datatables-plugins/responsive/css/dataTables.bootstrap4.min.css')}}"></script>
-
+    <script src="https://cdn.tiny.cloud/1/zirk96xgerhvi8vwxd6owc1ygee2fty3trxlpzeg72ax69mx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
+        tinymce.init({
+            selector: 'textarea.ckeditor',
+            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            imagetools_cors_hosts: ['picsum.photos'],
+            menubar: 'file edit view insert format tools table help',
+            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+            toolbar_sticky: true,
+            autosave_ask_before_unload: true,
+            autosave_interval: "30s",
+            autosave_prefix: "{path}{query}-{id}-",
+            autosave_restore_when_empty: false,
+            autosave_retention: "2m",
+            image_advtab: true,
+            importcss_append: true,
+            template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+            template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+            height: 200,
+            image_caption: true,
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+            noneditable_noneditable_class: "mceNonEditable",
+            toolbar_mode: 'sliding',
+            contextmenu: "link image imagetools table",
+            extended_valid_elements: "style,link[href|rel]",
+            custom_elements: "style,link,~link"
+        });
+        
         $('.select2').select2()
 
         $(document).ready(function() {

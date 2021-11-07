@@ -22,6 +22,7 @@ return [
     'mealnumbers' => 'Meal Day Numbers',
     'foods' => 'Foods',
     'dishs' => 'Dishs',
-    'ingredient' => 'Ingredients'
+    'ingredient' => 'Ingredients',
+    'staticpages' => 'Static Pages'
 
 ];

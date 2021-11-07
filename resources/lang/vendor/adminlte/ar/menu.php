@@ -23,5 +23,6 @@ return [
     'mealnumbers' => 'عدد الوجبات',
     'foods' => 'الوجبات',
     'dishs' => 'أطباق',
-    'ingredient' => 'الحساسيه'
+    'ingredient' => 'الحساسيه',
+    'staticpages' => 'الصفحات الثابته'
 ];

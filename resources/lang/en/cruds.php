@@ -197,4 +197,16 @@ return [
             'name' => 'Name',
         ]
     ],
+
+    'staticpages' => [
+        'title' => 'staticpages',
+        'create' => 'Create staticpage',
+        'update' => 'Update staticpage',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+            'body_en' => 'Body English',
+            'body_ar' => 'Body Arabic',
+        ]
+    ],
 ];

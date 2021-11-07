@@ -21,8 +21,10 @@ use App\Models\Ingredient;
 use App\Models\MealType;
 use App\Models\PreferedTime;
 use App\Models\State;
+use App\Models\StaticPage;
 use App\Models\Target;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ApiHomeController extends Controller
 {
@@ -30,12 +32,14 @@ class ApiHomeController extends Controller
 
     public function get_public_data()
     {
+        $lang = App::getLocale();
         $data = [];
         $data['target'] = TargetResource::collection($this->get(Target::class, ['diets']));
         $data['daynumbers'] = DayNumberResource::collection($this->get(DayNumber::class));
         $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class, ['parent' => 1], ['meal_types']));
         $data['preferedtimes'] = $this->get(PreferedTime::class);
         $data['dishes'] = GeneralResource::collection($this->get(Dish::class));
+        $data['static_pages'] = StaticPage::select('id', 'name', 'body_' . $lang . ' as body')->get();
 
         return responseSuccess($data);
     }
@@ -114,7 +118,7 @@ class ApiHomeController extends Controller
             }
             $data = new DishResource($data);
         } else {
-            $data = DishResource::collection($this->get(Dish::class , ['image']));
+            $data = DishResource::collection($this->get(Dish::class, ['image']));
         }
 
         return responseSuccess($data);
@@ -162,5 +166,16 @@ class ApiHomeController extends Controller
         }
 
         return responseSuccess($data);
+    }
+
+    public function get_staticpage(Request $request)
+    {
+        $lang = App::getLocale();
+
+        $name = request('name');
+
+        $page = StaticPage::select('id', 'name', 'body_' . $lang . ' as body')->where('name', 'like', '%' . $name . '%')->first();
+
+        return responseSuccess($page);
     }
 }
