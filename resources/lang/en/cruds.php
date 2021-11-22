@@ -209,4 +209,36 @@ return [
             'body_ar' => 'Body Arabic',
         ]
     ],
+    'faq' => [
+        'title' => 'faq',
+        'create' => 'Create faq',
+        'update' => 'Update faq',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+            'question' => 'question',
+            'answer' => 'answer',
+            'question_en' => 'question English',
+            'question_ar' => 'question Arabic',
+            'answer_en' => 'answer English',
+            'answer_ar' => 'answer Arabic',
+        ]
+    ],
+    'coupon' => [
+        'title' => 'coupon',
+        'create' => 'Create coupon',
+        'update' => 'Update coupon',
+        'fields' => [
+            'id' => 'Id',
+            'name' => 'Name',
+            'code' => 'code',
+            'discount' => 'discount',
+            'food' => 'Food',
+            'type' => 'type',
+            'start_date' => 'Start Date',
+            'end_date' => 'End Date',
+            'cash' => 'Cash',
+            'percentage' => 'Percentage'
+        ]
+    ],
 ];

@@ -336,6 +336,16 @@ return [
             ],
         ], //subscription
         [
+            'text' => 'coupon',
+            'url'  => 'coupon',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'faq',
+            'url'  => 'faq',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
             'text' => 'staticpages',
             'url'  => 'staticpages',
             'icon' => 'fas fa-fw fa-home',

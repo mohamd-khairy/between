@@ -30,6 +30,7 @@ Route::get('get-maintypes', [\App\Http\Controllers\Api\ApiHomeController::class,
 Route::get('get-mealtypes', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_mealtypes']);
 Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_address_create_data']);
 Route::get('get-ingredients', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_ingredients']);
+Route::get('get-faqs', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_faqs']);
 Route::get('get-staticpage/{name}', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_staticpage']);
 
 Route::group(['middleware' => ['auth:api']], function () {

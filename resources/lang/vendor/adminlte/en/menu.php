@@ -23,6 +23,7 @@ return [
     'foods' => 'Foods',
     'dishs' => 'Dishs',
     'ingredient' => 'Ingredients',
-    'staticpages' => 'Static Pages'
-
+    'staticpages' => 'Static Pages',
+    'faq' => 'Help Center',
+    'coupos' => 'Coupons'
 ];

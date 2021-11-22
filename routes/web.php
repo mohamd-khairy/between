@@ -35,4 +35,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('dish', \App\Http\Controllers\Admin\DishController::class);
     Route::resource('ingredient', \App\Http\Controllers\Admin\IngredientController::class);
     Route::resource('staticpages', \App\Http\Controllers\Admin\StaticPagesController::class);
+    Route::resource('faq', \App\Http\Controllers\Admin\FaqController::class);
+    Route::resource('coupon', \App\Http\Controllers\Admin\CouponController::class);
 });

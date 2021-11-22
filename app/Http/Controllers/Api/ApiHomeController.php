@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\DayNumberResource;
 use App\Http\Resources\DietResource;
 use App\Http\Resources\DishResource;
+use App\Http\Resources\FaqResource;
 use App\Http\Resources\FoodResource;
 use App\Http\Resources\GeneralResource;
 use App\Http\Resources\MainTypeResource;
@@ -16,6 +17,7 @@ use App\Http\Traits\HelperTrait;
 use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\Dish;
+use App\Models\Faq;
 use App\Models\Food;
 use App\Models\Ingredient;
 use App\Models\MealType;
@@ -39,8 +41,24 @@ class ApiHomeController extends Controller
         $data['main_types'] = MainTypeResource::collection($this->getBy(MealType::class, ['parent' => 1], ['meal_types']));
         $data['preferedtimes'] = $this->get(PreferedTime::class);
         $data['dishes'] = GeneralResource::collection($this->get(Dish::class));
+        $data['faqs'] = FaqResource::collection($this->get(Faq::class));
         $data['static_pages'] = StaticPage::select('id', 'name', 'body_' . $lang . ' as body')->get();
 
+        return responseSuccess($data);
+    }
+
+
+    public function get_faqs()
+    {
+        if (request('faq_id')) {
+            $data = $this->findWith(Faq::class, ['id' => request('faq_id')]);
+            if (!$data) {
+                return responseFail('there is no faq with this id');
+            }
+            $data = new FaqResource($data);
+        } else {
+            $data = FaqResource::collection($this->get(Faq::class));
+        }
         return responseSuccess($data);
     }
 
