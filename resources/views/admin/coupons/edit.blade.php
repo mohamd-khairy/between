@@ -22,6 +22,7 @@
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.coupon.fields.food')}}</label>
                             <select name="food_id" class="form-control select2">
+                                <option value="">select</option>
                                 @foreach($allData['foods'] as $food)
                                 <option value="{{$food->id}}" {{old('food_id' , $data->food_id) == $food->id ? 'selected' : ''}}>{{$food->name}}</option>
                                 @endforeach
