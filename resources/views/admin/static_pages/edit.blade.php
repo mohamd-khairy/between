@@ -30,14 +30,14 @@
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="inputName">{{__('cruds.staticpages.fields.body_en')}}</label>
-                                <textarea name="body_en" class="form-control">{{old('body_en' , $data->body_en)}}</textarea>
+                                <textarea name="body_en" class="form-control ckeditor">{{old('body_en' , $data->body_en)}}</textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="inputName">{{__('cruds.staticpages.fields.body_ar')}}</label>
-                                <textarea name="body_ar" class="form-control">{{old('body_ar' , $data->body_ar)}}</textarea>
+                                <textarea name="body_ar" class="form-control ckeditor">{{old('body_ar' , $data->body_ar)}}</textarea>
                             </div>
                         </div>
 
