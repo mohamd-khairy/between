@@ -37,4 +37,9 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('staticpages', \App\Http\Controllers\Admin\StaticPagesController::class);
     Route::resource('faq', \App\Http\Controllers\Admin\FaqController::class);
     Route::resource('coupon', \App\Http\Controllers\Admin\CouponController::class);
+    Route::resource('subscription', \App\Http\Controllers\Admin\SubscriptionController::class);
+
+
+    Route::get('helper/user_addresses/{user_id}', [\App\Http\Controllers\Admin\SubscriptionController::class, 'user_addresses'])
+        ->name('helper.user_addresses');
 });

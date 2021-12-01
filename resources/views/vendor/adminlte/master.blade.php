@@ -156,7 +156,35 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
+    <script>
+        function get_data(item, results, route, item_name, item_display, item_value) {
+            var id = $('#' + item).val();
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "{{config('app.backend_url' , 'http://between.test')}}" + "/helper/" + route + '/' + id,
+                success: function(data) {
+                    var subuser = `
+                        <div class="form-group">
+                            <label for="inputName">${results}</label>
+                            <select  class="form-control" name="${item_name}"   required>
+                                <option value="">select</option>`;
 
+                    for (let index = 0; index < data.length; index++) {
+                        const element = data[index];
+                        subuser += `<option value="` + element.item_value + `">` + element.item_display + `</option>`
+                    }
+
+                    subuser += `</select>
+                        </div>`;
+
+                    $('#' + results).html(subuser);
+
+                }
+            });
+
+        }
+    </script>
     <script src="{{asset('vendor/datatables-plugins/buttons/js/dataTables.buttons.min.js')}}"></script>
     <script src="{{asset('vendor/datatables-plugins/buttons/js/buttons.bootstrap4.min.js')}}"></script>
     <script src="{{asset('vendor/datatables-plugins/buttons/js/buttons.html5.min.js')}}"></script>
@@ -194,7 +222,7 @@
             extended_valid_elements: "style,link[href|rel]",
             custom_elements: "style,link,~link"
         });
-        
+
         $('.select2').select2()
 
         $(document).ready(function() {

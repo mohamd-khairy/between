@@ -334,7 +334,8 @@ return [
                     'icon' => 'fas fa-fw fa-home',
                 ],
             ],
-        ], //subscription
+        ], //subscription.
+       
         [
             'text' => 'coupon',
             'url'  => 'coupon',
@@ -348,6 +349,11 @@ return [
         [
             'text' => 'staticpages',
             'url'  => 'staticpages',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'subscription',
+            'url'  => 'subscription',
             'icon' => 'fas fa-fw fa-home',
         ],
         /******************************************************************************************************** */

@@ -12,7 +12,6 @@ class MealType extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
-
     protected $fillable = [
         'parent',
         'parent_id'
@@ -23,8 +22,14 @@ class MealType extends Model implements TranslatableContract
         'updated_at',
     ];
 
+    const MainTypes = [
+        'protein' => 1,
+        'carb' => 2,
+        'snacks' => 3
+    ];
+
     public $translatedAttributes = ['name'];
-    public $with = ['image','translations'];
+    public $with = ['image', 'translations'];
 
     public function gettranslatable()
     {

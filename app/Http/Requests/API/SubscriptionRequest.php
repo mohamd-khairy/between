@@ -32,7 +32,7 @@ class SubscriptionRequest extends ApiFormRequest
             'meal_number_id' => 'required|exists:meal_numbers,id',
             'prefered_time_id' => 'required|exists:prefered_times,id',
             'dish_id' => 'required|exists:dishes,id',
-            'food_id' => 'required|exists:food,id',
+            'food_id' => 'nullable|exists:food,id',
             'address_id' => 'required|exists:addresses,id',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date'
