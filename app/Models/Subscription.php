@@ -30,6 +30,11 @@ class Subscription extends Model
         'updated_at',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function target()
     {
         return $this->belongsTo(Target::class);
