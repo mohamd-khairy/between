@@ -38,6 +38,10 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('user', function (Request $request) {
         return responseSuccess(new UserResource($request->user()));
     });
+
+    Route::get('subscription', [\App\Http\Controllers\Api\SubscriptionController::class, 'get_subscription']);
+    Route::post('subscription', [\App\Http\Controllers\Api\SubscriptionController::class, 'add_subscription']);
+
     Route::put('update-profile', [\App\Http\Controllers\Api\UserController::class, 'update_profile']);
     Route::get('user-get-address', [\App\Http\Controllers\Api\AddressController::class, 'user_get_address']);
     Route::delete('user-delete-address/{id}', [\App\Http\Controllers\Api\AddressController::class, 'user_delete_address']);
