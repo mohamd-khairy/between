@@ -17,12 +17,22 @@ class Subscription extends Model
         'user_id',
         'target_id',
         'meal_number_id',
+        'day_number_id',
         'prefered_time_id',
         'dish_id',
-        'food_id',
+        'diet_id',
         'address_id',
         'start_date',
-        'end_date'
+        'end_date',
+        'package_value',
+        'coupon_code',
+        'coupon_discount',
+        'delivery_fees',
+        'total',
+        'weight',
+        'height',
+        'gender',
+        'status',
     ];
 
     protected $hidden = [

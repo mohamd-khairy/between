@@ -27,7 +27,13 @@ return [
     'deleted_fail' => 'فشل المسح',
     'created_fail' => 'فشل الانشاء',
     'updated_fail' => 'فشل التعديل',
-
+    'status' => [
+        'pending' => 'قيد الانتظار',
+        'in_progress' => 'قيد التنفيذ',
+        'on_delivery' => 'قيد التوصيل',
+        'complete' => 'اكتمل',
+        'cancel' => 'تم الالغاء'
+    ],
     'target' => [
         'title' => 'الاهداف',
         'create' => 'انشاء هدف',

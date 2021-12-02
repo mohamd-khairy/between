@@ -29,6 +29,13 @@ return [
     'created_fail' => 'Created Fail',
     'updated_fail' => 'Updated Fail',
 
+    'status' => [
+        'pending' => 'Pending',
+        'in_progress' => 'In Progress',
+        'on_delivery' => 'On Delivery',
+        'complete' => 'Complete',
+        'cancel' => 'Cancel'
+    ],
     'target' => [
         'title' => 'Target',
         'create' => 'Create Target',

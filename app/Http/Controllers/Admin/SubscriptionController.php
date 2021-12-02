@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MainController;
 use App\Models\Address;
+use App\Models\Diet;
 use App\Models\Dish;
 use App\Models\Food;
 use App\Models\Ingredient;
@@ -30,7 +31,7 @@ class SubscriptionController extends MainController
         'meal_number_id' => 'required|exists:meal_numbers,id',
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'required|exists:dishes,id',
-        'food_id' => 'required|exists:food,id',
+        'diet_id' => 'required|exists:diets,id',
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
         'end_date' => 'required|date|after:start_date'
@@ -44,7 +45,7 @@ class SubscriptionController extends MainController
         'meal_number_id' => 'required|exists:meal_numbers,id',
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'required|exists:dishes,id',
-        'food_id' => 'nullable|exists:food,id',
+        'diet_id' => 'nullable|exists:diets,id',
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
         'end_date' => 'required|date|after:start_date'
@@ -59,18 +60,14 @@ class SubscriptionController extends MainController
     {
         $this->create_data = $this->edit_data = [
             'users' => User::get(),
-            'proteins' => Food::where('main_type_id', MealType::MainTypes['protein'])->get(),
-            'carbs' => Food::where('main_type_id', MealType::MainTypes['carb'])->get(),
-            'snacks' => Food::where('main_type_id', MealType::MainTypes['snacks'])->get(),
+            'proteins' => MealType::where('parent_id', MealType::MainTypes['protein'])->get(),
+            'carbs' => MealType::where('parent_id', MealType::MainTypes['carb'])->get(),
+            'snacks' => MealType::where('parent_id', MealType::MainTypes['snacks'])->get(),
             'targets' => Target::get(),
             'ingredients' => Ingredient::all(),
             'prefered_times' => PreferedTime::all(),
             'dishs' => Dish::all(),
+            'diets' => Diet::all(),
         ];
-    }
-
-    public function user_addresses($user_id)
-    {
-        return Address::where('user_id', $user_id)->first();
     }
 }

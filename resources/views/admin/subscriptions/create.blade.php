@@ -22,6 +22,7 @@
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.subscription.fields.users')}}</label>
                             <select onchange="get_data('user_id', 'addresses', 'user_addresses', 'address_id', 'full_address', 'id')" class="form-control select2" id="user_id" name="user_id">
+                                <option value="">select</option>
                                 @foreach($allData['users'] as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach

@@ -145,3 +145,51 @@ function display_img($img)
         return null;
     }
 }
+
+function status_object($key)
+{
+    switch ($key) {
+        case 'pending':
+            return [
+                'key' => 'pending',
+                'value' => __('cruds.status.pending')
+            ];
+            break;
+
+        case 'in_progress':
+
+            return [
+                'key' => 'in_progress',
+                'value' => __('cruds.status.in_progress')
+            ];
+            break;
+
+        case 'on_delivery':
+            return [
+                'key' => 'on_delivery',
+                'value' => __('cruds.status.on_delivery')
+            ];
+            break;
+
+        case 'complete':
+            return [
+                'key' => 'complete',
+                'value' => __('cruds.status.complete')
+            ];
+            break;
+
+        case 'cancel':
+            return [
+                'key' => 'cancel',
+                'value' => __('cruds.status.cancel')
+            ];
+            break;
+
+        default:
+            return [
+                'key' => 'pending',
+                'value' => __('cruds.status.pending')
+            ];
+            break;
+    }
+}
