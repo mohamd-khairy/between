@@ -38,8 +38,11 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('faq', \App\Http\Controllers\Admin\FaqController::class);
     Route::resource('coupon', \App\Http\Controllers\Admin\CouponController::class);
     Route::resource('subscription', \App\Http\Controllers\Admin\SubscriptionController::class);
+});
 
+Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
 
-    Route::get('helper/user_addresses/{user_id}', [\App\Http\Controllers\Admin\HelperController::class, 'user_addresses'])
-        ->name('helper.user_addresses');
+    Route::get('user_addresses/{user_id}', [\App\Http\Controllers\Admin\HelperController::class, 'user_addresses'])->name('user_addresses');
+    Route::get('diet_day_numbers/{diet_id}', [\App\Http\Controllers\Admin\HelperController::class, 'diet_day_numbers'])->name('diet_day_numbers');
+    Route::get('diet_meal_numbers/{diet_id}', [\App\Http\Controllers\Admin\HelperController::class, 'diet_meal_numbers'])->name('diet_meal_numbers');
 });

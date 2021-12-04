@@ -78,13 +78,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputName">{{__('cruds.subscription.fields.dishs')}}</label>
-                            <select class="form-control select2" name="dish_id">
-                                @foreach($allData['dishs'] as $item)
+                            <label for="inputName">{{__('cruds.subscription.fields.diets')}}</label>
+                            <select onchange="get_data('diet_id', 'day_numbers', 'diet_day_numbers', 'day_number_id', 'number', 'id');
+                            get_data('diet_id', 'meal_numbers', 'diet_meal_numbers', 'meal_number_id', 'number', 'id')" class="form-control select2" id="diet_id" name="diet_id">
+                                <option value="">select</option>
+                                @foreach($allData['diets'] as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div id="day_numbers"></div>
+
+                        <div id="meal_numbers"></div>
 
                         <div class="form-group">
                             <label for="inputName">{{__('cruds.subscription.fields.prefered_times')}}</label>

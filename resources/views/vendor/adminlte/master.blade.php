@@ -172,7 +172,7 @@
 
                     for (let index = 0; index < data.length; index++) {
                         const element = data[index];
-                        subuser += `<option value="` + element.item_value + `">` + element.item_display + `</option>`
+                        subuser += `<option value="` + element[item_value] + `">` + element[item_display] + `</option>`
                     }
 
                     subuser += `</select>

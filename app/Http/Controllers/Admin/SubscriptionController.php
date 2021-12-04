@@ -70,4 +70,9 @@ class SubscriptionController extends MainController
             'diets' => Diet::all(),
         ];
     }
+
+    public function store(Request $request)
+    {
+        return $request->all();
+    }
 }
