@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::redirect('/', 'home');
+Route::get('/content/{name}', [\App\Http\Controllers\Admin\HelperController::class, 'web_static_page']);
 
 Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function () {
     Route::get('home', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');

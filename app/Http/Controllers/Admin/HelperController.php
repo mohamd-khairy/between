@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\DayNumber;
 use App\Models\MealNumber;
+use App\Models\StaticPage;
 use Illuminate\Http\Request;
 
 class HelperController extends Controller
@@ -15,6 +16,12 @@ class HelperController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function web_static_page($name)
+    {
+        $page = StaticPage::select('id', 'name', 'body_' . app()->getLocale() . ' as body')
+            ->where('name', 'like', '%' . $name . '%')->first();
+        return view('static', compact('page'));
+    }
 
     public function user_addresses($user_id)
     {
