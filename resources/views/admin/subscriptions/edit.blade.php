@@ -16,113 +16,89 @@
                 @csrf
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">{{__('cruds.food.update')}}</h3>
+                        <h3 class="card-title">{{__('cruds.subscription.create')}}</h3>
                     </div>
                     <div class="card-body">
 
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.name')}} En</label>
-                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_en' , $data->translate('en')->name ?? '')}}" name="name_en" class="form-control">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.name')}} Ar</label>
-                                <input type="text" id="inputName" placeholder="enter" value="{{old('name_ar' , $data->translate('ar')->name ?? '')}}" name="name_ar" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.details')}} En</label>
-                                <input type="text" id="inputdetails" placeholder="enter" value="{{old('details_en' , $data->translate('en')->details ?? '')}}" name="details_en" class="form-control">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputdetails">{{__('cruds.food.fields.details')}} Ar</label>
-                                <input type="text" id="inputdetails" placeholder="enter" value="{{old('details_ar' , $data->translate('ar')->details ?? '')}}" name="details_ar" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputName">{{__('cruds.food.fields.mealtypes')}}</label>
-                            <select class="form-control select2" name="meal_type_id[]" multiple>
-                                @foreach($allData['MealType'] as $type)
-                                <option value="{{$type->id}}" {{in_array($type->id , $data->mealtypes_many->pluck('meal_type_id')->toArray()) ? 'selected' : '' }}>{{$type->name}}</option>
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.subscription.fields.users')}}</label>
+                            <select onchange="get_data('user_id', 'addresses', 'user_addresses', 'address_id', 'full_address', 'id')" class="form-control select2" id="user_id" name="user_id">
+                                <option value="">select</option>
+                                @foreach($allData['users'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
+                        <div id="addresses"></div>
 
                         <div class="form-group">
-                            <label for="inputName">{{__('cruds.food.fields.type')}}</label>
-                            <select class="form-control select2" name="type[]" multiple>
-                                @foreach($allData['dishs'] as $item)
-                                <option value="{{$item->id}}" {{in_array($item->id , $data->foodtypes_many->pluck('dish_id')->toArray()) ? 'selected' : '' }}>{{$item->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputName">{{__('cruds.food.fields.ingredients')}}</label>
+                            <label for="inputName">{{__('cruds.subscription.fields.ingredients')}}</label>
                             <select class="form-control select2" name="ingredients[]" multiple>
                                 @foreach($allData['ingredients'] as $item)
-                                <option value="{{$item->id}}" {{in_array($item->id , $data->ingredients_many->pluck('ingredient_id')->toArray()) ? 'selected' : '' }}>{{$item->name}}</option>
+                                <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.protein')}}</label>
-                                <input type="number" id="inputName" placeholder="enter" value="{{old('protein' , $data->protein)}}" name="protein" class="form-control">
-                            </div>
 
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.carb')}}</label>
-                                <input type="number" id="inputName" placeholder="enter" value="{{old('carb' , $data->carb)}}" name="carb" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.fats')}}</label>
-                                <input type="number" id="inputName" placeholder="enter" value="{{old('fats' , $data->fats)}}" name="fats" class="form-control">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="inputName">{{__('cruds.food.fields.calories')}}</label>
-                                <input type="number" id="inputName" placeholder="enter" value="{{old('calories' , $data->calories)}}" name="calories" class="form-control">
-                            </div>
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.subscription.fields.proteins')}}</label>
+                            <select class="form-control select2" name="protien_ids[]" multiple>
+                                @foreach($allData['proteins'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputName">{{__('cruds.food.fields.weight')}}</label>
-                            <input type="number" id="inputName" placeholder="enter" value="{{old('weight' , $data->weight)}}" name="weight" class="form-control">
+                            <label for="inputName">{{__('cruds.subscription.fields.carbs')}}</label>
+                            <select class="form-control select2" name="carb_ids[]" multiple>
+                                @foreach($allData['carbs'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputName">{{__('cruds.food.fields.price')}}</label>
-                            <input type="number" id="inputName" placeholder="enter" value="{{old('price' , $data->price)}}" name="price" class="form-control">
+                            <label for="inputName">{{__('cruds.subscription.fields.snacks')}}</label>
+                            <select class="form-control select2" name="snack_ids[]" multiple>
+                                @foreach($allData['snacks'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-10">
-                                <label for="inputName">{{__('cruds.food.fields.photo')}}</label>
-                                <input type="file" id="inputName" placeholder="enter" name="photo" class="form-control">
-                            </div>
-
-                            <div class="col-md-2">
-                                <img src="{{display_img($data->image ? $data->image->photo : null)}}" class="img-circle" style="width: 100px;height:100px;">
-                            </div>
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.subscription.fields.targets')}}</label>
+                            <select class="form-control select2" name="target_id">
+                                @foreach($allData['targets'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div class="form-group ">
-                            <label for="inputName">{{__('cruds.food.fields.status')}}</label>
-                            <select style="width: 100%;" data-live-search="true" class="form-control " name="status">
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.subscription.fields.diets')}}</label>
+                            <select onchange="get_data('diet_id', 'day_numbers', 'diet_day_numbers', 'day_number_id', 'number', 'id');
+                            get_data('diet_id', 'meal_numbers', 'diet_meal_numbers', 'meal_number_id', 'number', 'id')" class="form-control select2" id="diet_id" name="diet_id">
                                 <option value="">select</option>
-                                <option value="1" {{old('status' , $data->status) == 1 ? 'selected' : ''}}>Active</option>
-                                <option value="0" {{old('status' , $data->status) == 0 ? 'selected' : ''}}>Not Active</option>
+                                @foreach($allData['diets'] as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div id="day_numbers"></div>
+
+                        <div id="meal_numbers"></div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.subscription.fields.prefered_times')}}</label>
+                            <select class="form-control select2" name="prefered_time_id">
+                                @foreach($allData['prefered_times'] as $item)
+                                <option value="{{$item->id}}">{{$item->from}} - {{$item->to}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
