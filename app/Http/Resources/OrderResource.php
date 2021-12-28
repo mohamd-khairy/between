@@ -23,6 +23,7 @@ class OrderResource extends JsonResource
             'total'=> $this->total,
             'order_date' => $this->order_date ? date('Y-m-d', strtotime($this->order_date)) : null,
             'user' => $this->user ? new UserResource($this->user) : null,
+            'status'=> status_object($this->status),
         ];
     }
 }
