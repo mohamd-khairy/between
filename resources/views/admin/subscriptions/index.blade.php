@@ -53,7 +53,7 @@
                             {{__('cruds.subscription.fields.id')}}
                         </th>
                         <th>
-                            {{__('cruds.subscription.fields.order_numbaer')}}
+                            {{__('cruds.subscription.fields.order_number')}}
                         </th>
                         <th>
                             {{__('cruds.subscription.fields.name')}}

@@ -40,12 +40,9 @@ class SubscriptionController extends MainController
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'required|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
-        'address_id' => 'required|exists:addresses,id',
-        'start_date' => 'required|date|after_or_equal:today',
-        'end_date' => 'required|date|after:start_date',
     ];
     public $edit_validation = [
-        'user_id' => 'required|exists:users,id',+
+        'user_id' => 'required|exists:users,id',
         'ingredient_ids' => 'nullable|array',
         'ingredient_ids.*' => 'nullable|exists:ingredients,id',
         'protien_ids' => 'required|array',
@@ -60,9 +57,6 @@ class SubscriptionController extends MainController
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'required|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
-        'address_id' => 'required|exists:addresses,id',
-        'start_date' => 'required|date|after_or_equal:today',
-        'end_date' => 'required|date|after:start_date',
     ];
     public $filters = [];
     public $indexCondition = [];
