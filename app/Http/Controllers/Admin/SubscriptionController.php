@@ -23,13 +23,20 @@ class SubscriptionController extends MainController
     public $model = Subscription::class;
     public $view = 'subscriptions';
     public $route = 'subscription';
+
     public $create_validation = [
-        'ingredient_ids' => 'nullable',
-        'protien_ids' => 'nullable',
-        'snack_ids' => 'nullable',
-        'carb_ids' => 'nullable',
+        'user_id' => 'required|exists:users,id',
+        'ingredient_ids' => 'nullable|array',
+        'ingredient_ids.*' => 'nullable|exists:ingredients,id',
+        'protien_ids' => 'required|array',
+        'protien_ids.*' => 'required|exists:meal_types,id',
+        'snack_ids' =>  'required|array',
+        'snack_ids.*' =>  'required|exists:meal_types,id',
+        'carb_ids' =>  'required|array',
+        'carb_ids.*' =>  'required|exists:meal_types,id',
         'target_id' => 'required|exists:targets,id',
         'meal_number_id' => 'required|exists:meal_numbers,id',
+        'day_number_id' => 'required|exists:day_numbers,id',
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'required|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
@@ -39,15 +46,21 @@ class SubscriptionController extends MainController
         'user_id' => 'required|exists:users,id'
     ];
     public $edit_validation = [
-        'ingredient_ids' => 'nullable',
-        'protien_ids' => 'nullable',
-        'snack_ids' => 'nullable',
-        'carb_ids' => 'nullable',
+        'user_id' => 'required|exists:users,id',+
+        'ingredient_ids' => 'nullable|array',
+        'ingredient_ids.*' => 'nullable|exists:ingredients,id',
+        'protien_ids' => 'required|array',
+        'protien_ids.*' => 'required|exists:meal_types,id',
+        'snack_ids' =>  'required|array',
+        'snack_ids.*' =>  'required|exists:meal_types,id',
+        'carb_ids' =>  'required|array',
+        'carb_ids.*' =>  'required|exists:meal_types,id',
         'target_id' => 'required|exists:targets,id',
         'meal_number_id' => 'required|exists:meal_numbers,id',
+        'day_number_id' => 'required|exists:day_numbers,id',
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'required|exists:dishes,id',
-        'diet_id' => 'nullable|exists:diets,id',
+        'diet_id' => 'required|exists:diets,id',
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
         'end_date' => 'required|date|after:start_date',
@@ -63,11 +76,11 @@ class SubscriptionController extends MainController
     {
         $this->create_data = $this->edit_data = [
             'users' => User::get(),
+            'ingredients' => Ingredient::all(),
             'proteins' => MealType::where('parent_id', MealType::MainTypes['protein'])->get(),
             'carbs' => MealType::where('parent_id', MealType::MainTypes['carb'])->get(),
             'snacks' => MealType::where('parent_id', MealType::MainTypes['snacks'])->get(),
             'targets' => Target::get(),
-            'ingredients' => Ingredient::all(),
             'prefered_times' => PreferedTime::all(),
             'dishs' => Dish::all(),
             'diets' => Diet::all(),
