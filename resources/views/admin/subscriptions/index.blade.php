@@ -8,7 +8,7 @@
 
 @section('adminlte_css')
 <style>
-    .dtr-control.sorting_1:before{
+    .dtr-control.sorting_1:before {
         left: 35px;
         height: 14px;
         width: 14px;
@@ -59,22 +59,29 @@
                             {{__('cruds.subscription.fields.type')}}
                         </th>
                         <th>
-                            {{__('cruds.subscription.fields.mealtypes')}}
+                            {{__('cruds.subscription.fields.diet')}}
                         </th>
+                        <th>
+                            {{__('cruds.subscription.fields.dish')}}
+                        </th>
+                        <th>
+                            {{__('cruds.subscription.fields.meal_numbers')}}
+                        </th>
+                        <th>
+                            {{__('cruds.subscription.fields.prefered_times')}}
+                        </th>
+
                         <th>
                             {{__('cruds.subscription.fields.ingredients')}}
                         </th>
                         <th>
-                            {{__('cruds.subscription.fields.protein')}}
+                            {{__('cruds.subscription.fields.proteins')}}
                         </th>
                         <th>
-                            {{__('cruds.subscription.fields.carb')}}
+                            {{__('cruds.subscription.fields.carbs')}}
                         </th>
                         <th>
-                            {{__('cruds.subscription.fields.fats')}}
-                        </th>
-                        <th>
-                            {{__('cruds.subscription.fields.calories')}}
+                            {{__('cruds.subscription.fields.snacks')}}
                         </th>
                         <th>
                             {{__('cruds.subscription.fields.weight')}}
@@ -100,34 +107,44 @@
                             {{$value->id ?? '-'}}
                         </td>
                         <td>
-                            {{$value->name ?? '-'}}
+                            {{$value->user->name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->subscriptiontypes_many ? $value->subscriptiontypes_many->pluck('dish.name') : '-'}}
+                            {{$value->target->name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->mealtypes ? $value->mealtypes->pluck('name') : '-'}}
+                            {{$value->diet ? $value->diet->name : '-'}}
                         </td>
                         <td>
-                            {{$value->ingredients_many ? $value->ingredients_many->pluck('ingredient.name') : '-'}}
+                            {{$value->dish ? $value->dish->name : '-'}}
+                        </td>
+
+                        <td>
+                            {{$value->meal_number ? $value->meal_number->number : '-'}}
+                        </td>
+
+                        <td>
+                            {{$value->prefered_time ? $value->prefered_time->from .'-'. $value->prefered_time->to : '-'}}
+                        </td>
+
+
+                        <td>
+                            {{ $value->ingredient_name  ?? '-'}}
                         </td>
                         <td>
-                            {{$value->protein ?? '-'}}
+                            {{$value->proteins_name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->carb ?? '-'}}
+                            {{$value->carbs_name ?? '-'}}
                         </td>
                         <td>
-                            {{$value->fats ?? '-'}}
-                        </td>
-                        <td>
-                            {{$value->calories ?? '-'}}
+                            {{$value->snacks_name ?? '-'}}
                         </td>
                         <td>
                             {{$value->weight ?? '-'}}
                         </td>
                         <td>
-                            {{$value->price ?? '-'}}
+                            {{$value->total ?? '-'}}
                         </td>
                         <td>
                             <img src="{{display_img($value->image ? $value->image->photo : null)}}" style="width: 70px;height:70px" class="img-circle">

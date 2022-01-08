@@ -248,4 +248,35 @@ return [
             'percentage' => 'Percentage'
         ]
     ],
+    'subscription' => [
+        'title' => 'subscription',
+        'create' => 'Create subscription',
+        'update' => 'Update subscription',
+        'fields' => [
+            'id' => 'Id',
+            'users' => 'users',
+            'name' => 'Name',
+            'code' => 'code',
+            'dish' => 'Dish',
+            'mealtypes' => 'mealtypes',
+            'ingredients' => 'ingredients',
+            'type' => 'type',
+            'proteins' => 'protein',
+            'carbs' => 'carb',
+            'fats' => 'fats',
+            'snacks' => 'snacks',
+            'calories' => 'calories',
+            'weight' => 'weight',
+            'price' => 'price',
+            'photo' => 'photo',
+            'status' => 'status',
+            'total' => 'total',
+            'diet' => 'Diet',
+            'prefered_times' => 'prefered times',
+            'start_date' => 'Start date',
+            'end_date' => 'end date',
+            'meal_numbers' => 'meal numbers',
+            'day_numbers' => 'day numbers'
+        ]
+    ],
 ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MainController;
 use App\Models\Address;
+use App\Models\DayNumber;
 use App\Models\Diet;
 use App\Models\Dish;
 use App\Models\Food;
@@ -34,7 +35,8 @@ class SubscriptionController extends MainController
         'diet_id' => 'required|exists:diets,id',
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
-        'end_date' => 'required|date|after:start_date'
+        'end_date' => 'required|date|after:start_date',
+        'user_id' => 'required|exists:users,id'
     ];
     public $edit_validation = [
         'ingredient_ids' => 'nullable',
@@ -48,7 +50,8 @@ class SubscriptionController extends MainController
         'diet_id' => 'nullable|exists:diets,id',
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
-        'end_date' => 'required|date|after:start_date'
+        'end_date' => 'required|date|after:start_date',
+        'user_id' => 'required|exists:users,id'
     ];
     public $filters = [];
     public $indexCondition = [];
@@ -73,6 +76,25 @@ class SubscriptionController extends MainController
 
     public function store(Request $request)
     {
-        return $request->all();
+        $data = $request->validate($this->create_validation);
+        $user = User::find($request->user_id);
+        $meal_number = MealNumber::find($request->meal_number_id);
+        $day_number = DayNumber::find($request->day_number_id);
+
+        /******* prepare data *******/
+        $data = $request->all();
+        $data['weight'] = $user->weight;
+        $data['height'] = $user->height;
+        $data['gender'] = $user->gender;
+        $data['user_id'] = $user->id;
+        $data['status'] = 'in_progress';
+        $data['delivery_fees'] = config('delivery_fees', 0) ?? 0;
+        $data['package_value'] = ($meal_number->price * $day_number->number) ?? null;
+        $data['total'] =  ($data['package_value'] + $data['delivery_fees']) ?? null;
+
+        /******* save data *******/
+        $result = $this->add(Subscription::class, $data);
+        session()->flash('success', __('cruds.created_success'));
+        return redirect()->route('admin.' . $this->route . '.index');
     }
 }

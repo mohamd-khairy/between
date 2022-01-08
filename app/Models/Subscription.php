@@ -10,6 +10,7 @@ class Subscription extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_number',
         'ingredient_ids',
         'protien_ids',
         'snack_ids',
@@ -40,6 +41,21 @@ class Subscription extends Model
         'updated_at',
     ];
 
+    public $appends = ['ingredient_name', 'proteins_name', 'carbs_name', 'snacks_name'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $o = Subscription::orderBy('id', 'desc')->first();
+            if ($o && $o->order_number) {
+                $model->order_number =  $o->order_number + 1;
+            } else {
+                $model->order_number =  date('y') . '000001';
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -63,6 +79,11 @@ class Subscription extends Model
     public function dish()
     {
         return $this->belongsTo(Dish::class);
+    }
+
+    public function diet()
+    {
+        return $this->belongsTo(Diet::class);
     }
 
     public function food()
@@ -94,4 +115,36 @@ class Subscription extends Model
     {
         $this->attributes['carb_ids'] = $value ? json_encode($value) : [];
     }
+
+    public function getIngredientNameAttribute()
+    {
+        if ($this->ingredient_ids) {
+            return  Ingredient::whereIn('id', (array)json_decode($this->ingredient_ids))->get()->pluck('name');
+        }
+    }
+
+    public function getProteinsNameAttribute()
+    {
+        if ($this->protien_ids) {
+            return  MealType::whereIn('id', (array)json_decode($this->protien_ids))->get()->pluck('name');
+        }
+    }
+
+    public function getCarbsNameAttribute()
+    {
+        if ($this->carb_ids) {
+            return  MealType::whereIn('id', (array)json_decode($this->carb_ids))->get()->pluck('name');
+        }
+    }
+
+    public function getSnacksNameAttribute()
+    {
+        if ($this->snack_ids) {
+            return  MealType::whereIn('id', (array)json_decode($this->snack_ids))->get()->pluck('name');
+        }
+    }
+
+    // 'proteins' => MealType::where('parent_id', MealType::MainTypes['protein'])->get(),
+    // 'carbs' => MealType::where('parent_id', MealType::MainTypes['carb'])->get(),
+    // 'snacks' => MealType::where('parent_id', MealType::MainTypes['snacks'])->get(),
 }

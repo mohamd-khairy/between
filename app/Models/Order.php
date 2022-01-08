@@ -10,6 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_number',
         'user_id',
         'address_id',
         'order_date',
@@ -26,6 +27,19 @@ class Order extends Model
         'updated_at',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $o = Order::orderBy('id', 'desc')->first();
+            if ($o && $o->order_number) {
+                $model->order_number =   $o->order_number + 1;
+            } else {
+                $model->order_number =  date('y') . '000001';
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -35,5 +49,4 @@ class Order extends Model
     {
         return $this->belongsTo(Address::class);
     }
-
 }
