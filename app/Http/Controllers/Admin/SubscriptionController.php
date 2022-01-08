@@ -43,7 +43,6 @@ class SubscriptionController extends MainController
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
         'end_date' => 'required|date|after:start_date',
-        'user_id' => 'required|exists:users,id'
     ];
     public $edit_validation = [
         'user_id' => 'required|exists:users,id',+
@@ -64,7 +63,6 @@ class SubscriptionController extends MainController
         'address_id' => 'required|exists:addresses,id',
         'start_date' => 'required|date|after_or_equal:today',
         'end_date' => 'required|date|after:start_date',
-        'user_id' => 'required|exists:users,id'
     ];
     public $filters = [];
     public $indexCondition = [];
