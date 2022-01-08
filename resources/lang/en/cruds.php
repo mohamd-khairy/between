@@ -276,7 +276,8 @@ return [
             'start_date' => 'Start date',
             'end_date' => 'end date',
             'meal_numbers' => 'meal numbers',
-            'day_numbers' => 'day numbers'
+            'day_numbers' => 'day numbers',
+            'order_number' => 'Order Number'
         ]
     ],
 ];

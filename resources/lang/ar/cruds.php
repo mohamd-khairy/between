@@ -278,7 +278,9 @@ return [
             'start_date' => 'تاريخ البدايه',
             'end_date' => 'تاريخ النهايه',
             'meal_numbers' => 'عدد الوجبات',
-            'day_numbers' => 'عدد الايام'
+            'day_numbers' => 'عدد الايام',
+            'order_number' => 'رقم الطلب'
+
         ]
     ],
 ];

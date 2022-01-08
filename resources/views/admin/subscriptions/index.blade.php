@@ -53,6 +53,9 @@
                             {{__('cruds.subscription.fields.id')}}
                         </th>
                         <th>
+                            {{__('cruds.subscription.fields.order_numbaer')}}
+                        </th>
+                        <th>
                             {{__('cruds.subscription.fields.name')}}
                         </th>
                         <th>
@@ -105,6 +108,9 @@
                         <td></td>
                         <td>
                             {{$value->id ?? '-'}}
+                        </td>
+                        <td>
+                            {{$value->order_number ?? '-'}}
                         </td>
                         <td>
                             {{$value->user->name ?? '-'}}
