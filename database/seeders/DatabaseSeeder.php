@@ -11,6 +11,7 @@ use App\Models\FoodMealType;
 use App\Models\FoodType;
 use App\Models\Ingredient;
 use App\Models\MealType;
+use App\Models\PaymentMethod;
 use App\Models\State;
 use App\Models\Target;
 use App\Models\User;
@@ -321,5 +322,17 @@ class DatabaseSeeder extends Seeder
                 'ar' => ['name' => $ingredients_data[rand(0, 3)] . $k],
             ]);
         }
+
+
+
+        PaymentMethod::insert([
+            [
+                'id' => 1,
+                'key' => 'cash',
+                'en' => ['title' => 'Cash On Delivery'],
+                'ar' => ['title' => 'الدفع في المكان'],
+                'status' => 1
+            ]
+        ]);
     }
 }
