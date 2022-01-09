@@ -33,6 +33,7 @@ class SubscriptionController extends Controller
                 'dish',
                 'food',
                 'address',
+                'paymentmethod'
             ]);
             if (!$data) {
                 return responseFail('there is no subscription with this id');
@@ -55,6 +56,7 @@ class SubscriptionController extends Controller
                 'dish',
                 'food',
                 'address',
+                'paymentmethod'
             ]));
 
             $data['orders'] = OrderResource::collection($this->getBy(Order::class, ['user_id' => $user->id], [
