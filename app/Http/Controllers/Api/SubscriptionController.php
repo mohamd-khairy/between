@@ -62,6 +62,7 @@ class SubscriptionController extends Controller
 
             $data['orders'] = OrderResource::collection($this->getBy(Order::class, ['user_id' => $user->id], [
                 'user',
+                'paymentmethod'
             ]));
         }
         return responseSuccess($data);

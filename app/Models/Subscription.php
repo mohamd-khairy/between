@@ -59,7 +59,7 @@ class Subscription extends Model
 
     public function paymentmethod()
     {
-        return $this->belongsTo(PaymentMethod::class);
+        return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
     }
 
     public function user()
