@@ -20,6 +20,7 @@ class Order extends Model
         'delivery_fees',
         'total',
         'status',
+        'payment_method_id'
     ];
 
     protected $hidden = [
@@ -48,5 +49,10 @@ class Order extends Model
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function paymentmethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
     }
 }

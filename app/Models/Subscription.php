@@ -34,6 +34,7 @@ class Subscription extends Model
         'height',
         'gender',
         'status',
+        'payment_method_id'
     ];
 
     protected $hidden = [
@@ -54,6 +55,11 @@ class Subscription extends Model
                 $model->order_number =  date('y') . '000001';
             }
         });
+    }
+
+    public function paymentmethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
     }
 
     public function user()

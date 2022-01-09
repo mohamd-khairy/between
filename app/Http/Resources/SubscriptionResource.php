@@ -31,6 +31,7 @@ class SubscriptionResource extends JsonResource
             'user' => $this->user ? new UserResource($this->user) : null,
             'meal_number' => $this->meal_number ?? null,
             'prefered_time' => $this->prefered_time ?? null,
+            'paymentmethod' => $this->paymentmethod ? new PaymentMethodResource($this->paymentmethod) : null
         ];
     }
 }
