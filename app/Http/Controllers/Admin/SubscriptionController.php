@@ -38,7 +38,7 @@ class SubscriptionController extends MainController
         'meal_number_id' => 'required|exists:meal_numbers,id',
         'day_number_id' => 'required|exists:day_numbers,id',
         'prefered_time_id' => 'required|exists:prefered_times,id',
-        'dish_id' => 'required|exists:dishes,id',
+        'dish_id' => 'nullable|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
     ];
     public $edit_validation = [
@@ -55,7 +55,7 @@ class SubscriptionController extends MainController
         'meal_number_id' => 'required|exists:meal_numbers,id',
         'day_number_id' => 'required|exists:day_numbers,id',
         'prefered_time_id' => 'required|exists:prefered_times,id',
-        'dish_id' => 'required|exists:dishes,id',
+        'dish_id' => 'nullable|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
     ];
     public $filters = [];
