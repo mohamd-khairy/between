@@ -26,5 +26,6 @@ return [
     'ingredient' => 'Ingredients',
     'staticpages' => 'Static Pages',
     'faq' => 'Help Center',
-    'coupos' => 'Coupons'
+    'coupos' => 'Coupons',
+    'paymentmethods' => 'Payment Methods'
 ];

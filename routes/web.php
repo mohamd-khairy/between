@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.'], function (
     Route::resource('faq', \App\Http\Controllers\Admin\FaqController::class);
     Route::resource('coupon', \App\Http\Controllers\Admin\CouponController::class);
     Route::resource('subscription', \App\Http\Controllers\Admin\SubscriptionController::class);
+    Route::resource('paymentmethod', \App\Http\Controllers\Admin\PaymentMethodController::class);
 });
 
 Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {

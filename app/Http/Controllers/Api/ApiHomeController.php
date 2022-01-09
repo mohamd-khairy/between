@@ -11,6 +11,7 @@ use App\Http\Resources\FoodResource;
 use App\Http\Resources\GeneralResource;
 use App\Http\Resources\MainTypeResource;
 use App\Http\Resources\MealTypeResource;
+use App\Http\Resources\PaymentMethodResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\TargetResource;
 use App\Http\Traits\HelperTrait;
@@ -21,6 +22,7 @@ use App\Models\Faq;
 use App\Models\Food;
 use App\Models\Ingredient;
 use App\Models\MealType;
+use App\Models\PaymentMethod;
 use App\Models\PreferedTime;
 use App\Models\State;
 use App\Models\StaticPage;
@@ -195,5 +197,10 @@ class ApiHomeController extends Controller
         $page = StaticPage::select('id', 'name', 'body_' . $lang . ' as body')->where('name', 'like', '%' . $name . '%')->first();
 
         return responseSuccess($page);
+    }
+
+    public function get_payment_methods()
+    {
+        return responseSuccess(PaymentMethodResource::collection(PaymentMethod::where('status', true)->get()));
     }
 }

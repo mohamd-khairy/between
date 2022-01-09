@@ -335,7 +335,11 @@ return [
                 ],
             ],
         ], //subscription.
-       
+        [
+            'text' => 'paymentmethods',
+            'url'  => 'paymentmethod',
+            'icon' => 'fas fa-fw fa-home',
+        ],
         [
             'text' => 'coupon',
             'url'  => 'coupon',

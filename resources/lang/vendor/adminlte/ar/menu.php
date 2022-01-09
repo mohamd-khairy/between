@@ -27,5 +27,6 @@ return [
     'ingredient' => 'الحساسيه',
     'staticpages' => 'الصفحات الثابته',
     'faq' => 'مركز المساعده',
-    'coupon' => 'الخصومات'
+    'coupon' => 'الخصومات',
+    'paymentmethods' => 'طرق الدفع'
 ];

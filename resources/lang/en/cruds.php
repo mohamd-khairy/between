@@ -280,4 +280,15 @@ return [
             'order_number' => 'Order Number'
         ]
     ],
+    'paymentmethod' => [
+        'title' => 'payment method',
+        'create' => 'Create payment method',
+        'update' => 'Update payment method',
+        'fields' => [
+            'id' => 'Id',
+            'title' => 'Title',
+            'key' => 'Key',
+            'status' => 'Status',
+        ]
+    ],
 ];

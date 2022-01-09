@@ -32,6 +32,7 @@ Route::get('get-address-create-data', [\App\Http\Controllers\Api\ApiHomeControll
 Route::get('get-ingredients', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_ingredients']);
 Route::get('get-faqs', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_faqs']);
 Route::get('get-staticpage/{name}', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_staticpage']);
+Route::get('get-payment-methods', [\App\Http\Controllers\Api\ApiHomeController::class, 'get_payment_methods']);
 
 Route::group(['middleware' => ['auth:api']], function () {
 
