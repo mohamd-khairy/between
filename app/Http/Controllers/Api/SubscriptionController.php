@@ -42,6 +42,7 @@ class SubscriptionController extends Controller
         } else if (request('order_id')) {
             $data = $this->findWith(Order::class, ['user_id' => $user->id, 'id' => request('order_id')], [
                 'user',
+                'paymentmethod'
             ]);
             if (!$data) {
                 return responseFail('there is no order with this id');
