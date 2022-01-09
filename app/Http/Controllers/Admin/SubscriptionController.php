@@ -12,6 +12,7 @@ use App\Models\Food;
 use App\Models\Ingredient;
 use App\Models\MealNumber;
 use App\Models\MealType;
+use App\Models\PaymentMethod;
 use App\Models\PreferedTime;
 use App\Models\Subscription;
 use App\Models\Target;
@@ -40,6 +41,7 @@ class SubscriptionController extends MainController
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'nullable|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
+        'payment_method_id' => 'required|exists:paymentmethods,id'
     ];
     public $edit_validation = [
         'user_id' => 'required|exists:users,id',
@@ -57,6 +59,7 @@ class SubscriptionController extends MainController
         'prefered_time_id' => 'required|exists:prefered_times,id',
         'dish_id' => 'nullable|exists:dishes,id',
         'diet_id' => 'required|exists:diets,id',
+        'payment_method_id' => 'required|exists:paymentmethods,id'
     ];
     public $filters = [];
     public $indexCondition = [];
@@ -76,6 +79,7 @@ class SubscriptionController extends MainController
             'prefered_times' => PreferedTime::all(),
             'dishs' => Dish::all(),
             'diets' => Diet::all(),
+            'paymentmethods' => PaymentMethod::where('status', true)->get()
         ];
     }
 

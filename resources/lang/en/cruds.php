@@ -277,7 +277,8 @@ return [
             'end_date' => 'end date',
             'meal_numbers' => 'meal numbers',
             'day_numbers' => 'day numbers',
-            'order_number' => 'Order Number'
+            'order_number' => 'Order Number',
+            'paymentmethods' => 'payment methods'
         ]
     ],
     'paymentmethod' => [

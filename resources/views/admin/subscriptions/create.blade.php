@@ -122,6 +122,16 @@
                                 <input type="date" id="inputName" placeholder="enter" value="{{old('end_date' , '')}}" name="end_date" class="form-control">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="inputName">{{__('cruds.subscription.fields.paymentmethods')}}</label>
+                            <select class="form-control select2" id="payment_method_id" name="payment_method_id">
+                                @foreach($allData['paymentmethods'] as $item)
+                                <option value="{{$item->id}}">{{$item->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
                     <!-- /.card-body -->
                     <div class="row p-3">

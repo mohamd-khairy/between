@@ -11,6 +11,7 @@ use App\Models\Coupon;
 use App\Models\DayNumber;
 use App\Models\MealNumber;
 use App\Models\Order;
+use App\Models\PaymentMethod;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -68,9 +69,11 @@ class SubscriptionController extends Controller
         $user = auth('api')->user();
         $meal_number = MealNumber::find($request->meal_number_id);
         $day_number = DayNumber::find($request->day_number_id);
+        $paymentMethods = PaymentMethod::where('key', 'cash')->first();
 
         /******* prepare data *******/
         $data = $request->all();
+        $data['payment_method_id'] = $paymentMethods ? $paymentMethods->id : null;
         $data['weight'] = $user->weight;
         $data['height'] = $user->height;
         $data['gender'] = $user->gender;

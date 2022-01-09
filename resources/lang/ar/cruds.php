@@ -279,7 +279,8 @@ return [
             'end_date' => 'تاريخ النهايه',
             'meal_numbers' => 'عدد الوجبات',
             'day_numbers' => 'عدد الايام',
-            'order_number' => 'رقم الطلب'
+            'order_number' => 'رقم الطلب',
+            'paymentmethods' => 'طرق الدفع'
 
         ]
     ],
