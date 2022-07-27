@@ -325,14 +325,15 @@ class DatabaseSeeder extends Seeder
 
 
 
-        PaymentMethod::insert([
+        PaymentMethod::create(
             [
                 'id' => 1,
                 'key' => 'cash',
                 'en' => ['title' => 'Cash On Delivery'],
                 'ar' => ['title' => 'الدفع في المكان'],
                 'status' => 1
+
             ]
-        ]);
+        );
     }
 }
